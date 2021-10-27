@@ -1,16 +1,16 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;310&lt;/x&gt;&lt;y&gt;250&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLClass</id><coordinates><x>10</x><y>570</y><w>210</w><h>80</h></coordinates><panel_attributes>CD
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;310&lt;/x&gt;&lt;y&gt;250&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLClass</id><coordinates><x>10</x><y>570</y><w>210</w><h>100</h></coordinates><panel_attributes>CDs
 --
 - endommagé : boolean
+- nbDisponible : Int
 --
 - Endommager()
 - CalculDurée()
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>750</y><w>210</w><h>120</h></coordinates><panel_attributes>DAO
-/Pas ici/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>290</y><w>210</w><h>200</h></coordinates><panel_attributes>Film
+/Pas ici/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>290</y><w>210</w><h>200</h></coordinates><panel_attributes>/Abstrait Film/
 Package::AT2000
 {Classe controlant la gestion de la
  location de document}
 --
-- endommagé : boolean
 - titre
 - producteur
 - acteurs principeau
@@ -27,7 +27,7 @@ Package::AT2000
 - rendre(Film)
 - rechercheFilm(*param)
 - souscrire()
-- payement()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>480</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>480</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>320</y><w>310</w><h>280</h></coordinates><panel_attributes>Adherent
+- payement()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>480</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>480</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>320</y><w>310</w><h>250</h></coordinates><panel_attributes>Adherent
 --
 - Nom : String
 - Prenom : String
@@ -78,16 +78,23 @@ m1=0...1
 m2=1
 </panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1100</x><y>60</y><w>140</w><h>70</h></coordinates><panel_attributes>La carte bancaire à 
 besoin d'être connue de 
-la carte d'abbonnement.
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>690</x><y>630</y><w>170</w><h>160</h></coordinates><panel_attributes>IHM
+la carte d'abonnement.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>690</x><y>630</y><w>140</w><h>160</h></coordinates><panel_attributes>IHM
 --
 bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>790</y><w>90</w><h>30</h></coordinates><panel_attributes>Historique
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>790</y><w>90</w><h>30</h></coordinates><panel_attributes>Catalogue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>750</y><w>90</w><h>30</h></coordinates><panel_attributes>Contact Banque</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>570</x><y>0</y><w>140</w><h>70</h></coordinates><panel_attributes>Pas plus de 3 locations
 en même temps, mais 
 avec l'historique, on 
 passe à n.
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>870</x><y>490</y><w>230</w><h>110</h></coordinates><panel_attributes>La connection se fait à partir de la carte.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>870</x><y>490</y><w>230</w><h>80</h></coordinates><panel_attributes>La connection se fait à partir de la carte.
 Si c'est une carte mère, elle connecte 
 l'adhérent avec des options en plus (toute 
 la gestion des autres carte).
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>880</x><y>610</y><w>310</w><h>180</h></coordinates><panel_attributes>Les questions à poser :
+Relation carte bancaire
+Film et CD endommagé
+Les compositions
+
+
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element></diagram>
