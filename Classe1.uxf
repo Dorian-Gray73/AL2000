@@ -1,12 +1,12 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;310&lt;/x&gt;&lt;y&gt;250&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLClass</id><coordinates><x>270</x><y>614</y><w>210</w><h>100</h></coordinates><panel_attributes>CD
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;310&lt;/x&gt;&lt;y&gt;250&lt;/y&gt;&lt;w&gt;30&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLClass</id><coordinates><x>230</x><y>594</y><w>210</w><h>100</h></coordinates><panel_attributes>CD
 --
 - endommagé : boolean
 - nbDisponible : Int
 --
 - Endommager()
 - CalculDurée()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>754</y><w>210</w><h>120</h></coordinates><panel_attributes>DAO
-/Pas ici/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>344</y><w>210</w><h>200</h></coordinates><panel_attributes>/Abstrait Film/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>734</y><w>210</w><h>120</h></coordinates><panel_attributes>DAO
+/Pas ici/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>324</y><w>210</w><h>200</h></coordinates><panel_attributes>/Abstrait Film/
 Package::AT2000
 {Classe controlant la gestion de la
  location de document}
@@ -17,9 +17,9 @@ Package::AT2000
 - resumé : String
 --
 - afficherInformations()
-/+ CalculerDuréeEmprunt()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>614</y><w>200</w><h>80</h></coordinates><panel_attributes>QR code
+/+ CalculerDuréeEmprunt()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>594</y><w>200</w><h>80</h></coordinates><panel_attributes>QR code
 --
-- CalculerDurée(DatePrésent)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>154</y><w>190</w><h>140</h></coordinates><panel_attributes>Client
+- CalculerDurée(DatePrésent)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>134</y><w>190</w><h>140</h></coordinates><panel_attributes>Client
 --
 - adresseFacturation : String
 --
@@ -27,7 +27,7 @@ Package::AT2000
 + rendre(Film)
 + rechercherFilm(filtres[])
 + souscrire()
-+ payement()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>534</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>534</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>374</y><w>310</w><h>250</h></coordinates><panel_attributes>Adherent
++ payement()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>514</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>514</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>354</y><w>310</w><h>260</h></coordinates><panel_attributes>Adherent
 --
 - Nom : String
 - Prenom : String
@@ -43,8 +43,9 @@ Package::AT2000
 - consulterInformationsProfil() (toString)
 - payement()
 - changerRestrictions(Carte abonnement, restrictions[])
-/# Lien vers DAO/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>284</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>714</y><w>100</w><h>30</h></coordinates><panel_attributes>Panier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>794</y><w>100</w><h>30</h></coordinates><panel_attributes>LignePanier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>834</y><w>140</w><h>40</h></coordinates><panel_attributes>Maintenance
-/Pas dans ce diagramme/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1210</x><y>404</y><w>210</w><h>130</h></coordinates><panel_attributes>Carte abonnement
+- Souscrire(Titulaire)
+/# Lien vers DAO/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>264</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>694</y><w>100</w><h>30</h></coordinates><panel_attributes>Panier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>774</y><w>100</w><h>30</h></coordinates><panel_attributes>LignePanier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>814</y><w>140</w><h>40</h></coordinates><panel_attributes>Maintenance
+/Pas dans ce diagramme/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>384</y><w>210</w><h>150</h></coordinates><panel_attributes>Carte abonnement
 --
 - solde : Float
 - restriction : String[]
@@ -52,9 +53,10 @@ Package::AT2000
 --
 - debiterCarte(somme)
 - SoldeInsuffisant()
-- crediterCarte(somme)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>404</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
+- crediterCarte(somme)
+- setRestriction(Restriction[])</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>384</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
 titulaire
-m2=1..n</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>754</y><w>100</w><h>30</h></coordinates><panel_attributes>Carte</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>124</y><w>180</w><h>120</h></coordinates><panel_attributes>Location
+m2=1..n</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>734</y><w>100</w><h>30</h></coordinates><panel_attributes>Carte</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>104</y><w>180</w><h>120</h></coordinates><panel_attributes>Location
 --
 - début : date
 - fin : date
@@ -62,51 +64,51 @@ m2=1..n</panel_attributes><additional_attributes>10;20;130;20</additional_attrib
 --
 - setTarif(tarif)
 - genererFacture()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1230</x><y>184</y><w>150</w><h>110</h></coordinates><panel_attributes>Carte bancaire
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1190</x><y>164</y><w>150</w><h>110</h></coordinates><panel_attributes>Carte bancaire
 --
 - noCB  : String
 - cryptogramme : String
 - dateExpiration : Date
 --
 - debiterCarte(solde)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>754</y><w>140</w><h>70</h></coordinates><panel_attributes>Date
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>734</y><w>140</w><h>70</h></coordinates><panel_attributes>Date
 --
 Jour
-Heure</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>214</y><w>140</w><h>60</h></coordinates><panel_attributes>lt=-&gt;
+Heure</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>194</y><w>140</w><h>60</h></coordinates><panel_attributes>lt=-&gt;
 m1=0...n
-m2=1</panel_attributes><additional_attributes>10;10;70;10;70;30;120;30</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>214</y><w>100</w><h>150</h></coordinates><panel_attributes>lt=-&gt;
+m2=1</panel_attributes><additional_attributes>10;10;70;10;70;30;120;30</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>194</y><w>100</w><h>150</h></coordinates><panel_attributes>lt=-&gt;
 m2=1
-m1=0..n</panel_attributes><additional_attributes>80;10;10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>284</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m1=0..n</panel_attributes><additional_attributes>80;10;10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>264</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 m1=1
-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>204</y><w>230</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>980</x><y>184</y><w>230</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
 m1=1
 m2=1
-</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1270</x><y>104</y><w>140</w><h>70</h></coordinates><panel_attributes>La carte bancaire à 
+</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1230</x><y>84</y><w>140</w><h>70</h></coordinates><panel_attributes>La carte bancaire à 
 besoin d'être connue de 
 la carte d'abonnement.
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>910</x><y>684</y><w>140</w><h>160</h></coordinates><panel_attributes>IHM
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>870</x><y>664</y><w>140</w><h>160</h></coordinates><panel_attributes>IHM
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>794</y><w>90</w><h>60</h></coordinates><panel_attributes>Historique
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>834</y><w>90</w><h>30</h></coordinates><panel_attributes>Catalogue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>794</y><w>90</w><h>30</h></coordinates><panel_attributes>Contact Banque</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>150</x><y>474</y><w>210</w><h>110</h></coordinates><panel_attributes>Il existera peut-être un
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>774</y><w>90</w><h>60</h></coordinates><panel_attributes>Historique
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>814</y><w>90</w><h>30</h></coordinates><panel_attributes>Catalogue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>774</y><w>90</w><h>30</h></coordinates><panel_attributes>Contact Banque</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>110</x><y>454</y><w>210</w><h>110</h></coordinates><panel_attributes>Il existera peut-être un
 design pattern prototype au niveau
 des films, CD et QRCode.
-bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1100</x><y>544</y><w>230</w><h>80</h></coordinates><panel_attributes>La connexion se fait à partir de la carte.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1060</x><y>534</y><w>230</w><h>80</h></coordinates><panel_attributes>La connexion se fait à partir de la carte.
 Si c'est une carte mère, elle connecte 
 l'adhérent avec des options en plus (toute 
 la gestion des autres cartes).
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>810</x><y>64</y><w>140</w><h>70</h></coordinates><panel_attributes>Pas plus de 3 locations
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>770</x><y>44</y><w>140</w><h>70</h></coordinates><panel_attributes>Pas plus de 3 locations
 en même temps, mais 
 avec l'historique, on 
 passe à n.
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>101</x><y>64</y><w>230</w><h>190</h></coordinates><panel_attributes>Package::Main
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>61</x><y>44</y><w>230</w><h>190</h></coordinates><panel_attributes>Package::Main
 AL2000
 --
 ListerFilm()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>213</x><y>240</y><w>190</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>18;10;20;210;170;210</additional_attributes></element><element><id>Relation</id><coordinates><x>323</x><y>20</y><w>660</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;160;110;160;10;640;10;640;140</additional_attributes></element><element><id>Relation</id><coordinates><x>323</x><y>180</y><w>250</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;230;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>624</y><w>150</w><h>100</h></coordinates><panel_attributes>ListeCD
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>173</x><y>220</y><w>190</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>18;10;20;210;170;210</additional_attributes></element><element><id>Relation</id><coordinates><x>283</x><y>0</y><w>660</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;160;110;160;10;640;10;640;140</additional_attributes></element><element><id>Relation</id><coordinates><x>283</x><y>160</y><w>250</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;230;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>604</y><w>150</w><h>100</h></coordinates><panel_attributes>ListeCD
 --
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>670</y><w>110</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>650</y><w>110</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=0..n</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>240</y><w>40</w><h>410</h></coordinates><panel_attributes>lt=&lt;-
+m2=0..n</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>220</y><w>40</w><h>410</h></coordinates><panel_attributes>lt=&lt;-
 m1=1</panel_attributes><additional_attributes>11;10;10;390</additional_attributes></element></diagram>
