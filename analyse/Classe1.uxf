@@ -36,7 +36,7 @@
 - créditerCarte(Carte abonnement, somme)
 - consulterHistorique()
 - consulterInformationsProfil() (toString)
-- payement()
+- payement(Prix)
 - changerRestrictions(Carte abonnement, restrictions[])
 - Souscrire(Titulaire)
 /# Lien vers DAO/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>809</x><y>296</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>589</x><y>916</y><w>100</w><h>30</h></coordinates><panel_attributes>Panier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>589</x><y>996</y><w>100</w><h>30</h></coordinates><panel_attributes>LignePanier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>709</x><y>986</y><w>140</w><h>40</h></coordinates><panel_attributes>Maintenance
