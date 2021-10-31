@@ -45,11 +45,14 @@
 - solde : Float
 - restriction : String[]
 - carteMère : Carte abonnement
+- bloqué : boolean
 --
 - debiterCarte(somme)
 - SoldeInsuffisant()
 - crediterCarte(somme)
-- setRestriction(Restriction[])</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>979</x><y>416</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
+- setRestriction(Restriction[])
+- setBlocage(Boolean)
+- getBlocage()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>979</x><y>416</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
 titulaire
 m2=1..n</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>589</x><y>956</y><w>100</w><h>30</h></coordinates><panel_attributes>Carte</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>449</x><y>136</y><w>180</w><h>120</h></coordinates><panel_attributes>Location
 --
