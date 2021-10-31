@@ -40,12 +40,12 @@
 - changerRestrictions(Carte abonnement, restrictions[])
 - Souscrire(Titulaire)
 /# Lien vers DAO/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>809</x><y>296</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>589</x><y>916</y><w>100</w><h>30</h></coordinates><panel_attributes>Panier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>589</x><y>996</y><w>100</w><h>30</h></coordinates><panel_attributes>LignePanier</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>709</x><y>986</y><w>140</w><h>40</h></coordinates><panel_attributes>Maintenance
-/Pas dans ce diagramme/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1109</x><y>416</y><w>210</w><h>150</h></coordinates><panel_attributes>Carte abonnement
+/Pas dans ce diagramme/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1109</x><y>416</y><w>210</w><h>190</h></coordinates><panel_attributes>Carte abonnement
 --
 - solde : Float
 - restriction : String[]
 - carteMère : Carte abonnement
-- bloqué : boolean
+- bloque : boolean
 --
 - debiterCarte(somme)
 - SoldeInsuffisant()
@@ -89,7 +89,7 @@ bg=orange</panel_attributes><additional_attributes></additional_attributes></ele
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>969</x><y>986</y><w>90</w><h>30</h></coordinates><panel_attributes>Catalogue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>969</x><y>946</y><w>90</w><h>30</h></coordinates><panel_attributes>Contact Banque</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>49</x><y>516</y><w>210</w><h>110</h></coordinates><panel_attributes>Il existera peut-être un
 design pattern prototype au niveau
 des films, CD et QRCode.
-bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>999</x><y>576</y><w>230</w><h>80</h></coordinates><panel_attributes>La connexion se fait à partir de la carte.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>999</x><y>626</y><w>230</w><h>80</h></coordinates><panel_attributes>La connexion se fait à partir de la carte.
 Si c'est une carte mère, elle connecte 
 l'adhérent avec des options en plus (toute 
 la gestion des autres cartes).
