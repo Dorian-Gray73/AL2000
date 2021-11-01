@@ -107,7 +107,7 @@ AL2000
 --
 - rechercherFilm()
 - emprunt(Film)
-- payement()
+- paiement()
 - rendre()
 - souscrire()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>237</x><y>122</y><w>680</w><h>80</h></coordinates><panel_attributes>lt=-
 m2=0..n</panel_attributes><additional_attributes>10;10;640;10;640;60</additional_attributes></element><element><id>Relation</id><coordinates><x>237</x><y>212</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=-
