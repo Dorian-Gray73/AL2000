@@ -1,3 +1,4 @@
+package fc;
 /**
  * La classe Film est une classe qui permet de representer les films 
  * dans notre programme.
