@@ -4,24 +4,23 @@ package fc;
  * Classe représentant un cd.<br>
  * Un cd sera identifié par son état (endommagé ou non) et par le film qu'il
  * represente<br>
- * @see Support
- * . Un cd dispose des méthodes setEndommage et getEndommage
+ * 
+ * @see Support . Un cd dispose des méthodes setEndommage et getEndommage
  */
 public class CD extends Support {
-    boolean endommage;
+    private boolean endommage;
+
     /**
      * Constructeur de la classe CD
      * 
      * @param film      parametre qui nous dit quel film est représenté en cd
      * @param endommage parametre qui représente l'etat d'un cd
      */
-    
+
     public CD(Film film, boolean endommage) {
         super(film);
         this.endommage = endommage;
     }
-
-    
 
     /**
      * Methode qui permet de changer l'etat du disque.
@@ -44,12 +43,6 @@ public class CD extends Support {
 
     @Override
     public String toString() {
-        return "{" +
-            " endommage = '" + isEndommage() + "'" +
-            "}";
-    }
-
-    private boolean isEndommage() {
-        return endommage;
+        return "{" + " endommage = '" + getEndommage() + "'" + "}";
     }
 }
