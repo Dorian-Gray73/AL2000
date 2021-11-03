@@ -6,17 +6,13 @@ public class CarteAbonnement {
     private CarteAbonnement carteMere;
     private boolean bloque;
     private int nbLocation;
-
+    
     public CarteAbonnement(CarteAbonnement mere) {
         this.solde = 10.0;
         this.restriction = null;
         this.bloque = false;
         this.nbLocation = 0;
-        if (mere == null) {
-            this.carteMere = this;
-        } else {
-            this.carteMere = mere;
-        }
+        this.carteMere = mere;
     }
 
     public CarteAbonnement(){
@@ -26,16 +22,16 @@ public class CarteAbonnement {
     /**
      * Methode qui permet de débiter une carte <br>
      * 
-     * @param somme
+     * @param prix
      * @return boolean
      */
-    public boolean debiterCarte(Float somme) {
+    public boolean debiterCarte(double prix) {
         int nbLocation = getnbLocation();
         if (nbLocation == 20) {
             setnbLocation(0);
             return true;
         } else {
-            this.solde -= somme;
+            this.solde -= prix;
             if (SoldeInsuffisant()) {
                 setBlocage(true);
             }
@@ -55,7 +51,7 @@ public class CarteAbonnement {
      * @param somme
      * @return boolean
      */
-    public boolean crediterCarte(float somme) {
+    public boolean crediterCarte(double somme) {
         this.solde += somme;
         return true;
     }
@@ -111,23 +107,13 @@ public class CarteAbonnement {
 
     @Override
     public String toString() {
-        if (carteMere == this){
-            return "{" +
-            " solde = '" + getSolde() + "'" +
-            ", restriction = '" + getRestriction() + "'" +
-            ", cartemère = '" + "null" + "'" +
-            ", bloque = '" + isBloque() + "'" +
-            ", nbLocation = '" + getNbLocation() + "'" +
-            "}";
-        } else {
-            return "{" +
-            " solde = '" + getSolde() + "'" +
-            ", restriction = '" + getRestriction() + "'" +
-            ", cartemère = \n'" + getCarteMere() + "'\n" +
-            ", bloque = '" + isBloque() + "'" +
-            ", nbLocation = '" + getNbLocation() + "'" +
-            "}";
-        }
+        return "{" +
+        " solde = '" + getSolde() + "'" +
+        ", restriction = '" + getRestriction() + "'" +
+        ", cartemère = '" + getCarteMere() + "'" +
+        ", bloque = '" + isBloque() + "'" +
+        ", nbLocation = '" + getNbLocation() + "'" +
+        "}";
     }
 
     private CarteAbonnement getCarteMere() {
