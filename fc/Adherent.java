@@ -33,7 +33,7 @@ public class Adherent extends Client {
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
     public Boolean emprunter(Film film) {
-        // TODO
+        // TODO créer la location et l'ajouter à la persistence de donnée.
         return true;
     }
 
@@ -61,7 +61,7 @@ public class Adherent extends Client {
      * @return un String qui représente l'ensemble des location faite par l'adhérent
      */
     public String consulterHistorique() {
-        // TODO, a recuperer de notre pérsistance de donnée.
+        // TODO, à recuperer de notre pérsistance de donnée.
         return "";
     }
 
