@@ -36,10 +36,11 @@ public class Film{
         System.out.println("Le producteur est " + producteur + ".");
         System.out.println("Les acteurs principaux sont :");
         int i =0;
-        while (i<acteursPrincipaux.length) {
-            System.out.print(acteursPrincipaux[i] + " ");
+        while (i<acteursPrincipaux.length-1) {
+            System.out.print(acteursPrincipaux[i] + ", ");
             i++;
         }
+        System.out.print(acteursPrincipaux[i]);
         System.out.println();
         System.out.println("le résumé est : " + resume);
     }
