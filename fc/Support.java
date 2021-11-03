@@ -32,8 +32,19 @@ public class Support {
      * @return int
      */
     public int calculDuree() {
-        //TODO
+        //TODO En attente de la gestion des date dans Location.
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " film = '" + getFilm() + "'" +
+            "}";
+    }
+
+    private Film getFilm() {
+        return film;
     }
 
 }

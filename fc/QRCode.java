@@ -29,4 +29,11 @@ public class QRCode extends Support {
         return -1;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+        " QRcode = '" + super.toString() + "'" +
+            "}";
+    }
+
 }

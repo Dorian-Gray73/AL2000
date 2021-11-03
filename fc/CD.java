@@ -41,4 +41,15 @@ public class CD extends Support {
     public boolean getEndommage() {
         return endommage;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " endommage = '" + isEndommage() + "'" +
+            "}";
+    }
+
+    private boolean isEndommage() {
+        return endommage;
+    }
 }

@@ -30,4 +30,30 @@ public class Location {
             return (float) 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " debut = '" + getDebut() + "'" +
+            ", fin = '" + getFin() + "'" +
+            ", tarif = '" + getTarif() + "'" +
+            ", support = '" + getSupport() + "'" +
+            "}";
+    }
+
+    private Support getSupport() {
+        return support;
+    }
+
+    private double getTarif() {
+        return tarif;
+    }
+
+    private DateTime getFin() {
+        return fin;
+    }
+
+    private DaateTime getDebut() {
+        return debut;
+    }
 }

@@ -44,4 +44,34 @@ public class Film{
         System.out.println("le résumé est : " + resume);
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " titre = '" + getTitre() + "'" +
+            ", producteur = '" + getProducteur() + "'" +
+            ", acteursPrincipaux = '" + getActeursPrincipaux() + "'" +
+            ", resume = '" + getResume() + "'" +
+            "}";
+    }
+
+
+    private String getResume() {
+        return resume;
+    }
+
+
+    private String[] getActeursPrincipaux() {
+        return acteursPrincipaux;
+    }
+
+
+    private String getProducteur() {
+        return producteur;
+    }
+
+
+    private String getTitre() {
+        return titre;
+    }
+
 }

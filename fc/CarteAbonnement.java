@@ -40,7 +40,7 @@ public class CarteAbonnement {
                 setBlocage(true);
             }
             setnbLocation(nbLocation + 1);
-            return getBlocage();
+            return ! getBlocage();
         }
     }
 
@@ -107,5 +107,42 @@ public class CarteAbonnement {
      */
     public Boolean estCarteMere() {
         return (this.carteMere == this);
+    }
+
+    @Override
+    public String toString() {
+        if (carteMere == this){
+            return "{" +
+            " solde = '" + getSolde() + "'" +
+            ", restriction = '" + getRestriction() + "'" +
+            ", cartemère = '" + "null" + "'" +
+            ", bloque = '" + isBloque() + "'" +
+            ", nbLocation = '" + getNbLocation() + "'" +
+            "}";
+        } else {
+            return "{" +
+            " solde = '" + getSolde() + "'" +
+            ", restriction = '" + getRestriction() + "'" +
+            ", cartemère = \n'" + getCarteMere() + "'\n" +
+            ", bloque = '" + isBloque() + "'" +
+            ", nbLocation = '" + getNbLocation() + "'" +
+            "}";
+        }
+    }
+
+    private CarteAbonnement getCarteMere() {
+        return carteMere;
+    }
+
+    private int getNbLocation() {
+        return nbLocation;
+    }
+
+    private boolean isBloque() {
+        return bloque;
+    }
+
+    private double getSolde() {
+        return solde;
     }
 }
