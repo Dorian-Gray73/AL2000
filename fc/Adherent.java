@@ -13,17 +13,19 @@ public class Adherent extends Client {
 
     // titulaire sera initialisé au moment de la creation de l'objet Adherent,
     // si c'est une carte mère elle va pointer vers elle-même dans titulaire.
-    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String adr) {
-        this(client, nom, prenom, dateNaiss, adr, new CarteAbonnement(null));
+    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel) {
+        this(client, nom, prenom, dateNaiss, courriel, null);
     }
 
-    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String adr, CarteAbonnement mere) {
+    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel, CarteAbonnement mere) {
         super(client);
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
-        this.courrielAdr = adr;
+        this.courrielAdr = courriel;
         this.titulaire = new CarteAbonnement(mere);
+        this.possede = new ArrayList<CarteAbonnement>();
+        this.possede.add(this.titulaire);
     }
 
     /**
@@ -80,8 +82,14 @@ public class Adherent extends Client {
      */
     @Override
     public String toString() {
-        return "Nom :" + nom + ".\nPrenom :" + prenom + ".\nDate de naissance :" + dateNaiss + ".\nCourriel:"
-                + courrielAdr + ".";
+        return "{" +
+            "nom = '" + nom + "'" +
+            "\n prenom = '" + prenom + "'" +
+            "\n dateNaiss = '" + dateNaiss + "'" +
+            "\n courrielAdr = '" + courrielAdr + "'" +
+            "\n titulaire = '" + titulaire + "'" +
+            "\n possede = '" + possede + "'" +
+            "\n}\n";
     }
 
     /**
