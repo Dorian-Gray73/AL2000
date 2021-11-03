@@ -1,5 +1,9 @@
 package fc;
 
+import java.util.ArrayList;
+
+import fc.Test.FilmDaoImp;
+
 /**
  * Classe représentant un client anonyme.<br>
  * Un client sera notamment identifié par son adresse de facturation.<br>
@@ -10,6 +14,7 @@ package fc;
 public class Client {
     private String adresseFacturation;
     private CarteBancaire carteBancaire;
+    private FilmDaoImp BD=new FilmDaoImp();
 
     /**
      * Constructeur de la classe client.
@@ -65,8 +70,8 @@ public class Client {
      * @param filtres Les filtres de la recherche passés en paramètre
      * @return Renvoie la liste des films obtenue par la recherche
      */
-    public Film[] rechercherFilm(String[] filtres) {
-        return null;
+    public ArrayList<Film> rechercherFilm(String titre) {
+        return BD.chercher(titre);
     }
 
     /**

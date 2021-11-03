@@ -1,10 +1,10 @@
 package fc;
 
-import org.joda.time.DateTime;
+// import org.joda.time.DateTime;
 
 public class Location {
-    private DateTime debut;
-    private DateTime fin;
+    // private DateTime debut;
+    // private DateTime fin;
     private float tarif;
     private Support support;
 
@@ -22,12 +22,12 @@ public class Location {
     /**
      * @return Float
      */
-    public Float CalculerPrix() {
-        if (fin != null) {
-            return tarif * (fin.getDifferenceAsLong(debut));
-        } else {
-            support.calculDuree();
-            return (float) 0;
-        }
-    }
+    // public Float CalculerPrix() {
+    //     if (fin != null) {
+    //         return tarif * (fin.getDifferenceAsLong(debut));
+    //     } else {
+    //         support.calculDuree();
+    //         return (float) 0;
+    //     }
+    // }
 }
