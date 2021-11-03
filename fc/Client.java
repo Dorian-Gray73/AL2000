@@ -106,4 +106,20 @@ public class Client {
     public Boolean estEnCours(Film film) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " adresseFacturation = '" + getAdresseFacturation() + "'" +
+            ", carteBancaire = '" + getCarteBancaire() + "'" +
+            "}";
+    }
+
+    private CarteBancaire getCarteBancaire() {
+        return carteBancaire;
+    }
+
+    private String getAdresseFacturation() {
+        return adresseFacturation;
+    }
 }

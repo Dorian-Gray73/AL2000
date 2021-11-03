@@ -34,7 +34,28 @@ public class CarteBancaire {
      */
 
     void debiterCarte(float solde) {
-        //TODO
+        //TODO coté banque, donc persistence de donnée ou validation automatique.
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " noCB = '" + getNoCB() + "'" +
+            ", cryptogramme = '" + getCryptogramme() + "'" +
+            ", dateExpiration = '" + getDateExpiration() + "'" +
+            "}";
+    }
+
+    private Date getDateExpiration() {
+        return dateExpiration;
+    }
+
+    private String getCryptogramme() {
+        return cryptogramme;
+    }
+
+    private String getNoCB() {
+        return noCB;
     }
 
 }

@@ -1,14 +1,14 @@
 package fc;
 
 public class CarteAbonnement {
-    private float solde;
+    private double solde;
     private String[] restriction;
     private CarteAbonnement carteMere;
     private boolean bloque;
     private int nbLocation;
 
     public CarteAbonnement(CarteAbonnement mere) {
-        this.solde = 10.0f;
+        this.solde = 10.0;
         this.restriction = null;
         this.bloque = false;
         this.nbLocation = 0;
@@ -17,6 +17,10 @@ public class CarteAbonnement {
         } else {
             this.carteMere = mere;
         }
+    }
+
+    public CarteAbonnement(){
+        this(null);
     }
 
     /**
@@ -36,7 +40,7 @@ public class CarteAbonnement {
                 setBlocage(true);
             }
             setnbLocation(nbLocation + 1);
-            return getBlocage();
+            return ! getBlocage();
         }
     }
 
@@ -103,5 +107,42 @@ public class CarteAbonnement {
      */
     public Boolean estCarteMere() {
         return (this.carteMere == this);
+    }
+
+    @Override
+    public String toString() {
+        if (carteMere == this){
+            return "{" +
+            " solde = '" + getSolde() + "'" +
+            ", restriction = '" + getRestriction() + "'" +
+            ", cartemère = '" + "null" + "'" +
+            ", bloque = '" + isBloque() + "'" +
+            ", nbLocation = '" + getNbLocation() + "'" +
+            "}";
+        } else {
+            return "{" +
+            " solde = '" + getSolde() + "'" +
+            ", restriction = '" + getRestriction() + "'" +
+            ", cartemère = \n'" + getCarteMere() + "'\n" +
+            ", bloque = '" + isBloque() + "'" +
+            ", nbLocation = '" + getNbLocation() + "'" +
+            "}";
+        }
+    }
+
+    private CarteAbonnement getCarteMere() {
+        return carteMere;
+    }
+
+    private int getNbLocation() {
+        return nbLocation;
+    }
+
+    private boolean isBloque() {
+        return bloque;
+    }
+
+    private double getSolde() {
+        return solde;
     }
 }
