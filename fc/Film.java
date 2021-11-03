@@ -1,4 +1,8 @@
 package fc;
+
+import fc.Test.FilmDao;
+import fc.Test.FilmDaoImp;
+
 /**
  * La classe Film est une classe qui permet de representer les films 
  * dans notre programme.
@@ -7,8 +11,9 @@ package fc;
 public class Film{
     private String titre;
     private String producteur;
-    private String[] acteursPrincipaux;
+    private String acteursPrincipaux;
     private String resume;
+    // private FilmDao DB=new FilmDaoImp();
 
     /**
      * Constructeur de la classe film
@@ -20,7 +25,7 @@ public class Film{
 
      * @param acteursPrincipaux Le parametre a représente un tableau de String contenant les acteurs principaux
      */
-    public Film(String titre, String producteur, String resume, String[] acteursPrincipaux){
+    public Film(String titre, String producteur, String resume, String acteursPrincipaux){
         this.titre = titre;
         this.producteur = producteur;
         this.acteursPrincipaux = acteursPrincipaux;
@@ -35,12 +40,7 @@ public class Film{
         System.out.println("le titre est " + titre + ".");
         System.out.println("Le producteur est " + producteur + ".");
         System.out.println("Les acteurs principaux sont :");
-        int i =0;
-        while (i<acteursPrincipaux.length-1) {
-            System.out.print(acteursPrincipaux[i] + ", ");
-            i++;
-        }
-        System.out.print(acteursPrincipaux[i]);
+        System.out.println(acteursPrincipaux);       
         System.out.println();
         System.out.println("le résumé est : " + resume);
     }

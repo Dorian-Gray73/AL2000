@@ -1,12 +1,12 @@
 package fc;
 
-import org.joda.time.DateTime;
+// import org.joda.time.DateTime;
 
 public class Location {
     private DateTime debut;
     private DateTime fin;
     private double tarif;
-    private Support support;
+    Support support;
 
     /**
      * @param tarif
@@ -22,7 +22,8 @@ public class Location {
     /**
      * @return double
      */
-    public double CalculerPrix() {
+
+    public Float CalculerPrix() {
         if (fin != null) {
             return tarif * (fin.getDifferenceAsLong(debut));
         } else {
@@ -56,4 +57,5 @@ public class Location {
     private DaateTime getDebut() {
         return debut;
     }
+
 }
