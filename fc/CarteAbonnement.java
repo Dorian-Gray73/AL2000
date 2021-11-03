@@ -18,6 +18,10 @@ public class CarteAbonnement {
             this.carteMere = mere;
         }
     }
+    
+    public CarteAbonnement(){
+        this(null);
+    }
 
     /**
      * Methode qui permet de débiter une carte <br>
