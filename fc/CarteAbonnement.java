@@ -1,14 +1,14 @@
 package fc;
 
 public class CarteAbonnement {
-    private float solde;
+    private double solde;
     private String[] restriction;
     private CarteAbonnement carteMere;
     private boolean bloque;
     private int nbLocation;
 
     public CarteAbonnement(CarteAbonnement mere) {
-        this.solde = 10.0f;
+        this.solde = 10.0;
         this.restriction = null;
         this.bloque = false;
         this.nbLocation = 0;
@@ -18,7 +18,7 @@ public class CarteAbonnement {
             this.carteMere = mere;
         }
     }
-    
+
     public CarteAbonnement(){
         this(null);
     }

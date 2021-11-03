@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 public class Location {
     private DateTime debut;
     private DateTime fin;
-    private float tarif;
+    private double tarif;
     private Support support;
 
     /**
