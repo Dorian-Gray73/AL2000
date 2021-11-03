@@ -38,6 +38,7 @@ public class Film{
         int i =0;
         while (i<acteursPrincipaux.length) {
             System.out.print(acteursPrincipaux[i] + " ");
+            i++;
         }
         System.out.println();
         System.out.println("le résumé est : " + resume);
