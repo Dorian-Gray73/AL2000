@@ -11,7 +11,7 @@ public class Location {
     /**
      * @param tarif
      */
-    public void setTarif(float tarif) {
+    public void setTarif(double tarif) {
         this.tarif = tarif;
     }
 
@@ -20,14 +20,14 @@ public class Location {
     }
 
     /**
-     * @return Float
+     * @return double
      */
-    public Float CalculerPrix() {
+    public double CalculerPrix() {
         if (fin != null) {
             return tarif * (fin.getDifferenceAsLong(debut));
         } else {
             support.calculDuree();
-            return (float) 0;
+            return 0;
         }
     }
 

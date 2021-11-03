@@ -55,7 +55,7 @@ public class Adherent extends Client {
      * @param carte carte à créditer
      * @param somme est la somme à rajouter au solde de la carte en param
      */
-    public void créditerCarte(CarteAbonnement carte, Float somme) {
+    public void créditerCarte(CarteAbonnement carte, double somme) {
         carte.crediterCarte(somme);
     }
 
@@ -97,8 +97,8 @@ public class Adherent extends Client {
      * 
      * @param Prix
      */
-    public void paiement(Float prix) {
-        titulaire.debiterCarte(prix);
+    public Boolean paiement(double prix) {
+        return (titulaire.debiterCarte(prix));
     }
 
     /**

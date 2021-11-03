@@ -87,7 +87,7 @@ public class Client {
      * @param prix Le prix de la facture à payer
      * @return Renvoie un booléen indiquant si le paiement a réussi ou non
      */
-    public Boolean payer(float prix) {
+    public Boolean paiement(double prix) {
         return false;
     }
 
