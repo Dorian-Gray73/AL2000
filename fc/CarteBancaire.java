@@ -33,10 +33,17 @@ public class CarteBancaire {
      * @return void
      */
 
-    void debiterCarte(float solde) {
+    void debiterCarte(double solde) {
         //TODO coté banque, donc persistence de donnée ou validation automatique.
     }
 
+    
+    /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +
@@ -46,14 +53,29 @@ public class CarteBancaire {
             "}";
     }
 
+    
+    /** 
+     * Fonction qui retourne la date d'expiration de la carte bancaire/
+     * @return Date
+     */
     private Date getDateExpiration() {
         return dateExpiration;
     }
 
+    
+    /**
+     * Fonction qui returne le cryptogramme visuel de la carte bancaire 
+     * @return String qui represente le cryptogramme visuel de la carte bancaire
+     */
     private String getCryptogramme() {
         return cryptogramme;
     }
 
+    
+    /** 
+     * Fonction qui returne le numero de la carte bancaire
+     * @return String qui représente le numéro de carte bancaire
+     */
     private String getNoCB() {
         return noCB;
     }
