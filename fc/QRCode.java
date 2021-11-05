@@ -25,11 +25,17 @@ public class QRCode extends Support {
      * @return int représentant jusqu'a quand est valable un QR code
      */
 
-    public int calculDuree() {
+    public int calculerDuree() {
         //TODO a faire quand on aura resolu les soucis avec les dates
         return -1;
     }
 
+    /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +
