@@ -8,7 +8,7 @@ public class Support {
     private Film film;
     /**
      * Constructeur de la classe Support
-     * @param Film designe le film qui est soit un QRCode soit un dvd
+     * @param film designe le film qui est soit un QRCode soit un dvd
      * 
      */
 
@@ -31,11 +31,18 @@ public class Support {
      * fixe.
      * @return int
      */
-    public int calculDuree() {
+    public int calculerDuree() {
         //TODO En attente de la gestion des date dans Location.
         return -1;
     }
 
+    
+    /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +
@@ -43,8 +50,23 @@ public class Support {
             "}";
     }
 
+    
+    /** 
+     * Fonction qui retourne le film 
+     * @return Film 
+     */
     private Film getFilm() {
         return film;
+    }
+
+    
+    /** 
+     * Fonction qui sera redefini dans la classe CD
+     * @see CD.setEndommage
+     * @param dommage parametre qui représente l'état du support
+     */
+    public void setEndommage(boolean dommage){
+        return;
     }
 
 }
