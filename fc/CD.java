@@ -33,6 +33,15 @@ public class CD extends Support {
     }
 
     /**
+     * foncton qui retourne le temps passé de location
+     * @return int represente la durée de la location ecoulée
+     */
+    public int calculerDuree() {
+        //TODO a faire quand on aura resolu les soucis avec les dates
+        return -1;
+    }
+
+    /**
      * Methode qui retourne l'etat du cd
      * 
      * @return boolean qui sera true si le cd est endommagé
@@ -41,6 +50,12 @@ public class CD extends Support {
         return endommage;
     }
 
+    /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" + " endommage = '" + getEndommage() + "'" + "}";
