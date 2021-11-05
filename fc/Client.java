@@ -1,7 +1,6 @@
 package fc;
 
 import java.util.ArrayList;
-
 import fc.Test.FilmDaoImp;
 
 /**
@@ -59,10 +58,24 @@ public class Client {
      * @param endommage Renvoie le booléen indiquant si le film est endommagé ou non
      */
     public void rendre(Film film, Boolean endommage) {
-
+        if (! estEnCours(film))
+            return;
+        Location l = getLocation(film);
+        Double prix = l.genererFacture();
+        l.getSupport().setEndommage(endommage);
+        paiement(prix);
     }
 
-    /**
+    
+    /** 
+     * @param film
+     * @return Location
+     */
+    private Location getLocation(Film film) {
+		return null;
+	}
+
+	/**
      * Méthode de recherche de films.<br>
      * Une requête sera notamment effectuée à la base de données en traitant les
      * filtres.
@@ -107,6 +120,10 @@ public class Client {
         return false;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +
@@ -115,10 +132,18 @@ public class Client {
             "}";
     }
 
+    
+    /** 
+     * @return CarteBancaire
+     */
     private CarteBancaire getCarteBancaire() {
         return carteBancaire;
     }
 
+    
+    /** 
+     * @return String
+     */
     private String getAdresseFacturation() {
         return adresseFacturation;
     }

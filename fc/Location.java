@@ -6,6 +6,7 @@ public class Location {
     private DateTime debut;
     private DateTime fin;
     private double tarif;
+    
     Support support;
 
     /**
@@ -15,15 +16,19 @@ public class Location {
         this.tarif = tarif;
     }
 
-    public void genererFacture() {
-
+    
+    /** 
+     * @return double
+     */
+    public double genererFacture() {
+        return 0;
     }
 
     /**
      * @return double
      */
 
-    public Float CalculerPrix() {
+    public double CalculerPrix() {
         if (fin != null) {
             return tarif * (fin.getDifferenceAsLong(debut));
         } else {
@@ -32,6 +37,10 @@ public class Location {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +
@@ -42,19 +51,35 @@ public class Location {
             "}";
     }
 
-    private Support getSupport() {
+    
+    /** 
+     * @return Support
+     */
+    Support getSupport() {
         return support;
     }
 
+    
+    /** 
+     * @return double
+     */
     private double getTarif() {
         return tarif;
     }
 
+    
+    /** 
+     * @return DateTime
+     */
     private DateTime getFin() {
         return fin;
     }
 
-    private DaateTime getDebut() {
+    
+    /** 
+     * @return DaateTime
+     */
+    private DateTime getDebut() {
         return debut;
     }
 

@@ -61,5 +61,11 @@ public class FilmDaoImp implements FilmDao{
         FilmDaoImp a=new FilmDaoImp();
         a.chercher("ted2");
     }
+
+	@Override
+	public String consulter(String titre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

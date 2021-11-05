@@ -45,6 +45,10 @@ public class Film{
         System.out.println("le résumé est : " + resume);
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +
@@ -56,21 +60,37 @@ public class Film{
     }
 
 
+    
+    /** 
+     * @return String
+     */
     private String getResume() {
         return resume;
     }
 
 
-    private String[] getActeursPrincipaux() {
+    
+    /** 
+     * @return String
+     */
+    private String getActeursPrincipaux() {
         return acteursPrincipaux;
     }
 
 
+    
+    /** 
+     * @return String
+     */
     private String getProducteur() {
         return producteur;
     }
 
 
+    
+    /** 
+     * @return String
+     */
     private String getTitre() {
         return titre;
     }
