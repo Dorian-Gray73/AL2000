@@ -39,7 +39,7 @@ public class test_unitaire {
         
         System.out.println("\nTest sur les Films ! \n");
         System.out.println("Testé actuellement : création");
-        Film film = new Film("Mourrir peut attentre", "James Bond", "Un 007 comme un autre.", new String[] {"Daniel Craig" , "Léa Seydoux"});
+        Film film = new Film("Mourrir peut attentre", "James Bond", "Un 007 comme un autre.","Daniel Craig, Léa Seydoux");
         film.afficherInformations();
         System.out.println(film);
         
