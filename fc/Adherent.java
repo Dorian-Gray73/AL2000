@@ -3,6 +3,12 @@ package fc;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Classe qui represente un adherent.<br>
+ * Un adhérent est represente par un nom, un prenom, une date de naissance, une adresse mail,
+ * une carte d abonnement mere (si la carte en possede pas alors elle ce pointe elle meme) et enfin un tableau qui contient toute les cartes filles.
+ * Un adherent possede les methodes emprunter, rendre, crediterCarte, consulterHistorique, consulterInformation, paiement, changerRestriction et souscrire
+ */
 public class Adherent extends Client {
     private String nom;
     private String prenom;
@@ -11,13 +17,32 @@ public class Adherent extends Client {
     CarteAbonnement titulaire;
     ArrayList<CarteAbonnement> possede = null;
 
-    // titulaire sera initialisé au moment de la creation de l'objet Adherent,
-    // si c'est une carte mère elle va pointer vers elle-même dans titulaire.
+    /**
+     * Constructeur de la classe Adherent dans le cas ou il y a pas de carte d'abonnement mere
+     * @param client 
+     * @see Client
+     * @param nom chaine de caractere representant le nom de famille de l adherent
+     * @param prenom chaine de caractere representant le prenom de l adherent
+     * @param dateNaiss represente la date de naissance de l adherent
+     * @param courriel represente l adresse mail de l adherent
+     */
     public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel) {
         this(client, nom, prenom, dateNaiss, courriel, null);
     }
 
+
+    /**
+     * Constructeur de la classe Adherent dans le cas ou il y a une carte d'abonnement mere
+     * @param client 
+     * @see Client
+     * @param nom chaine de caractere representant le nom de famille de l adherent
+     * @param prenom chaine de caractere representant le prenom de l adherent
+     * @param dateNaiss represente la date de naissance de l adherent
+     * @param courriel represente l adresse mail de l adherent
+     * @param mere carte mere de la carte adherent créé
+     */
     public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel, CarteAbonnement mere) {
+        //TODO le client n'est pas declaré comme il faut non ? 
         super(client);
         this.nom = nom;
         this.prenom = prenom;
@@ -50,34 +75,39 @@ public class Adherent extends Client {
     }
 
     /**
-     * permet de créditer une carte d'adhérent carte d'une somme somme
+     * méthode qui permet de créditer une carte d'adhérent carte d'une somme
      * 
      * @param carte carte à créditer
      * @param somme est la somme à rajouter au solde de la carte en param
+     * @return void
      */
     public void créditerCarte(CarteAbonnement carte, double somme) {
         carte.crediterCarte(somme);
     }
 
     /**
-     * @return un String qui représente l'ensemble des location faite par l'adhérent
+     * 
+     * @return histo Une chaine de caractère qui représente l'ensemble des location faite par l'adhérent
      */
     public String consulterHistorique() {
+        String histo = "";
         // TODO, à recuperer de notre pérsistance de donnée.
-        return "";
+        return histo;
     }
 
     /**
-     * la fonction retourne le nom, prenom, date de naissance et adresse courriel de
-     * l'adhérent
-     * 
-     * @return String
+     * méthode qui permet de retourner les informations de l'adhérent
+     * @return info est une chaine de caractères contenant les informations de l'adhérents
      */
     public String consulterInformationsProfil() {
-        return this.toString();
+        String info = this.toString();
+        return info;
     }
 
-    /**
+    /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
      * @return String
      */
     @Override
@@ -93,24 +123,38 @@ public class Adherent extends Client {
     }
 
     /**
-     * payement débite un prix de la carte de l'adhérent
+     * méthode qui débite un prix de la carte de l'adhérent
      * 
-     * @param Prix
+     * @param Prix représente le prix d'une location
+     * @see CarteAbonnement.debiterCarte
+     * @return reussite le boolean sera true si la transaction c'est bien passé 
      */
     public Boolean paiement(double prix) {
-        return (titulaire.debiterCarte(prix));
+        Boolean reussite = titulaire.debiterCarte(prix);
+        return reussite;
     }
 
     /**
-     * pour changer les restrictions de la carte carte 
+     * méthode qui permet de changer les restrictions de la carte carte 
      * 
      * @param carte est la carte dont on va changer les restrictions
      * @param restrictions sont les nouvelles restrictions
+     * @return void
      */
     public void changerRestrictions(CarteAbonnement carte, String[] restrictions) {
         carte.setRestriction(restrictions);
     }
 
+    
+    /** 
+     * Methode qui permet de créer une nouvelle carte d'abonnement.<br>
+     * La nouvelle carte d abonnement créer sera rattaché à this.
+     * @param nom représente le nom de la nouvelle personne detenant la carte.
+     * @param prenom représente le prenom de la nouvelle personne detenant la carte.
+     * @param dateNaiss représente la nouvelle date de naissance de la nouvelle personne detenant la carte.
+     * @param adr représente la nouvelle adresse de la nouvelle personne detenant la carte.
+     * @return Adherent retourne l'Adherent nouvellement créé.
+     */
     public Adherent Souscrire(String nom, String prenom, Date dateNaiss, String adr) {
         CarteAbonnement carteAbonnement = new CarteAbonnement(this.titulaire);
         if (possede == null) {
