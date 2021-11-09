@@ -1,21 +1,46 @@
 package fc;
 
-// import org.joda.time.DateTime;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
+import fc.Test.LocationDao;
+import fc.Test.LocationDaoImp;
 
 public class Location {
-    private DateTime debut;
-    private DateTime fin;
+	private int idLocation;
+    private LocalDateTime debut;
+    private LocalDateTime fin;
     private double tarif;
-    
-    Support support;
+    private Client client;
+    private Support support;
 
-    /**
+    
+
+
+	public Location(LocalDateTime debut, double tarif, Client client, Support support) {
+		super();
+		this.debut = debut;
+		this.fin = null;
+		this.tarif = tarif;
+		this.client = client;
+		this.support = support;
+	}
+
+	/**
      * @param tarif
      */
     public void setTarif(double tarif) {
         this.tarif = tarif;
     }
-
+    
+    public void setFin(LocalDateTime fin) {
+    	this.fin = fin;
+    }
+    
+    public void setIdLocation(int idLocation) {
+		this.idLocation = idLocation;
+	}
     
     /** 
      * @return double
@@ -25,16 +50,19 @@ public class Location {
     }
 
     /**
-     * @return double
+     * @return le prix de la location.
+     * @throws LocationException Dans le cas ou l'on appel cette méthode alors que la location n'est pas terminée.
      */
 
     public double CalculerPrix() {
         if (fin != null) {
-            return tarif * (fin.getDifferenceAsLong(debut));
-        } else {
-            support.calculDuree();
-            return 0;
+        	long duree = (debut.until(fin, ChronoUnit.DAYS));
+        	if(duree <= 1) 
+        		return tarif;
+        	
+            return tarif * duree;
         }
+        return -1;
     }
 
     
@@ -55,7 +83,7 @@ public class Location {
     /** 
      * @return Support
      */
-    Support getSupport() {
+    public Support getSupport() {
         return support;
     }
 
@@ -71,7 +99,7 @@ public class Location {
     /** 
      * @return DateTime
      */
-    private DateTime getFin() {
+    private LocalDateTime getFin() {
         return fin;
     }
 
@@ -79,8 +107,28 @@ public class Location {
     /** 
      * @return DaateTime
      */
-    private DateTime getDebut() {
+    private LocalDateTime getDebut() {
         return debut;
     }
+
+	public int sauvegarder() {
+		LocationDao locationDao = new LocationDaoImp();
+		return locationDao.ajouterLocation(this);
+	}
+	
+	public static Location trouverLocation(Client client, CD film) {
+		LocationDao locationDao = new LocationDaoImp();
+		return locationDao.trouverLocation(client, film);
+	}
+
+	public void miseAJour() {
+		LocationDao locationDao = new LocationDaoImp();
+		locationDao.miseAJourLocation(idLocation, fin);
+	}
+	
+	public static List<Location> consulterHistorique(Adherent adherent) {
+		LocationDao locationDao = new LocationDaoImp();
+		return locationDao.chercherLocations(adherent);
+	}
 
 }

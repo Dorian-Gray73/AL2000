@@ -33,8 +33,9 @@ public class CarteBancaire {
      * @return void
      */
 
-    void debiterCarte(double solde) {
+    public boolean debiterCarte(double solde) {
         //TODO coté banque, donc persistence de donnée ou validation automatique.
+    	return true;
     }
 
     

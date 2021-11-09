@@ -1,23 +1,25 @@
 package fc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Adherent extends Client {
     private String nom;
     private String prenom;
-    private Date dateNaiss;
+    private LocalDate dateNaiss;
     String courrielAdr;
     CarteAbonnement titulaire;
     ArrayList<CarteAbonnement> possede = null;
 
     // titulaire sera initialisé au moment de la creation de l'objet Adherent,
     // si c'est une carte mère elle va pointer vers elle-même dans titulaire.
-    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel) {
+    public Adherent(Client client, String nom, String prenom, LocalDate dateNaiss, String courriel) {
         this(client, nom, prenom, dateNaiss, courriel, null);
     }
 
-    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel, CarteAbonnement mere) {
+    public Adherent(Client client, String nom, String prenom, LocalDate dateNaiss, String courriel, CarteAbonnement mere) {
         super(client);
         this.nom = nom;
         this.prenom = prenom;
@@ -34,9 +36,14 @@ public class Adherent extends Client {
      * @param film est le film a emprunter
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
-    public Boolean emprunter(Film film) {
+    public Boolean emprunter(Support film) {
         // TODO créer la location et l'ajouter à la persistence de donnée.
-        return true;
+        return super.emprunter(film);
+    }
+    
+    @Override
+    protected double tarif() {
+    	return 4.0;
     }
 
     /**
@@ -44,9 +51,10 @@ public class Adherent extends Client {
      * 
      * @param film      est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
+     * @throws LocationException 
      */
-    public void rendre(Film film, Boolean endommage) {
-        super.rendre(film, endommage);
+    public boolean rendre(CD film, Boolean endommage) {
+        return super.rendre(film, endommage);
     }
 
     /**
@@ -62,9 +70,9 @@ public class Adherent extends Client {
     /**
      * @return un String qui représente l'ensemble des location faite par l'adhérent
      */
-    public String consulterHistorique() {
+    public List<Location> consulterHistorique() {
         // TODO, à recuperer de notre pérsistance de donnée.
-        return "";
+        return Location.consulterHistorique(this);
     }
 
     /**
@@ -117,7 +125,7 @@ public class Adherent extends Client {
             possede = new ArrayList<CarteAbonnement>();
         }
         possede.add(carteAbonnement);
-        return new Adherent(this, nom, prenom, dateNaiss, adr, this.titulaire);
+        return this/*new Adherent(this, nom, prenom, dateNaiss, adr, this.titulaire)*/;
     }
 
 }

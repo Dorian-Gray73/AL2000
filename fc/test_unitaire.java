@@ -1,5 +1,6 @@
 package fc;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 //debut de test pas dingue ...
@@ -60,7 +61,7 @@ public class test_unitaire {
         System.out.println("\nTest sur les Adherent ! \n");
         System.out.println("Testé actuellement : création, crédit et paiement");
         // Client.souscrire() mais pas encore implémenté.
-        Adherent adherent = new Adherent(client, "Damien", "Lombard", new Date(), "d.l@etu-grenoble-alpes.fr");
+        Adherent adherent = new Adherent(client, "Damien", "Lombard", LocalDate.now(), "d.l@etu-grenoble-alpes.fr");
         System.out.println(adherent);
         adherent.créditerCarte(adherent.titulaire, 7.5);
         System.out.println(adherent);

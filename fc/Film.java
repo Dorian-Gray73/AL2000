@@ -91,7 +91,7 @@ public class Film{
     /** 
      * @return String
      */
-    private String getTitre() {
+    public String getTitre() {
         return titre;
     }
 
