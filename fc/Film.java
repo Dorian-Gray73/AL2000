@@ -47,6 +47,9 @@ public class Film{
 
     
     /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
      * @return String
      */
     @Override
@@ -62,7 +65,8 @@ public class Film{
 
     
     /** 
-     * @return String
+     * methode qui permet de recuperer le resume du film
+     * @return String 
      */
     private String getResume() {
         return resume;
@@ -71,6 +75,7 @@ public class Film{
 
     
     /** 
+     * methode qui permet de recuperer les acteurs principaux du film
      * @return String
      */
     private String getActeursPrincipaux() {
@@ -80,6 +85,7 @@ public class Film{
 
     
     /** 
+     * methode qui permet de recuperer le producteur du film
      * @return String
      */
     private String getProducteur() {
@@ -89,6 +95,7 @@ public class Film{
 
     
     /** 
+     * methode qui permet de recuperer le titre du film
      * @return String
      */
     private String getTitre() {
