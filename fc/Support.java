@@ -2,6 +2,7 @@ package fc;
 /**
  * Classe représentant un Support <br>
  * Un support sera défini par un film.<br>
+ * @see Film
  * Cette classe dispose des methodes afficherInformations et calculDuree 
  */
 public class Support {
