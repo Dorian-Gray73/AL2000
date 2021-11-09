@@ -122,6 +122,9 @@ public class Client {
 
     
     /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
      * @return String
      */
     @Override
@@ -134,6 +137,7 @@ public class Client {
 
     
     /** 
+     * methode qui retourne la carte bancaire du client.
      * @return CarteBancaire
      */
     private CarteBancaire getCarteBancaire() {
@@ -142,7 +146,8 @@ public class Client {
 
     
     /** 
-     * @return String
+     * methode qui retourne l adresse de facturation du client
+     * @return adresseFacturation
      */
     private String getAdresseFacturation() {
         return adresseFacturation;
