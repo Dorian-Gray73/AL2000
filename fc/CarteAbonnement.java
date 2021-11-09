@@ -69,8 +69,9 @@ public class CarteAbonnement {
     }
 
     /**
-     * @param somme
-     * @return boolean
+     * methode qui permet de rajouter une somme au solde de la carte
+     * @param somme montant qui est ajouter au solde de la carte
+     * @return boolean vrai si la transaction ce réalise correctement.
      */
     public boolean crediterCarte(double somme) {
         this.solde += somme;
