@@ -34,10 +34,18 @@ public class Location {
         this.tarif = tarif;
     }
     
+    
+    /** 
+     * @param fin
+     */
     public void setFin(LocalDateTime fin) {
     	this.fin = fin;
     }
     
+    
+    /** 
+     * @param idLocation
+     */
     public void setIdLocation(int idLocation) {
 		this.idLocation = idLocation;
 	}
@@ -56,11 +64,8 @@ public class Location {
 
     public double CalculerPrix() {
         if (fin != null) {
-        	long duree = (debut.until(fin, ChronoUnit.DAYS));
-        	if(duree <= 1) 
-        		return tarif;
-        	
-            return tarif * duree;
+        	long duree = (int) (debut.until(fin, ChronoUnit.DAYS));
+            return tarif * (duree + 1);
         }
         return -1;
     }
@@ -111,12 +116,22 @@ public class Location {
         return debut;
     }
 
-	public int sauvegarder() {
+	
+    /** 
+     * @return int
+     */
+    public int sauvegarder() {
 		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.ajouterLocation(this);
 	}
 	
-	public static Location trouverLocation(Client client, CD film) {
+	
+    /** 
+     * @param client
+     * @param film
+     * @return Location
+     */
+    public static Location trouverLocation(Client client, CD film) {
 		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.trouverLocation(client, film);
 	}
@@ -126,7 +141,12 @@ public class Location {
 		locationDao.miseAJourLocation(idLocation, fin);
 	}
 	
-	public static List<Location> consulterHistorique(Adherent adherent) {
+	
+    /** 
+     * @param adherent
+     * @return List<Location>
+     */
+    public static List<Location> consulterHistorique(Adherent adherent) {
 		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.chercherLocations(adherent);
 	}

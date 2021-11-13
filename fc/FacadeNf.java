@@ -20,6 +20,11 @@ public class FacadeNf {
 		this.carteAbo = null;
 	}
 
+	
+	/** 
+	 * @param carteAbo
+	 * @throws AbonnementNonReconnusException
+	 */
 	public void connexion(CarteAbonnement carteAbo) throws AbonnementNonReconnusException {
 		client = new ClientDaoImp().rechercheAdherent(carteAbo);
 		if(client == null) {
@@ -27,6 +32,11 @@ public class FacadeNf {
 		}
 	}
 
+	
+	/** 
+	 * @param films
+	 * @return HashMap<Film, List<CD>>
+	 */
 	private HashMap<Film, List<CD>> combinerSupports(List<Film> films) {
 		HashMap<Film, List<CD>> supports = new HashMap<>();
 		for (Film film : films) {
@@ -52,6 +62,11 @@ public class FacadeNf {
 		return combinerSupports(client.rechercherFilm(null));
 	}
 
+	
+	/** 
+	 * @param titre
+	 * @return HashMap<Film, List<CD>>
+	 */
 	public HashMap<Film, List<CD>> rechercherFilm(String titre) {
 		return combinerSupports(client.rechercherFilm(titre));
 	}
@@ -98,10 +113,21 @@ public class FacadeNf {
 
 	
 	
+	
+	/** 
+	 * @param nom
+	 * @param prenom
+	 * @param dateNaissance
+	 * @param courriel
+	 */
 	public void souscrire(String nom, String prenom, LocalDate dateNaissance, String courriel) {
 		client = client.souscrire(nom, prenom, dateNaissance, courriel);
 	}
 
+	
+	/** 
+	 * @param montant
+	 */
 	public void crediterCarte(Double montant) {
 		if (carteAbo != null) {
 			((Adherent) client).créditerCarte(carteAbo, montant);
