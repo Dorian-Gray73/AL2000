@@ -39,6 +39,9 @@ public class Location {
 
     
     /** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
      * @return String
      */
     @Override
