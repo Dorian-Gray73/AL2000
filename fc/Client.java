@@ -53,7 +53,7 @@ public class Client {
 		LocalDateTime dateEmprunt = LocalDateTime.now();
 		Location location = new Location(dateEmprunt, tarif(), this, film);
 		
-		if (film.calculerDuree() == 12) { // Alors il s'agit d'un QRCode car au moment de l'emprunt une seule durée peut être définie
+		if (film.calculerDuree() != -1) { // Alors il s'agit d'un QRCode car au moment de l'emprunt une seule durée peut être définie
 			location.setFin(dateEmprunt.plusHours(film.calculerDuree()));
 			
 			Double prix = location.CalculerPrix();
@@ -100,11 +100,11 @@ public class Client {
 		l.getSupport().setEndommage(endommage);
 		l.miseAJour();
 		
-		if(!endommage) {
-			return paiement(prix);
+		
+		if(endommage) {
+			System.out.println("Vous serez remboursé après constatation par un technicien.");
 		}
-		//remboursement premier jour ?
-		return true;
+		return paiement(prix);
 	}
 
 	/**

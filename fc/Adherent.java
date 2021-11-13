@@ -2,7 +2,6 @@ package fc;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Adherent extends Client {
@@ -119,13 +118,13 @@ public class Adherent extends Client {
         carte.setRestriction(restrictions);
     }
 
-    public Adherent Souscrire(String nom, String prenom, Date dateNaiss, String adr) {
+    public Adherent Souscrire(String nom, String prenom, LocalDate dateNaiss, String adr) {
         CarteAbonnement carteAbonnement = new CarteAbonnement(this.titulaire);
         if (possede == null) {
             possede = new ArrayList<CarteAbonnement>();
         }
         possede.add(carteAbonnement);
-        return this/*new Adherent(this, nom, prenom, dateNaiss, adr, this.titulaire)*/;
+        return new Adherent(this, nom, prenom, dateNaiss, adr, this.titulaire);
     }
 
 }

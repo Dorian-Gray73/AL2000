@@ -30,6 +30,7 @@ public class FacadeNf {
 		if(client == null) {
 			throw new AbonnementNonReconnusException("Votre carte d'abonnement n'a pas été reconnus, vous n'êtes pas connecté.");
 		}
+		carteAbo = carteAbo;
 	}
 
 	
@@ -121,7 +122,9 @@ public class FacadeNf {
 	 * @param courriel
 	 */
 	public void souscrire(String nom, String prenom, LocalDate dateNaissance, String courriel) {
-		client = client.souscrire(nom, prenom, dateNaissance, courriel);
+		Adherent adherent = client.souscrire(nom, prenom, dateNaissance, courriel);
+		carteAbo = adherent.titulaire;
+		client = adherent;
 	}
 
 	
