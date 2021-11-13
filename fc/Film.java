@@ -98,7 +98,7 @@ public class Film{
      * methode qui permet de recuperer le titre du film
      * @return String
      */
-    private String getTitre() {
+    public String getTitre() {
         return titre;
     }
 

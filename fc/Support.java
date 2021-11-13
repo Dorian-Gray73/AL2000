@@ -13,7 +13,7 @@ public class Support {
      * 
      */
 
-    Support(Film film) {
+    public Support(Film film) {
         this.film = film;
     }
 
@@ -22,7 +22,7 @@ public class Support {
      * @see Film.afficherInformations
      * @return void
      */
-    void afficherInformations() {
+    public void afficherInformations() {
         film.afficherInformations();
     }
 
@@ -56,7 +56,7 @@ public class Support {
      * Fonction qui retourne le film 
      * @return Film 
      */
-    private Film getFilm() {
+    public Film getFilm() {
         return film;
     }
 

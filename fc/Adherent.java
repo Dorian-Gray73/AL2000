@@ -1,7 +1,8 @@
 package fc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Classe qui represente un adherent.<br>
@@ -12,7 +13,7 @@ import java.util.Date;
 public class Adherent extends Client {
     private String nom;
     private String prenom;
-    private Date dateNaiss;
+    private LocalDate dateNaiss;
     String courrielAdr;
     CarteAbonnement titulaire;
     ArrayList<CarteAbonnement> possede = null;
@@ -26,7 +27,7 @@ public class Adherent extends Client {
      * @param dateNaiss represente la date de naissance de l adherent
      * @param courriel represente l adresse mail de l adherent
      */
-    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel) {
+    public Adherent(Client client, String nom, String prenom, LocalDate dateNaiss, String courriel) {
         this(client, nom, prenom, dateNaiss, courriel, null);
     }
 
@@ -41,7 +42,7 @@ public class Adherent extends Client {
      * @param courriel represente l adresse mail de l adherent
      * @param mere carte mere de la carte adherent créé
      */
-    public Adherent(Client client, String nom, String prenom, Date dateNaiss, String courriel, CarteAbonnement mere) {
+    public Adherent(Client client, String nom, String prenom, LocalDate dateNaiss, String courriel, CarteAbonnement mere) {
         //TODO le client n'est pas declaré comme il faut non ? 
         super(client);
         this.nom = nom;
@@ -59,9 +60,14 @@ public class Adherent extends Client {
      * @param film est le film a emprunter
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
-    public Boolean emprunter(Film film) {
+    public Boolean emprunter(Support film) {
         // TODO créer la location et l'ajouter à la persistence de donnée.
-        return true;
+        return super.emprunter(film);
+    }
+    
+    @Override
+    protected double tarif() {
+    	return 4.0;
     }
 
     /**
@@ -69,9 +75,10 @@ public class Adherent extends Client {
      * 
      * @param film      est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
+     * @throws LocationException 
      */
-    public void rendre(Film film, Boolean endommage) {
-        super.rendre(film, endommage);
+    public boolean rendre(CD film, Boolean endommage) {
+        return super.rendre(film, endommage);
     }
 
     /**
@@ -89,10 +96,9 @@ public class Adherent extends Client {
      * 
      * @return histo Une chaine de caractère qui représente l'ensemble des location faite par l'adhérent
      */
-    public String consulterHistorique() {
-        String histo = "";
+    public List<Location> consulterHistorique() {
         // TODO, à recuperer de notre pérsistance de donnée.
-        return histo;
+        return Location.consulterHistorique(this);
     }
 
     /**
@@ -155,7 +161,7 @@ public class Adherent extends Client {
      * @param adr représente la nouvelle adresse de la nouvelle personne detenant la carte.
      * @return Adherent retourne l'Adherent nouvellement créé.
      */
-    public Adherent Souscrire(String nom, String prenom, Date dateNaiss, String adr) {
+    public Adherent Souscrire(String nom, String prenom, LocalDate dateNaiss, String adr) {
         CarteAbonnement carteAbonnement = new CarteAbonnement(this.titulaire);
         if (possede == null) {
             possede = new ArrayList<CarteAbonnement>();

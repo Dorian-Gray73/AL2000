@@ -26,8 +26,7 @@ public class QRCode extends Support {
      */
 
     public int calculerDuree() {
-        //TODO a faire quand on aura resolu les soucis avec les dates
-        return -1;
+        return 12;
     }
 
     /** 
