@@ -30,7 +30,7 @@ public class Support {
      * methode qui permet de calculer la durée d'emprunt 
      * cette methode sera redefini pour QRCode car sa durée de location est 
      * fixe.
-     * @return int
+     * @return int représentant la durée en jour
      */
     public double calculerDuree() {
         //TODO En attente de la gestion des date dans Location.
