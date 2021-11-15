@@ -25,8 +25,8 @@ public class QRCode extends Support {
      * @return double en jour représentant jusqu'a quand est valable un QR code 
      */
 
-    public double calculerDuree() {
-        return 0.5;
+    public int calculerDuree() {
+        return 12;
     }
 
     /** 
