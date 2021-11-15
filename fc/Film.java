@@ -1,7 +1,6 @@
 package fc;
 
-import fc.Test.FilmDao;
-import fc.Test.FilmDaoImp;
+
 
 /**
  * La classe Film est une classe qui permet de representer les films 
