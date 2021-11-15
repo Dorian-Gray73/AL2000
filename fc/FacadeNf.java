@@ -20,6 +20,7 @@ public class FacadeNf {
 	}
 	
 	//TODO setRestriction
+	//TODO consulterHistorique
 	
 	/** 
 	 * @param carteAbo
