@@ -8,6 +8,7 @@ import fc.Test.LocationDao;
 import fc.Test.LocationDaoImp;
 
 public class Location {
+    //TODO JAVADOC
 	private int idLocation;
     private LocalDateTime debut;
     private LocalDateTime fin;
@@ -51,18 +52,19 @@ public class Location {
 	}
     
     /** 
-     * @return double
+     * @return String
      */
-    public double genererFacture() {
-        return 0;
+    public String genererFacture() {
+        //TODO A FAIRE retourne une chaine de caractère correspondant à la facture
+        return "";
     }
 
     /**
      * @return le prix de la location.
      * @throws LocationException Dans le cas ou l'on appel cette méthode alors que la location n'est pas terminée.
      */
-
     public double CalculerPrix() {
+        //TODO attention -1 
         if (fin != null) {
         	long duree = (int) (debut.until(fin, ChronoUnit.DAYS));
             return tarif * (duree + 1);
@@ -89,6 +91,7 @@ public class Location {
 
     
     /** 
+     * methode qui permet de retourner le support 
      * @return Support
      */
     public Support getSupport() {
@@ -97,7 +100,8 @@ public class Location {
 
     
     /** 
-     * @return double
+     * methode qui permet de retourner le tarif de la location
+     * @return double représentant le montant de la location
      */
     private double getTarif() {
         return tarif;
@@ -105,6 +109,7 @@ public class Location {
 
     
     /** 
+     * methode qui permet de retourner la date de fin de la location
      * @return DateTime
      */
     private LocalDateTime getFin() {
@@ -113,6 +118,7 @@ public class Location {
 
     
     /** 
+     * methode qui permet de retourner la date de début de la location
      * @return DaateTime
      */
     private LocalDateTime getDebut() {
@@ -121,6 +127,8 @@ public class Location {
 
 	
     /** 
+     * Methode qui permet de sauvegarder les locations de l'adhérents
+     * @see LocationDao.ajouterLocation
      * @return int
      */
     public int sauvegarder() {
@@ -130,6 +138,7 @@ public class Location {
 	
 	
     /** 
+     * @see LocationDao.trouverLocation
      * @param client
      * @param film
      * @return Location
@@ -139,7 +148,12 @@ public class Location {
 		return locationDao.trouverLocation(client, film);
 	}
 
-	public void miseAJour() {
+    /**
+     * 
+     *@see LocationDao.miseAJourLocation
+     * @return void
+	*/ 
+     public void miseAJour() {
 		LocationDao locationDao = new LocationDaoImp();
 		locationDao.miseAJourLocation(idLocation, fin);
 	}
