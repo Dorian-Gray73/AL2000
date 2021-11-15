@@ -32,7 +32,7 @@ public class Support {
      * fixe.
      * @return int
      */
-    public int calculerDuree() {
+    public double calculerDuree() {
         //TODO En attente de la gestion des date dans Location.
         return -1;
     }
