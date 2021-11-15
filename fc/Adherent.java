@@ -61,6 +61,7 @@ public class Adherent extends Client {
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
     public Boolean emprunter(Support film) {
+        //TODO a verifier avec les restrictions
         return super.emprunter(film);
     }
     
