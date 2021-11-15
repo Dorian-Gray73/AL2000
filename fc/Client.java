@@ -144,7 +144,7 @@ public class Client {
 
 	/**
 	 * Méthode de paiement d'une facture.<br>
-	 * 
+	 * @see CarteBancaire.debiterCarte
 	 * @param prix Le prix de la facture à payer
 	 * @return Renvoie un booléen indiquant si le paiement a réussi ou non
 	 */
@@ -159,7 +159,8 @@ public class Client {
 	 * @return Renvoie un booléen indiquant si une location est en cours pour le
 	 *         film et le client ou non.
 	 */
-	public Boolean estEnCours(Film film) {
+	public Boolean estEnCours(CD cd) {
+		//TODO a faire (regarder si la location existe dans la bd)
 		return false;
 	}
 	
