@@ -1,36 +1,37 @@
 package fc;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import fc.Test.ClientDao;
 import fc.Test.ClientDaoImp;
-
+/**
+ * Petite descr
+ */
 public class FacadeNf {
 	private HashMap<String, List<CD>> cdDispo;
 	private Client client;
 	private CarteAbonnement carteAbo;
-
+	
 	public FacadeNf(HashMap<String, List<CD>> cdDispo) {
 		super();
 		this.cdDispo = cdDispo;
 		this.client = null;
 		this.carteAbo = null;
 	}
-
+	
+	//TODO setRestriction
 	
 	/** 
 	 * @param carteAbo
 	 * @throws AbonnementNonReconnusException
 	 */
 	public void connexion(CarteAbonnement carteAbo) throws AbonnementNonReconnusException {
+		//TODO gérer un client non connecté
 		client = new ClientDaoImp().rechercheAdherent(carteAbo);
 		if(client == null) {
 			throw new AbonnementNonReconnusException("Votre carte d'abonnement n'a pas été reconnus, vous n'êtes pas connecté.");
 		}
-		carteAbo = carteAbo;
+		this.carteAbo = carteAbo;
 	}
 
 	
@@ -55,7 +56,7 @@ public class FacadeNf {
 	 * disponibles quel que soit le format puis combine les en prenant en compte le
 	 * format pour toujours connaitre le nombre de CD disponible pour chaque film.
 	 * 
-	 * @return Une HashMap qui combine le film servant de clé auquel est associé une
+	 * @return Une HashMap<Film, List<CD>> qui combine le film servant de clé auquel est associé une
 	 *         liste de CD ou null si le film n'est disponible que sous format
 	 *         QRCode.
 	 */
@@ -74,7 +75,7 @@ public class FacadeNf {
 
 	/**
 	 * Un client enprumte un CD, il est retiré de la liste des cd disponible.
-	 * @param Le film emprunté sur un support de type CD
+	 * @param film Le film emprunté sur un support de type CD
 	 * @throws ErreurEmpruntException s'il y a eu une erreur durant l'emprunt.
 	 */
 	public void emprunt(CD film) throws ErreurEmpruntException {
@@ -88,7 +89,7 @@ public class FacadeNf {
 
 	/**
 	 * Un client enprumte un film sous un format QRCode.
-	 * @param Le film emprunté sur un support de type QRCode
+	 * @param film  Le film emprunté sur un support de type QRCode
 	 * @throws ErreurEmpruntException s'il y a eu une erreur durant l'emprunt.
 	 */
 	public void emprunt(QRCode film) throws ErreurEmpruntException {
@@ -105,6 +106,7 @@ public class FacadeNf {
 	 * @throws ErreurRenduException
 	 */
 	public void rendre(CD film, boolean endommage) throws ErreurRenduException {
+		//TODO prendre en compte estencour de client
 		if(!client.rendre(film, endommage)) {
 			throw new ErreurRenduException("Un problème est survenu lors du rendu du film : "+film.getFilm().getTitre());
 		} else if(!endommage) {
@@ -116,6 +118,7 @@ public class FacadeNf {
 	
 	
 	/** 
+	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param dateNaissance
@@ -129,6 +132,7 @@ public class FacadeNf {
 
 	
 	/** 
+	 * @see Adhérent.créditerCarte
 	 * @param montant
 	 */
 	public void crediterCarte(Double montant) {
