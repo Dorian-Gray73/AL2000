@@ -28,13 +28,11 @@ public class CarteBancaire {
 
     /**
      * Méthode qui changera le solde d'une carte de crédit.
-     * 
+     * Comme cette méthode est du coté de la banque alors nous supposons que ce sera valider a chaque fois.
      * @param solde Montant qui sera débiter de la carte bancaire.
      * @return void
      */
-
-    public boolean debiterCarte(double solde) {
-        //TODO coté banque, donc persistence de donnée ou validation automatique.
+    public boolean debiterCarte(double solde) {  
     	return true;
     }
 
