@@ -77,6 +77,7 @@ public class Adherent extends Client {
      * @throws LocationException 
      */
     public boolean rendre(CD film, Boolean endommage) {
+        //TODO a revoir
         return super.rendre(film, endommage);
     }
 
