@@ -10,6 +10,7 @@ import java.util.List;
  * une carte d abonnement mere (si la carte en possede pas alors elle ce pointe elle meme) et enfin un tableau qui contient toute les cartes filles.
  * Un adherent possede les methodes emprunter, rendre, crediterCarte, consulterHistorique, consulterInformation, paiement, changerRestriction et souscrire
  */
+//TODO ajouter les adhérents a la base de donnés
 public class Adherent extends Client {
     private String nom;
     private String prenom;
@@ -43,7 +44,6 @@ public class Adherent extends Client {
      * @param mere carte mere de la carte adherent créé
      */
     public Adherent(Client client, String nom, String prenom, LocalDate dateNaiss, String courriel, CarteAbonnement mere) {
-        //TODO le client n'est pas declaré comme il faut non ? 
         super(client);
         this.nom = nom;
         this.prenom = prenom;
@@ -61,7 +61,6 @@ public class Adherent extends Client {
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
     public Boolean emprunter(Support film) {
-        // TODO créer la location et l'ajouter à la persistence de donnée.
         return super.emprunter(film);
     }
     
@@ -97,7 +96,6 @@ public class Adherent extends Client {
      * @return histo Une chaine de caractère qui représente l'ensemble des location faite par l'adhérent
      */
     public List<Location> consulterHistorique() {
-        // TODO, à recuperer de notre pérsistance de donnée.
         return Location.consulterHistorique(this);
     }
 
