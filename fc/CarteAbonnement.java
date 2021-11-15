@@ -64,7 +64,6 @@ public class CarteAbonnement {
      * @return boolean qui représente si le solde est suffisant 
      */
     private boolean SoldeInsuffisant() {
-        //TODO pk on met pas le prix d'une location ? 
         return solde < 0;
     }
 
@@ -86,7 +85,7 @@ public class CarteAbonnement {
      * sur soit meme s'il n'y a pas de carte enfant<br> 
      * @param restriction tableau de String contenant les restrictions
      */
-    public void setRestriction(String[] restriction) {
+    public void  setRestriction(String[] restriction) {
         this.restriction = restriction;
     }
 
