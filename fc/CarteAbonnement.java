@@ -1,5 +1,8 @@
 package fc;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * Classe représentant une carte d'abonnement.<br>
  * Une carte d'abonnement est identifiée par un solde, un tableau de chaine presentant 
@@ -10,7 +13,7 @@ package fc;
 
 public class CarteAbonnement {
     private double solde;
-    private String[] restriction;
+    private ArrayList<String> restriction;
     private CarteAbonnement carteMere;
     private boolean bloque;
     private int nbLocation;
@@ -86,14 +89,16 @@ public class CarteAbonnement {
      * @param restriction tableau de String contenant les restrictions
      */
     public void  setRestriction(String[] restriction) {
-        this.restriction = restriction;
+        ArrayList<String> list=new ArrayList<>();
+        Collections.addAll(list, restriction);
+        this.restriction = list;
     }
 
     /**
      * Retourne les restrictions appliqué sur la carte 
      * @return String[]
      */
-    public String[] getRestriction() {
+    public ArrayList<String> getRestriction() {
         return restriction;
     }
 
