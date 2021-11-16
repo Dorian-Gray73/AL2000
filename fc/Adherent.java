@@ -61,8 +61,18 @@ public class Adherent extends Client {
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
     public Boolean emprunter(Support film) {
-        //TODO a verifier avec les restrictions
-        return super.emprunter(film);
+        if(this.titulaire.getBlocage())
+        {
+            System.out.println("carte bloquée !");
+            return false;
+        }
+        if(film.getFilm().verfieGenre(this.titulaire.getRestriction()))
+        {
+            System.out.println("film interdit !");
+            return super.emprunter(film);
+        }
+
+        return false;
     }
     
     @Override
@@ -72,10 +82,10 @@ public class Adherent extends Client {
 
     /**
      * Fonction appelée pour rendre un CD
-     * 
+     *
      * @param film      est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
-     * @throws LocationException 
+     * @throws LocationException
      */
     public boolean rendre(CD film, Boolean endommage) {
         //TODO a revoir
