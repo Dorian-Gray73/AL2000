@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import fc.Dao.ClientDaoImp;
 /**
- * Petite descr
+ * Cette classe sert de façade qui va offrir une api permettant de manipuler le coeur fonctionnel de notre programme.
  */
 public class FacadeNf {
 	private HashMap<String, List<CD>> cdDispo;
@@ -21,8 +21,6 @@ public class FacadeNf {
 		this.client = null;
 		this.carteAbo = null;
 	}
-	
-	//TODO consulterHistorique
 	
 	/** 
 	 * @param carteAbo
@@ -101,7 +99,7 @@ public class FacadeNf {
 	}
 
 	/**
-	 * Vérification d
+	 * Vérification qu'un client est bien connecté s'il ne s'agit pas d'un adhérent
 	 * Un client enprumte un film, s'il s'agit d'un CD il est retiré de la liste des cd disponible.
 	 * @param film Le film emprunté sur un support de type CD
 	 * @return Le code lié à la location(ici ce sera l'id de la location dans la base) qui sert pour un simple client pour pouvoir rendre correctement son cd
@@ -160,7 +158,12 @@ public class FacadeNf {
 	 * @throws ErreurRenduException
 	 */
 	public void rendre(int codeLocation, CD film, boolean endommage) throws ErreurRenduException {
-		//TODO prendre en compte estencour de client
+		//Il y a ici un problème de conception je pense car on récupère une Location mais on utilise estencours de client.
+		if(client == null) {
+			Location location = Location.trouverLocation(codeLocation);
+			client = location.getClient();
+		}
+		
 		if(client.estEnCours(film) && !client.rendre(film, endommage)) {
 			throw new ErreurRenduException("Un problème est survenu lors du rendu du film : "+film.getFilm().getTitre());
 		} else if(!endommage) {

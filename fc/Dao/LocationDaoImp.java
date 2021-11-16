@@ -37,4 +37,10 @@ public class LocationDaoImp implements LocationDao {
 		return null;
 	}
 
+	@Override
+	public Location trouverLocation(int codeLocation) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

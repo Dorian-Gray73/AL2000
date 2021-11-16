@@ -120,6 +120,9 @@ public class Location {
         return support;
     }
 
+    public Client getClient() {
+		return client;
+	}
     
     /** 
      * methode qui permet de retourner le tarif de la location
@@ -190,6 +193,11 @@ public class Location {
     public static List<Location> consulterHistorique(Adherent adherent) {
 		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.chercherLocations(adherent);
+	}
+
+	public static Location trouverLocation(int codeLocation) {
+		LocationDao locationDao = new LocationDaoImp();
+		return locationDao.trouverLocation(codeLocation);
 	}
 
 }
