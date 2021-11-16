@@ -32,11 +32,11 @@ public class Support {
      * fixe.
      * @return int représentant la durée en heure
      */
-    /*
+
     public int calculerDuree() {
         return -1;
     } 
-    */
+
 
     
     /** 
