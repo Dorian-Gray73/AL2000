@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import fc.Test.ClientDao;
-import fc.Test.ClientDaoImp;
-import fc.Test.FilmDaoImp;
+import fc.Dao.ClientDao;
+import fc.Dao.ClientDaoImp;
+import fc.Dao.FilmDaoImp;
 
 /**
  * Classe représentant un client anonyme.<br>
@@ -47,9 +47,9 @@ public class Client {
 	 * 
 	 * @param film Le film que le client souhaite emprunter et pour lequel une
 	 *             éventuelle nouvelle location sera créée.
-	 * @return Un booléen indiquant si l'emprunt a réussi ou non.
+	 * @return le code de la location ou -1 si la location a échouée.
 	 */
-	public Boolean emprunter(Support film) {
+	public int emprunter(Support film) {
 		LocalDateTime dateEmprunt = LocalDateTime.now();
 		Location location = new Location(dateEmprunt, tarif(), this, film);
 		
@@ -58,12 +58,17 @@ public class Client {
 			
 			Double prix = location.CalculerPrix();
 			if (prix == -1) // Erreur au moment du calcul du prix
-				return false;
-
-			return (location.sauvegarder() != -1 && paiement(prix)); //On ne paie que si la sauvegarde dans la base fonctionne
+				return -1;
+			
+			int code = location.sauvegarder();
+			if(code != -1 && paiement(prix)) {
+				//On ne paie que si la sauvegarde dans la base fonctionne
+				return code;
+			}
+			return -1;
 		}
 		
-		return location.sauvegarder() != -1;
+		return location.sauvegarder();
 	}
 
 	protected double tarif() {

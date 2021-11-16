@@ -51,7 +51,7 @@ public class Adherent extends Client {
         this.courrielAdr = courriel;
         this.titulaire = new CarteAbonnement(mere);
         this.possede = new ArrayList<CarteAbonnement>();
-        this.possede.add(this.titulaire);
+        this.possede.add(this.getTitulaire());
     }
 
     /**
@@ -60,19 +60,19 @@ public class Adherent extends Client {
      * @param film est le film a emprunter
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
-    public Boolean emprunter(Support film) {
-        if(this.titulaire.getBlocage())
+    public int emprunter(Support film) {
+        if(this.getTitulaire().getBlocage())
         {
             System.out.println("carte bloquée !");
-            return false;
+            return -1;
         }
-        if(film.getFilm().verfieGenre(this.titulaire.getRestriction()))
+        if(film.getFilm().verfieGenre(this.getTitulaire().getRestriction()))
         {
             System.out.println("film interdit !");
             return super.emprunter(film);
         }
 
-        return false;
+        return -1;
     }
     
     @Override
@@ -133,7 +133,7 @@ public class Adherent extends Client {
             "\n prenom = '" + prenom + "'" +
             "\n dateNaiss = '" + dateNaiss + "'" +
             "\n courrielAdr = '" + courrielAdr + "'" +
-            "\n titulaire = '" + titulaire + "'" +
+            "\n titulaire = '" + getTitulaire() + "'" +
             "\n possede = '" + possede + "'" +
             "\n}\n";
     }
@@ -146,7 +146,7 @@ public class Adherent extends Client {
      * @return reussite le boolean sera true si la transaction c'est bien passé 
      */
     public Boolean paiement(double prix) {
-        Boolean reussite = titulaire.debiterCarte(prix);
+        Boolean reussite = getTitulaire().debiterCarte(prix);
         return reussite;
     }
 
@@ -172,12 +172,17 @@ public class Adherent extends Client {
      * @return Adherent retourne l'Adherent nouvellement créé.
      */
     public Adherent Souscrire(String nom, String prenom, LocalDate dateNaiss, String adr) {
-        CarteAbonnement carteAbonnement = new CarteAbonnement(this.titulaire);
+        CarteAbonnement carteAbonnement = new CarteAbonnement(this.getTitulaire());
         if (possede == null) {
             possede = new ArrayList<CarteAbonnement>();
         }
         possede.add(carteAbonnement);
-        return new Adherent(this, nom, prenom, dateNaiss, adr, this.titulaire);
+        return new Adherent(this, nom, prenom, dateNaiss, adr, this.getTitulaire());
     }
+
+
+	public CarteAbonnement getTitulaire() {
+		return titulaire;
+	}
 
 }

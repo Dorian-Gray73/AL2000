@@ -2,10 +2,10 @@ package fc;
 
 
 
-import fc.Test.FilmDaoImp;
-
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import fc.Dao.FilmDaoImp;
 
 /**
  * La classe Film est une classe qui permet de representer les films 
@@ -131,4 +131,9 @@ public class Film{
             this.genre.add(genre[i]);
         }
     }
+
+
+	public ArrayList<String> getGenre() {
+		return genre;
+	}
 }

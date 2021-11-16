@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import fc.Test.LocationDao;
-import fc.Test.LocationDaoImp;
+import fc.Dao.LocationDao;
+import fc.Dao.LocationDaoImp;
 
 public class Location {
 	private int idLocation;

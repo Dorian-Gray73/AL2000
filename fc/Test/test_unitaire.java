@@ -1,7 +1,16 @@
-package fc;
+package fc.Test;
 
 import java.time.LocalDate;
 import java.util.Date;
+
+import fc.Adherent;
+import fc.CD;
+import fc.CarteAbonnement;
+import fc.CarteBancaire;
+import fc.Client;
+import fc.Film;
+import fc.QRCode;
+import fc.Support;
 
 //debut de test pas dingue ...
 public class test_unitaire {
@@ -63,7 +72,7 @@ public class test_unitaire {
         // Client.souscrire() mais pas encore implémenté.
         Adherent adherent = new Adherent(client, "Damien", "Lombard", LocalDate.now(), "d.l@etu-grenoble-alpes.fr");
         System.out.println(adherent);
-        adherent.créditerCarte(adherent.titulaire, 7.5);
+        adherent.créditerCarte(adherent.getTitulaire(), 7.5);
         System.out.println(adherent);
         adherent.paiement(18.5);
         System.out.println(adherent);
