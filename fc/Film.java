@@ -2,6 +2,11 @@ package fc;
 
 
 
+import fc.Test.FilmDaoImp;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * La classe Film est une classe qui permet de representer les films 
  * dans notre programme.
@@ -12,7 +17,8 @@ public class Film{
     private String producteur;
     private String acteursPrincipaux;
     private String resume;
-    // private FilmDao DB=new FilmDaoImp();
+    private ArrayList<String> genre;
+    private static FilmDaoImp BD=new FilmDaoImp();
 
     /**
      * Constructeur de la classe film
@@ -29,6 +35,7 @@ public class Film{
         this.producteur = producteur;
         this.acteursPrincipaux = acteursPrincipaux;
         this.resume = resume;
+        genre=new ArrayList<>();
     }
 
 
@@ -48,7 +55,7 @@ public class Film{
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object.toString
+     * @see
      * @return String
      */
     @Override
@@ -62,7 +69,9 @@ public class Film{
     }
 
 
-    
+    public static ArrayList<Film> rechercherFilm(String titre) {
+        return titre != null ? BD.chercher(titre) : BD.chercher();
+    }
     /** 
      * methode qui permet de recuperer le resume du film
      * @return String 
@@ -92,8 +101,23 @@ public class Film{
     }
 
 
-    
-    /** 
+    public boolean verfieGenre(ArrayList<String> genre){
+        Iterator<String> it=genre.iterator();
+        Iterator<String> it2=this.genre.iterator();
+        while(it.hasNext())
+        {
+            String tmp1=it.next();
+            while(it2.hasNext()){
+                if(tmp1.compareTo(it2.next())==0){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * methode qui permet de recuperer le titre du film
      * @return String
      */
@@ -101,4 +125,10 @@ public class Film{
         return titre;
     }
 
+    public void setGenre(String[] genre) {
+        this.genre=new ArrayList<>();
+        for (int i=0;i<genre.length;i++) {
+            this.genre.add(genre[i]);
+        }
+    }
 }
