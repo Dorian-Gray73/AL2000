@@ -102,7 +102,7 @@ public class CarteAbonnement {
      * Cela s'effectue en changeant la valeur du boolean bloque
      * @param boolean nouvelle etat de la carte
      */
-    public void setBlocage(Boolean bloque) {
+    private void setBlocage(Boolean bloque) {
         this.bloque = bloque;
     }
 
