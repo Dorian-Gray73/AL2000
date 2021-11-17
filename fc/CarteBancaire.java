@@ -1,6 +1,6 @@
 package fc;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Classe représentant une carte bancaire.<br>
@@ -11,7 +11,7 @@ import java.util.Date;
 public class CarteBancaire {
     String noCB;
     String cryptogramme;
-    Date dateExpiration;
+    LocalDate dateExpiration;
 
     /**
      * Constructeur de la classe CarteBancaire.
@@ -20,7 +20,7 @@ public class CarteBancaire {
      * @param cryptogramme   numéro du cryptogramme de la carte bancaire
      * @param dateExpiration date d'expiration de la carte bancaire
      */
-    public CarteBancaire(String noCb, String cryptogramme, Date dateExpiration) {
+    public CarteBancaire(String noCb, String cryptogramme, LocalDate dateExpiration) {
         this.noCB = noCb;
         this.cryptogramme = cryptogramme;
         this.dateExpiration = dateExpiration;
@@ -57,7 +57,7 @@ public class CarteBancaire {
      * Fonction qui retourne la date d'expiration de la carte bancaire/
      * @return Date
      */
-    private Date getDateExpiration() {
+    private LocalDate getDateExpiration() {
         return dateExpiration;
     }
 
