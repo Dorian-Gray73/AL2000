@@ -30,7 +30,8 @@ public class test_unitaire {
         
         System.out.println("\nTest sur les cartes Bancaire ! \n");
         System.out.println("Testé actuellement : création, débit");
-        CarteBancaire cb = new CarteBancaire("123", "456", new Date());
+        LocalDate d = LocalDate.of(2000, 8, 25);
+        CarteBancaire cb = new CarteBancaire("123", "456", d);
         cb.debiterCarte(5.2);
         System.out.println(cb);
     
