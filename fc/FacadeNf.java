@@ -15,6 +15,12 @@ public class FacadeNf {
 	private Client client;
 	private CarteAbonnement carteAbo;
 	
+	public FacadeNf(){
+		cdDispo = null;
+		client = null;
+		carteAbo = null;
+	}
+
 	public FacadeNf(HashMap<String, List<CD>> cdDispo) {
 		super();
 		this.cdDispo = cdDispo;
@@ -181,12 +187,13 @@ public class FacadeNf {
 	 * @param dateNaissance
 	 * @param courriel
 	 */
-	public void souscrire(CarteBancaire cb, String adresseFacturation, String nom, String prenom, LocalDate dateNaissance, String courriel) {
+	public CarteAbonnement souscrire(CarteBancaire cb, String adresseFacturation, String nom, String prenom, LocalDate dateNaissance, String courriel) {
 		clientConnected(cb, adresseFacturation);
 		Adherent adherent = client.souscrire(nom, prenom, dateNaissance, courriel);
 		carteAbo = adherent.getTitulaire();
 		client = adherent;
 		new ClientDaoImp().miseAJourClient(adherent);
+		return carteAbo;
 	}
 
 	
