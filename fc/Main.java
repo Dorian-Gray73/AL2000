@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 public class Main {
-    static int codeLocation = 0;
+
     static CD cdEmprunter = null;
     public static void main(String[] args) {
         final int QUITTER = 0;
@@ -218,7 +218,8 @@ public class Main {
         List<CD> cdalouer = resultatLoc.get(choixFilm);
         CD cdlouer = cdalouer.get(0);
         try {
-            codeLocation = out.emprunt(cdlouer);
+            System.out.println("voici votre numéro de location ne le perdez pas");
+            System.out.println(out.emprunt(cdlouer));
             cdEmprunter = cdlouer;
         } catch (ErreurEmpruntException e) {
             System.out.println("Une erreur lors de votre emprunt est survenu");
@@ -260,7 +261,8 @@ public class Main {
         List<CD> cdalouer = resultatLoc.get(choixFilm);
         CD cdlouer = cdalouer.get(0);
         try {
-            codeLocation = out.emprunt(cbClient, adr, cdlouer);
+            System.out.println("voici votre numéro de location ne le perdez pas");
+            System.out.println(out.emprunt(cbClient, adr, cdlouer));
             cdEmprunter = cdlouer;
         } catch (ErreurEmpruntException e) {
             System.out.println("Une erreur lors de votre emprunt est survenu");
