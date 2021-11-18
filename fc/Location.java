@@ -17,7 +17,7 @@ public class Location {
     private double tarif;
     private Client client;
     private Support support;
-
+    private static LocationDao dao;
     
 
 

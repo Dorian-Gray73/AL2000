@@ -2,6 +2,7 @@ package fc.Dao;
 
 import java.sql.Connection;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 
 import fc.Adherent;
@@ -10,8 +11,7 @@ import fc.Client;
 import fc.Location;
 
 public class LocationDaoImp implements LocationDao {
-	Connection conn = null;
-	static final String CONN_URL = "jdbc:sqlite:BASE.db";
+	//List<Location> locations=new List<Location>();
 	
 	@Override
 	public int ajouterLocation(Location location) {
@@ -26,8 +26,13 @@ public class LocationDaoImp implements LocationDao {
 	}
 
 	@Override
+	//TODO definir equals dans client
 	public Location trouverLocation(Client client, CD film) {
-		// TODO Auto-generated method stub
+		Iterator<Location> it=locations.iterator();
+		while(it.hasNext()){
+			Location tmp=it.next();
+		//	if( tmp.getClient().equals(client) &&  tmp.getSupport() == client)
+		}
 		return null;
 	}
 

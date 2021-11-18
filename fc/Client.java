@@ -18,7 +18,7 @@ import fc.Dao.FilmDaoImp;
 public class Client {
 	private String adresseFacturation;
 	private CarteBancaire carteBancaire;
-	private FilmDaoImp BD = new FilmDaoImp();
+	private static FilmDaoImp BD = new FilmDaoImp();
 
 	/**
 	 * Constructeur de la classe client.
@@ -167,6 +167,11 @@ public class Client {
 	public Boolean estEnCours(CD cd) {
 		//TODO a faire (regarder si la location existe dans la bd)
 		return false;
+	}
+
+	@Override
+	public boolean equals(Client c){
+		return c.carteBancaire == this.carteBancaire;
 	}
 	
 	/**

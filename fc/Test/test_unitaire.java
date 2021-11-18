@@ -14,6 +14,10 @@ import fc.Support;
 
 //debut de test pas dingue ...
 public class test_unitaire {
+    @test
+    public testDébiterCarte(){
+
+    }
     public static void main(String[] args) {
         System.out.println("\nTest sur les cartes abonnement ! \n");
         System.out.println("Testé actuellement : création, débit, blocage, crédit et déblocage");
