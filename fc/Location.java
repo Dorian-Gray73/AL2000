@@ -57,16 +57,10 @@ public class Location {
 	}
     
     /** 
-     * methode qui permet de générer une facture
-     * @return String
+     * methode qui permet de générer un fichier txt contenant la facture
+     * @return void mais un fichier txt ce créé dans votre repertoire
      */
-    public String genererFacture() {
-        String s = "";
-        s = "Facture générer pour : "+client.toString() + "\n" + "Il s'agit d'une location d'un "+ getSupport() + "\n" + 
-        "Cette location s'étend du " + getDebut() + "au " + getFin() + "\n" + "Le montant à payer est de " + getTarif();
-        return s;
-    }
-    /* public void genererFacture() {
+     public void genererFacture() {
         PrintWriter writer;
         try {
             writer = new PrintWriter("facture.txt", "UTF-8");
@@ -78,7 +72,7 @@ public class Location {
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-    } */
+    }
 
     /**
      * methode qui va calculer le prix de la location. La methode ne retournera jamais -1 dans des conditions normales.<br>
