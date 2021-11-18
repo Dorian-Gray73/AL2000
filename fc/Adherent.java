@@ -184,5 +184,11 @@ public class Adherent extends Client {
 	public CarteAbonnement getTitulaire() {
 		return titulaire;
 	}
+	
+	public ArrayList<CarteAbonnement> getPossede() {
+		return possede;
+	}
+	
+	
 
 }

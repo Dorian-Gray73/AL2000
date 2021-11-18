@@ -194,14 +194,14 @@ public class Client {
 	/**
 	 * @return CarteBancaire
 	 */
-	private CarteBancaire getCarteBancaire() {
+	public CarteBancaire getCarteBancaire() {
 		return carteBancaire;
 	}
 
 	/**
 	 * @return String
 	 */
-	private String getAdresseFacturation() {
+	public String getAdresseFacturation() {
 		return adresseFacturation;
 	}
 	
