@@ -12,7 +12,7 @@ public class Main {
         int choix;
         boolean truc = true;
         CarteAbonnement ca = null;
-       Client client = null;
+        Client client = null;
         FacadeNf out = new FacadeNf();
 
 
@@ -53,6 +53,7 @@ public class Main {
                 case 2:
                 try {
                     out.connexion(ca);
+                    //client = null; //On garde un client et une carte de abonnement ?
                 } catch (AbonnementNonReconnusException e) {
                     System.out.println("l'abonné n'est pas reconnu");
                     e.printStackTrace();
@@ -72,6 +73,16 @@ public class Main {
                 
                 case 4: 
                     //TODO comment avoir la cb
+                    // TODO c'est un adhérent ?
+                    if (ca !=null) {
+                        //ca.getAdherent.emprunter();
+                        //out.emprunt(cb, adresseFacturation, film);
+                    }
+                    else{
+                        CarteBancaire cbClient = infoCb(sc);
+                        System.out.println("Veuillez rentrer votre addresse sur une seul ligne: ");
+                        String adr = sc.nextLine();
+                    }
                     break;
                 
                 case 5:
@@ -112,7 +123,7 @@ public class Main {
                     }
                     break;
                 
-                    case 9:
+                case 9:
                     break;
 
                 default:

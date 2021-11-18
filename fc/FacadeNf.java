@@ -112,6 +112,7 @@ public class FacadeNf {
 	 * @throws ErreurEmpruntException s'il y a eu une erreur durant l'emprunt.
 	 */
 	public int emprunt(CarteBancaire cb, String adresseFacturation, Support film) throws ErreurEmpruntException {
+		//TODO fonction sans paramètre.
 		if(carteAbo == null) 
 			clientConnected(cb, adresseFacturation);
 		
