@@ -52,7 +52,9 @@ public class CarteBancaire {
             "}";
     }
 
-    
+    public boolean equals(CarteBancaire carte){
+       return this.noCB == carte.cryptogramme && carte.cryptogramme == this.cryptogramme;
+    }    
     /** 
      * Fonction qui retourne la date d'expiration de la carte bancaire/
      * @return Date

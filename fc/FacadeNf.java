@@ -104,6 +104,18 @@ public class FacadeNf {
 		return combinerSupports(Film.rechercherFilm(titre));
 	}
 
+
+	/**
+	 * Vérification qu'un client est bien connecté s'il ne s'agit pas d'un adhérent
+	 * Un client enprumte un film, s'il s'agit d'un CD il est retiré de la liste des cd disponible.
+	 * @param film Le film emprunté sur un support de type CD
+	 * @return Le code lié à la location(ici ce sera l'id de la location dans la base) qui sert pour un simple client pour pouvoir rendre correctement son cd
+	 * @throws ErreurEmpruntException s'il y a eu une erreur durant l'emprunt.
+	 */
+	public int emprunt(Support film) throws ErreurEmpruntException {
+		return emprunt(null, null, film);
+	}
+
 	/**
 	 * Vérification qu'un client est bien connecté s'il ne s'agit pas d'un adhérent
 	 * Un client enprumte un film, s'il s'agit d'un CD il est retiré de la liste des cd disponible.
@@ -112,7 +124,6 @@ public class FacadeNf {
 	 * @throws ErreurEmpruntException s'il y a eu une erreur durant l'emprunt.
 	 */
 	public int emprunt(CarteBancaire cb, String adresseFacturation, Support film) throws ErreurEmpruntException {
-		//TODO fonction sans paramètre.
 		if(carteAbo == null) 
 			clientConnected(cb, adresseFacturation);
 		

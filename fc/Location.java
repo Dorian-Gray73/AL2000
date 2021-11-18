@@ -17,7 +17,7 @@ public class Location {
     private double tarif;
     private Client client;
     private Support support;
-    private static LocationDao dao;
+    private static LocationDao locationDao = new LocationDaoImp();
     
 
 
@@ -29,6 +29,11 @@ public class Location {
 		this.client = client;
 		this.support = support;
 	}
+    
+
+    public int getIdLocation(){
+        return idLocation;
+    }
 
 	/**
      * methode qui permet de définir le tarif
@@ -151,7 +156,6 @@ public class Location {
      * @return int
      */
     public int sauvegarder() {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.ajouterLocation(this);
 	}
 	
@@ -164,7 +168,6 @@ public class Location {
      * @return Location correspondant à la transaction recherché
      */
     public static Location trouverLocation(Client client, CD film) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.trouverLocation(client, film);
 	}
 
@@ -174,7 +177,6 @@ public class Location {
      * @return void
 	*/ 
      public void miseAJour() {
-		LocationDao locationDao = new LocationDaoImp();
 		locationDao.miseAJourLocation(idLocation, fin);
 	}
 	
@@ -185,13 +187,21 @@ public class Location {
      * @return List<Location> liste des locations effectues
      */
     public static List<Location> consulterHistorique(Adherent adherent) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.chercherLocations(adherent);
 	}
 
 	public static Location trouverLocation(int codeLocation) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.trouverLocation(codeLocation);
 	}
+
+    public static boolean estEnCours(Client cl,CD cd){
+        Location location=locationDao.trouverLocation(cl,cd);
+        return location!=null;
+    }
+    
+     public static boolean estEnCours(Adherent cl,CD cd){
+        Location location=locationDao.trouverLocation(cl,cd);
+        return location!=null;
+    }
 
 }

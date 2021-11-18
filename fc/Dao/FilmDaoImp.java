@@ -7,11 +7,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FilmDaoImp implements FilmDao {
 	Connection conn = null;
 	static final String CONN_URL = "jdbc:sqlite:BASE.db";
-
+	
+	
+	/**
+	 * @param titre Le titre du film recherché
+	 * @return Renvoie l'instance ou les instances du des film(s)
+	 * trouver dans notre BD
+	 */
 	@Override
 	public ArrayList<Film> chercher(String nom) {
 		try {
@@ -53,16 +60,22 @@ public class FilmDaoImp implements FilmDao {
 		}
 		return null;
 	}
-
-	public static void main(String args[]) {
-		FilmDaoImp a = new FilmDaoImp();
-		a.chercher("ted2");
-	}
-
+	/**
+	 * Méthode de recherche d'une location en cours sur le film.
+	 * 
+	 * @param titre Le titre du film recherché
+	 * @return Renvoie une chaine de caractère contenant les informations du(des) film(s)
+	 * trouver dans notre BD
+	 */
 	@Override
 	public String consulter(String titre) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Film> list = this.chercher(titre);
+		Iterator<Film> it = list.iterator();
+		String res = "";
+		while (it.hasNext()) {
+			res += it.next().toString() + "\n";
+		}
+		return res;
 	}
 
 	@Override

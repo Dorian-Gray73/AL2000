@@ -165,13 +165,12 @@ public class Client {
 	 *         film et le client ou non.
 	 */
 	public Boolean estEnCours(CD cd) {
-		//TODO a faire (regarder si la location existe dans la bd)
-		return false;
+		return Location.estEnCours(this,cd);
 	}
 
-	@Override
-	public boolean equals(Client c){
-		return c.carteBancaire == this.carteBancaire;
+
+	public boolean egale(Client c){
+		return c.carteBancaire.equals(this.carteBancaire);
 	}
 	
 	/**

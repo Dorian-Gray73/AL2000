@@ -1,7 +1,6 @@
 package fc.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import fc.Adherent;
 import fc.CD;
@@ -12,10 +11,9 @@ import fc.Film;
 import fc.QRCode;
 import fc.Support;
 
-//debut de test pas dingue ...
 public class test_unitaire {
-    @test
-    public testDébiterCarte(){
+    //@Test
+    public void testDébiterCarte(){
 
     }
     public static void main(String[] args) {

@@ -68,6 +68,9 @@ public class Film{
             "}";
     }
 
+    public boolean egale(Film f) {   
+        return f.titre==this.titre && f.producteur==this.producteur;
+    }
 
     public static ArrayList<Film> rechercherFilm(String titre) {
         return titre != null ? BD.chercher(titre) : BD.chercher();
@@ -100,7 +103,11 @@ public class Film{
         return producteur;
     }
 
-
+     /** 
+     * methode qui retourne vrai si le film n'est pas des
+     * genres dans la liste genre.
+     * @return boolean
+     */
     public boolean verfieGenre(ArrayList<String> genre){
         Iterator<String> it=genre.iterator();
         Iterator<String> it2=this.genre.iterator();
