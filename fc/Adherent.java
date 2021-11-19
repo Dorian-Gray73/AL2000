@@ -61,18 +61,16 @@ public class Adherent extends Client {
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
     public int emprunter(Support film) {
-        if (this.getTitulaire().getBlocage())
-        {
+        if (this.getTitulaire().getBlocage()){
             System.out.println("carte bloquée !");
             return -1;
         }
 
-        if (film.getFilm().verifieGenre(this.getTitulaire().getRestriction()))
-        {
+        if (film.getFilm().verifieGenre(this.getTitulaire().getRestriction())){
             System.out.println("film interdit !");
-           return -1;
+            return -1;
         }
-            return super.emprunter(film);
+        return super.emprunter(film);
 
     }
     
