@@ -110,8 +110,8 @@ public class FilmDaoImp implements FilmDao {
 		HashMap<String, String> map = new HashMap<>();
 		//map.put("titre", "Mourir peut attendre");
 		//map.put("genre", "Espionnage");
-		map.put("nomActeur", "Seydoux");
-		map.put("prenomActeur", "Léa");
+		//map.put("nomActeur", "Craig");
+		//map.put("prenomActeur", "Léa");
 
 		ArrayList<Film> films = a.chercher(map);
 		for (Film film : films) {

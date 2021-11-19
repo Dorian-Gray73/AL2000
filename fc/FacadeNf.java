@@ -16,7 +16,7 @@ public class FacadeNf {
 	private CarteAbonnement carteAbo;
 	
 	public FacadeNf(){
-		cdDispo = null;
+		cdDispo = new HashMap<>();
 		client = null;
 		carteAbo = null;
 	}
@@ -72,7 +72,7 @@ public class FacadeNf {
 	 *         QRCode.
 	 */
 	public HashMap<Film, List<CD>> rechercherFilm() {
-		return combinerSupports(filtreRestrictions(client.rechercherFilm(null)));
+		return combinerSupports(filtreRestrictions(Film.rechercherFilm(new HashMap<String, String>())));
 	}
 
 	/**
@@ -101,7 +101,9 @@ public class FacadeNf {
 	 * @return HashMap<Film, List<CD>>
 	 */
 	public HashMap<Film, List<CD>> rechercherFilm(String titre) {
-		return combinerSupports(Film.rechercherFilm(titre));
+		HashMap<String, String> filtres = new HashMap<>();
+		filtres.put("titre", titre);
+		return combinerSupports(Film.rechercherFilm(filtres));
 	}
 
 

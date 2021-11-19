@@ -79,10 +79,8 @@ public class Film {
     }
 
 
-    public static ArrayList<Film> rechercherFilm(String titre) {
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("titre", titre);
-        return BD.chercher(map);
+    public static ArrayList<Film> rechercherFilm(HashMap<String, String> filtres) {
+        return BD.chercher(filtres);
     }
 
     /**

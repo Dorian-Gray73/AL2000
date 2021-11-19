@@ -232,11 +232,12 @@ public class Main {
     private static void empruntClient(Scanner sc, FacadeNf out) {
         CarteBancaire cbClient = infoCb(sc);
         System.out.println("Veuillez rentrer votre addresse sur une seul ligne: ");
+        sc.nextLine();
         String adr = sc.nextLine();
 
         System.out.println("Veuillez rentrer le titre du Film que vous recherchez: ");
-        sc.nextLine();
         String titreLoc = sc.nextLine();
+        System.out.println(titreLoc);
 
         HashMap<Film, List<CD>> resultatLoc= out.rechercherFilm(titreLoc);
         Set<Film> filmChoisie = resultatLoc.keySet();
