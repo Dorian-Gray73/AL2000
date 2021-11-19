@@ -17,7 +17,7 @@ public class Location {
     private double tarif;
     private Client client;
     private Support support;
-    private static LocationDao locationDao = new LocationDaoImp();
+    private static LocationDao locationDao = LocationDaoImp.getInstance();
     
 
 
@@ -45,7 +45,7 @@ public class Location {
     
     
     /** 
-     * methode qui permet de définir la date de fin de la location
+     * methode qui permet de définpublicir la date de fin de la location
      * @param fin défini la fin de la location
      */
     public void setFin(LocalDateTime fin) {
@@ -57,7 +57,7 @@ public class Location {
      * methode qui permet de définir l'id de location
      * @param idLocation nouvelle identifiant de location
      */
-    public void setIdLocation(int idLocation) {
+    public void setIdLocation(int publicidLocation) {
 		this.idLocation = idLocation;
 	}
     
