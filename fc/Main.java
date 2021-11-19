@@ -329,9 +329,9 @@ public class Main {
 				truc = false;
 				if (texte.equals("")) {
 					truc = true;
-					System.out.println("Veuillez entrer une chaine de caractère non nulle !\n" + commentaire);
 				}
 			} catch (Exception e) {
+				System.out.println("Veuillez entrer une chaine de caractère non nulle !\n" + commentaire);
 				sc.nextLine();
 				truc = true;
 				texte = "";
