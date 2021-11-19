@@ -81,7 +81,7 @@ public class test_unitaire {
         // Client.souscrire() mais pas encore implémenté.
         Adherent adherent = new Adherent(client, "Damien", "Lombard", LocalDate.now(), "d.l@etu-grenoble-alpes.fr");
         System.out.println(adherent);
-        adherent.créditerCarte(adherent.getTitulaire(), 7.5);
+        adherent.crediterCarte(adherent.getTitulaire(), 7.5);
         System.out.println(adherent);
         adherent.paiement(18.5);
         System.out.println(adherent);

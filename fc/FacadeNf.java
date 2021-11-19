@@ -179,7 +179,6 @@ public class FacadeNf {
 	 * @throws ErreurRenduException
 	 */
 	public void rendre(int codeLocation, CD film, boolean endommage) throws ErreurRenduException {
-		//Il y a ici un problème de conception je pense car on récupère une Location mais on utilise estencours de client.
 		if(client == null) {
 			Location location = Location.trouverLocation(codeLocation);
 			client = location.getClient();
@@ -217,7 +216,7 @@ public class FacadeNf {
 	 */
 	public void crediterCarte(Double montant) {
 		if (carteAbo != null) {
-			((Adherent) client).créditerCarte(carteAbo, montant);
+			((Adherent) client).crediterCarte(carteAbo, montant);
 		} else {
 			System.out.println("Vous n'avez pas de compte adhérent ou vous n'êtes pas connecté.");
 		}

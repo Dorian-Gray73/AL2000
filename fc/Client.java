@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import fc.Dao.ClientDao;
 import fc.Dao.ClientDaoImp;
-import fc.Dao.FilmDaoImp;
 
 /**
  * Classe représentant un client anonyme.<br>
@@ -72,6 +71,10 @@ public class Client {
 		return location.sauvegarder();
 	}
 
+	
+	/** 
+	 * @return double
+	 */
 	protected double tarif() {
 		return 5.0;
 	}
@@ -105,6 +108,7 @@ public class Client {
 		l.getSupport().setEndommage(endommage);
 		l.miseAJour();
 		
+		l.genererFacture();
 		
 		if(endommage) {
 			System.out.println("Vous serez remboursé après constatation par un technicien.");
@@ -113,6 +117,7 @@ public class Client {
 	}
 
 	/**
+	 * Methode qui permet de savoir si le client a une location en cour
 	 * @param film
 	 * @return Location
 	 */
@@ -167,24 +172,39 @@ public class Client {
 	}
 
 
+	
+	/** 
+	 * methode qui va comparer deux clients au travers de leur carte bancaire
+	 * @see CarteBancaire
+	 * @param c
+	 * @return boolean
+	 */
 	public boolean egale(Client c){
 		return c.carteBancaire.equals(this.carteBancaire);
 	}
 	
 	/**
-	 * Connection BDD pour sauvegarder le client s'il n'existe pas déjà
+	 * Methode qui va se connecter a la BDD pour sauvegarder le client s'il n'existe pas déjà
 	 */
 	public void sauvegarder() {
 		clientDao.ajouterClient(this);
 	}
 	
+	
+	/** 
+	 * Methode qui va ajouter un adherent a la bdd
+	 * @param adherent
+	 */
 	private void majClientAdherent(Adherent adherent) {
 		clientDao.miseAJourClient(adherent);
 	}
 
-	/**
-	 * @return String
-	 */
+	/** 
+     * Fonction qui redefini la fonction tostring.<br>
+     * Permet d'avoir un affichage plus comprehensible 
+     * @see Object.toString
+     * @return String
+     */
 	@Override
 	public String toString() {
 		return "{" + " adresseFacturation = '" + getAdresseFacturation() + "'" + ", carteBancaire = '"
@@ -192,6 +212,7 @@ public class Client {
 	}
 
 	/**
+	 * Methode qui retourne la carte 
 	 * @return CarteBancaire
 	 */
 	public CarteBancaire getCarteBancaire() {
@@ -199,6 +220,7 @@ public class Client {
 	}
 
 	/**
+	 * Methode qui retourne l adresse de facturation
 	 * @return String
 	 */
 	public String getAdresseFacturation() {

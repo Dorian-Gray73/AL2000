@@ -74,11 +74,23 @@ public class Adherent extends Client {
 
     }
     
+    
+    /** 
+     * methode qui defini le tarif de base par jour d un adherent
+     * @return double
+     */
     @Override
     protected double tarif() {
     	return 4.0;
     }
 
+    
+    /** 
+     * Methode qui permet savoir si l adherent a une location en cour
+     * @see Location
+     * @param cd
+     * @return Boolean
+     */
     public Boolean estEnCours(CD cd) {
 		return Location.estEnCours(this,cd);
 	}
@@ -86,7 +98,7 @@ public class Adherent extends Client {
     /**
      * Fonction appelée pour rendre un CD
      *
-     * @param film      est le film a rendre
+     * @param film est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
      * @throws LocationException
      */
@@ -104,12 +116,12 @@ public class Adherent extends Client {
      * @param somme est la somme à rajouter au solde de la carte en param
      * @return void
      */
-    public void créditerCarte(CarteAbonnement carte, double somme) {
+    public void crediterCarte(CarteAbonnement carte, double somme) {
         carte.crediterCarte(somme);
     }
 
     /**
-     * 
+     * methode qui permet de consulter l'historque d un adherent 
      * @return histo Une chaine de caractère qui représente l'ensemble des location faite par l'adhérent
      */
     public List<Location> consulterHistorique() {
@@ -186,11 +198,21 @@ public class Adherent extends Client {
     }
 
 
-	public CarteAbonnement getTitulaire() {
+	
+    /** 
+     * Methode qui retourne le titulaire d'une carte d abonnement
+     * @return CarteAbonnement
+     */
+    public CarteAbonnement getTitulaire() {
 		return titulaire;
 	}
 	
-	public ArrayList<CarteAbonnement> getPossede() {
+	
+    /** 
+     * Methode qui retourne la liste des cartes possedes par un adhérent
+     * @return ArrayList<CarteAbonnement>
+     */
+    public ArrayList<CarteAbonnement> getPossede() {
 		return possede;
 	}
 	
