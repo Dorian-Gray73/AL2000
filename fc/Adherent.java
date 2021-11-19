@@ -106,7 +106,7 @@ public class Adherent extends Client {
      * @param somme est la somme à rajouter au solde de la carte en param
      * @return void
      */
-    public void créditerCarte(CarteAbonnement carte, double somme) {
+    public void crediterCarte(CarteAbonnement carte, double somme) {
         carte.crediterCarte(somme);
     }
 

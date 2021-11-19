@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import fc.Dao.ClientDao;
 import fc.Dao.ClientDaoImp;
-import fc.Dao.FilmDaoImp;
 
 /**
  * Classe représentant un client anonyme.<br>
@@ -56,7 +55,7 @@ public class Client {
 		if (film.calculerDuree() != -1) { // Alors il s'agit d'un QRCode car au moment de l'emprunt une seule durée peut être définie
 			location.setFin(dateEmprunt.plusHours(film.calculerDuree()));
 			
-			Double prix = location.CalculerPrix();
+			Double prix = location.calculerPrix();
 			if (prix == -1) // Erreur au moment du calcul du prix
 				return -1;
 			
@@ -97,7 +96,7 @@ public class Client {
 
 		l.setFin(LocalDateTime.now());
 
-		Double prix = l.CalculerPrix();
+		Double prix = l.calculerPrix();
 
 		if (prix == -1) // Erreur au moment du calcul du prix
 			return false;
