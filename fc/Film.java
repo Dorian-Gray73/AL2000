@@ -60,11 +60,11 @@ public class Film {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("{" +
-                " titre = '" + titre + "'" +
-                " genre = '" + genre + "'" +
-                ", producteur = '" + nomProducteur + " " + prenomProducteur + "'" +
-                ", réalisateur = '" + nomRealisateur + " " + prenomRealisateur + "'" +
-                ", acteursPrincipaux = '");
+                " titre = '" + titre + "'" + "\n" +
+                " genre = '" + genre + "'" + "\n" +
+                ", producteur = '" + nomProducteur + " " + prenomProducteur + "'" + "\n" +
+                ", réalisateur = '" + nomRealisateur + " " + prenomRealisateur + "'" + "\n" +
+                ", acteursPrincipaux = '"+"\n");
 
         for (String acteur : acteurs) {
               str.append(acteur + " ");

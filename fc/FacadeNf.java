@@ -88,7 +88,7 @@ public class FacadeNf {
 					.filter(film -> {
 						boolean isRestricted = false;
 						for(String restriction : carteAbo.getRestriction()) 
-							isRestricted = film.getGenre().contains(restriction);
+							isRestricted = film.getGenre().toLowerCase().equals(restriction.toLowerCase());
 						
 					return !isRestricted;
 					}).collect(Collectors.toList());
@@ -104,7 +104,7 @@ public class FacadeNf {
 	public HashMap<Film, List<CD>> rechercherFilm(String titre) {
 		HashMap<String, String> filtres = new HashMap<>();
 		filtres.put("titre", titre);
-		return combinerSupports(Film.rechercherFilm(filtres));
+		return combinerSupports(filtreRestrictions(Film.rechercherFilm(filtres)));
 	}
 
 
@@ -244,6 +244,10 @@ public class FacadeNf {
 			return tmp.consulterHistorique();
 		}
 		return null;
+	}
+	
+	public double getSolde() {
+		return carteAbo.getSolde();
 	}
 
 }

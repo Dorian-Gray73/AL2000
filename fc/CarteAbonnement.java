@@ -148,7 +148,7 @@ public class CarteAbonnement {
      * Fonction qui retourne le solde de la carte
      * @return double solde de la carte
      */
-    private double getSolde() {
+    public double getSolde() {
         return solde;
     }
     
