@@ -44,8 +44,7 @@ public class CarteAbonnement {
      * Cette méthode tient compte de si le client a deja loué plus de 20 films. <br>
      * S'il a loué plus de 20 films alors la location lui est offert
      * @param prix désigle le tarif de la location
-     * @return boolean true si la location c est bien passé <br>
-     * et false si la carte c'est bloqué
+     * @return boolean true si la location c est bien passé
      */
     public boolean debiterCarte(double prix) {
         int nbLocation = getnbLocation();
@@ -58,7 +57,7 @@ public class CarteAbonnement {
                 setBlocage(true);
             }
             setnbLocation(nbLocation + 1);
-            return !getBlocage();
+            return true;
         }
     }
 
@@ -96,7 +95,7 @@ public class CarteAbonnement {
 
     /**
      * Retourne les restrictions appliqué sur la carte 
-     * @return String[]
+     * @return ArrayList<String>
      */
     public ArrayList<String> getRestriction() {
         return restriction;
