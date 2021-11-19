@@ -1,4 +1,4 @@
-package fc.Test;
+package fc.Dao;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,5 +12,6 @@ public interface LocationDao {
 	public int ajouterLocation(Location location);
 	public boolean miseAJourLocation(int idLocation, LocalDateTime fin);
 	public Location trouverLocation(Client client, CD film);
+	public Location trouverLocation(int codeLocation);
 	public List<Location> chercherLocations(Adherent adherent);
 }

@@ -1,10 +1,21 @@
-package fc;
+package fc.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-//debut de test pas dingue ...
+import fc.Adherent;
+import fc.CD;
+import fc.CarteAbonnement;
+import fc.CarteBancaire;
+import fc.Client;
+import fc.Film;
+import fc.QRCode;
+import fc.Support;
+
 public class test_unitaire {
+    //@Test
+    public void testDébiterCarte(){
+
+    }
     public static void main(String[] args) {
         System.out.println("\nTest sur les cartes abonnement ! \n");
         System.out.println("Testé actuellement : création, débit, blocage, crédit, déblocage,");
@@ -25,13 +36,14 @@ public class test_unitaire {
         
         System.out.println("\nTest sur les cartes Bancaire ! \n");
         System.out.println("Testé actuellement : création, débit");
-        CarteBancaire cb = new CarteBancaire("123", "456", new Date());
+        LocalDate d = LocalDate.of(2000, 8, 25);
+        CarteBancaire cb = new CarteBancaire("123", "456", d);
         cb.debiterCarte(5.2);
         System.out.println(cb);
     
         System.out.println("\nTest sur les Films ! \n");
         System.out.println("Testé actuellement : création");
-        Film film = new Film("Mourrir peut attentre", "James Bond", "Un 007 comme un autre.","Daniel Craig, Léa Seydoux");
+        Film film = new Film("Mourrir peut attentre", "Espionnage");
         film.afficherInformations();
         System.out.println(film.toString());
         System.out.println(film);
@@ -69,7 +81,7 @@ public class test_unitaire {
         // Client.souscrire() mais pas encore implémenté.
         Adherent adherent = new Adherent(client, "Damien", "Lombard", LocalDate.now(), "d.l@etu-grenoble-alpes.fr");
         System.out.println(adherent);
-        adherent.créditerCarte(adherent.titulaire, 7.5);
+        adherent.créditerCarte(adherent.getTitulaire(), 7.5);
         System.out.println(adherent);
         adherent.paiement(18.5);
         System.out.println(adherent);

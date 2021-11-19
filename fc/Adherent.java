@@ -10,7 +10,7 @@ import java.util.List;
  * une carte d abonnement mere (si la carte en possede pas alors elle ce pointe elle meme) et enfin un tableau qui contient toute les cartes filles.
  * Un adherent possede les methodes emprunter, rendre, crediterCarte, consulterHistorique, consulterInformation, paiement, changerRestriction et souscrire
  */
-//TODO ajouter les adhérents a la base de donnés
+
 public class Adherent extends Client {
     private String nom;
     private String prenom;
@@ -51,7 +51,7 @@ public class Adherent extends Client {
         this.courrielAdr = courriel;
         this.titulaire = new CarteAbonnement(mere);
         this.possede = new ArrayList<CarteAbonnement>();
-        this.possede.add(this.titulaire);
+        this.possede.add(this.getTitulaire());
     }
 
     /**
@@ -60,9 +60,20 @@ public class Adherent extends Client {
      * @param film est le film a emprunter
      * @return Boolean vrai si l'opération s'est faite sinon faux
      */
-    public Boolean emprunter(Support film) {
-        //TODO a verifier avec les restrictions
-        return super.emprunter(film);
+    public int emprunter(Support film) {
+        if (this.getTitulaire().getBlocage())
+        {
+            System.out.println("carte bloquée !");
+            return -1;
+        }
+
+        if (film.getFilm().verifieGenre(this.getTitulaire().getRestriction()))
+        {
+            System.out.println("film interdit !");
+           return -1;
+        }
+            return super.emprunter(film);
+
     }
     
     @Override
@@ -70,16 +81,22 @@ public class Adherent extends Client {
     	return 4.0;
     }
 
+    public Boolean estEnCours(CD cd) {
+		return Location.estEnCours(this,cd);
+	}
+    
     /**
      * Fonction appelée pour rendre un CD
-     * 
+     *
      * @param film      est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
-     * @throws LocationException 
+     * @throws LocationException
      */
     public boolean rendre(CD film, Boolean endommage) {
-        //TODO a revoir
-        return super.rendre(film, endommage);
+        if(this.estEnCours(film))
+            return super.rendre(film, endommage);
+        else
+            return false;
     }
 
     /**
@@ -123,7 +140,7 @@ public class Adherent extends Client {
             "\n prenom = '" + prenom + "'" +
             "\n dateNaiss = '" + dateNaiss + "'" +
             "\n courrielAdr = '" + courrielAdr + "'" +
-            "\n titulaire = '" + titulaire + "'" +
+            "\n titulaire = '" + getTitulaire() + "'" +
             "\n possede = '" + possede + "'" +
             "\n}\n";
     }
@@ -136,7 +153,7 @@ public class Adherent extends Client {
      * @return reussite le boolean sera true si la transaction c'est bien passé 
      */
     public Boolean paiement(double prix) {
-        Boolean reussite = titulaire.debiterCarte(prix);
+        Boolean reussite = getTitulaire().debiterCarte(prix);
         return reussite;
     }
 
@@ -162,12 +179,23 @@ public class Adherent extends Client {
      * @return Adherent retourne l'Adherent nouvellement créé.
      */
     public Adherent Souscrire(String nom, String prenom, LocalDate dateNaiss, String adr) {
-        CarteAbonnement carteAbonnement = new CarteAbonnement(this.titulaire);
+        CarteAbonnement carteAbonnement = new CarteAbonnement(this.getTitulaire());
         if (possede == null) {
             possede = new ArrayList<CarteAbonnement>();
         }
         possede.add(carteAbonnement);
-        return new Adherent(this, nom, prenom, dateNaiss, adr, this.titulaire);
+        return new Adherent(this, nom, prenom, dateNaiss, adr, this.getTitulaire());
     }
+
+
+	public CarteAbonnement getTitulaire() {
+		return titulaire;
+	}
+	
+	public ArrayList<CarteAbonnement> getPossede() {
+		return possede;
+	}
+	
+	
 
 }

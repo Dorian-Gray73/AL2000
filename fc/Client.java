@@ -3,10 +3,11 @@ package fc;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import fc.Test.ClientDao;
-import fc.Test.ClientDaoImp;
-import fc.Test.FilmDaoImp;
+import fc.Dao.ClientDao;
+import fc.Dao.ClientDaoImp;
+import fc.Dao.FilmDaoImp;
 
 /**
  * Classe représentant un client anonyme.<br>
@@ -18,7 +19,7 @@ import fc.Test.FilmDaoImp;
 public class Client {
 	private String adresseFacturation;
 	private CarteBancaire carteBancaire;
-	private FilmDaoImp BD = new FilmDaoImp();
+	private static FilmDaoImp BD = new FilmDaoImp();
 
 	/**
 	 * Constructeur de la classe client.
@@ -47,9 +48,9 @@ public class Client {
 	 * 
 	 * @param film Le film que le client souhaite emprunter et pour lequel une
 	 *             éventuelle nouvelle location sera créée.
-	 * @return Un booléen indiquant si l'emprunt a réussi ou non.
+	 * @return le code de la location ou -1 si la location a échouée.
 	 */
-	public Boolean emprunter(Support film) {
+	public int emprunter(Support film) {
 		LocalDateTime dateEmprunt = LocalDateTime.now();
 		Location location = new Location(dateEmprunt, tarif(), this, film);
 		
@@ -58,12 +59,17 @@ public class Client {
 			
 			Double prix = location.CalculerPrix();
 			if (prix == -1) // Erreur au moment du calcul du prix
-				return false;
-
-			return (location.sauvegarder() != -1 && paiement(prix)); //On ne paie que si la sauvegarde dans la base fonctionne
+				return -1;
+			
+			int code = location.sauvegarder();
+			if(code != -1 && paiement(prix)) {
+				//On ne paie que si la sauvegarde dans la base fonctionne
+				return code;
+			}
+			return -1;
 		}
 		
-		return location.sauvegarder() != -1;
+		return location.sauvegarder();
 	}
 
 	protected double tarif() {
@@ -78,7 +84,6 @@ public class Client {
 	 * 
 	 * @param film      Le film qui est rendu
 	 * @param endommage Renvoie le booléen indiquant si le film est endommagé ou non
-	 * @throws LocationException
 	 */
 	public boolean rendre(CD film, Boolean endommage) {
 		/*
@@ -119,13 +124,14 @@ public class Client {
 	 * Méthode de recherche de films.<br>
 	 * Une requête sera notamment effectuée à la base de données en traitant les
 	 * filtres.
-	 * 
-	 * @param filtres Les filtres de la recherche passés en paramètre
+	 *
 	 * @return Renvoie la liste des films obtenue par la recherche
 	 */
 	public ArrayList<Film> rechercherFilm(String titre) {
 		// FilmDaoImp BD = new FilmDaoImp();
-		return titre != null ? BD.chercher(titre) : BD.chercher();
+		HashMap<String, String> filtres = new HashMap<String, String>();
+		filtres.put("titre", titre);
+		return BD.chercher(filtres);
 	}
 
 	/**
@@ -144,7 +150,6 @@ public class Client {
 
 	/**
 	 * Méthode de paiement d'une facture.<br>
-	 * @see CarteBancaire.debiterCarte
 	 * @param prix Le prix de la facture à payer
 	 * @return Renvoie un booléen indiquant si le paiement a réussi ou non
 	 */
@@ -154,14 +159,17 @@ public class Client {
 
 	/**
 	 * Méthode de recherche d'une location en cours sur le film.
-	 * 
-	 * @param film Le film pour lequel on recherche si une loaction est en cours.
+	 *
 	 * @return Renvoie un booléen indiquant si une location est en cours pour le
 	 *         film et le client ou non.
 	 */
 	public Boolean estEnCours(CD cd) {
-		//TODO a faire (regarder si la location existe dans la bd)
-		return false;
+		return Location.estEnCours(this,cd);
+	}
+
+
+	public boolean egale(Client c){
+		return c.carteBancaire.equals(this.carteBancaire);
 	}
 	
 	/**
@@ -189,14 +197,14 @@ public class Client {
 	/**
 	 * @return CarteBancaire
 	 */
-	private CarteBancaire getCarteBancaire() {
+	public CarteBancaire getCarteBancaire() {
 		return carteBancaire;
 	}
 
 	/**
 	 * @return String
 	 */
-	private String getAdresseFacturation() {
+	public String getAdresseFacturation() {
 		return adresseFacturation;
 	}
 	

@@ -1,21 +1,23 @@
 package fc;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import fc.Test.LocationDao;
-import fc.Test.LocationDaoImp;
+import fc.Dao.LocationDao;
+import fc.Dao.LocationDaoImp;
 
 public class Location {
-    //TODO JAVADOC
 	private int idLocation;
     private LocalDateTime debut;
     private LocalDateTime fin;
     private double tarif;
     private Client client;
     private Support support;
-
+    private static LocationDao locationDao = new LocationDaoImp();
     
 
 
@@ -27,9 +29,15 @@ public class Location {
 		this.client = client;
 		this.support = support;
 	}
+    
+
+    public int getIdLocation(){
+        return idLocation;
+    }
 
 	/**
-     * @param tarif
+     * methode qui permet de définir le tarif
+     * @param tarif défini le tarif de la location
      */
     public void setTarif(double tarif) {
         this.tarif = tarif;
@@ -37,7 +45,8 @@ public class Location {
     
     
     /** 
-     * @param fin
+     * methode qui permet de définir la date de fin de la location
+     * @param fin défini la fin de la location
      */
     public void setFin(LocalDateTime fin) {
     	this.fin = fin;
@@ -45,26 +54,38 @@ public class Location {
     
     
     /** 
-     * @param idLocation
+     * methode qui permet de définir l'id de location
+     * @param idLocation nouvelle identifiant de location
      */
     public void setIdLocation(int idLocation) {
 		this.idLocation = idLocation;
 	}
     
     /** 
-     * @return String
+     * methode qui permet de générer un fichier txt contenant la facture
+     * @return void mais un fichier txt ce créé dans votre repertoire
      */
-    public String genererFacture() {
-        //TODO A FAIRE retourne une chaine de caractère correspondant à la facture
-        return "";
+     public void genererFacture() {
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter("facture.txt", "UTF-8");
+            writer.println("Facture générer pour : "+client.toString());
+            writer.println("Il s'agit d'une location d'un "+ getSupport());
+            writer.println("Cette location s'étend du " + getDebut() + "au " + getFin());
+            writer.println("Le montant à payer est de " + getTarif());
+            writer.close();
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
+     * methode qui va calculer le prix de la location. La methode ne retournera jamais -1 dans des conditions normales.<br>
+     * Le -1 indique que le calcul du prix c est mal dérouler.
      * @return le prix de la location.
-     * @throws LocationException Dans le cas ou l'on appel cette méthode alors que la location n'est pas terminée.
+     * @throws LocationException Dans le cas ou l'on appel cette methode alors que la location n'est pas terminée.
      */
-    public double CalculerPrix() {
-        //TODO attention -1 
+    public double CalculerPrix() { 
         if (fin != null) {
         	long duree = (int) (debut.until(fin, ChronoUnit.DAYS));
             return tarif * (duree + 1);
@@ -98,6 +119,9 @@ public class Location {
         return support;
     }
 
+    public Client getClient() {
+		return client;
+	}
     
     /** 
      * methode qui permet de retourner le tarif de la location
@@ -132,40 +156,52 @@ public class Location {
      * @return int
      */
     public int sauvegarder() {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.ajouterLocation(this);
 	}
 	
 	
     /** 
+     * methode qui permet de trouver les locations d'un client
      * @see LocationDao.trouverLocation
-     * @param client
-     * @param film
-     * @return Location
+     * @param client adhérent ayant realsier une location
+     * @param film film loué par le client
+     * @return Location correspondant à la transaction recherché
      */
     public static Location trouverLocation(Client client, CD film) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.trouverLocation(client, film);
 	}
 
     /**
-     * 
+     * methode qui sert a mettre a jour une location d un client
      *@see LocationDao.miseAJourLocation
      * @return void
 	*/ 
      public void miseAJour() {
-		LocationDao locationDao = new LocationDaoImp();
 		locationDao.miseAJourLocation(idLocation, fin);
 	}
 	
 	
     /** 
-     * @param adherent
-     * @return List<Location>
+     * Methode qui permettra a un adherent de consulter son historique
+     * @param adherent adherent voulant consulter son historique
+     * @return List<Location> liste des locations effectues
      */
     public static List<Location> consulterHistorique(Adherent adherent) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.chercherLocations(adherent);
 	}
+
+	public static Location trouverLocation(int codeLocation) {
+		return locationDao.trouverLocation(codeLocation);
+	}
+
+    public static boolean estEnCours(Client cl,CD cd){
+        Location location=locationDao.trouverLocation(cl,cd);
+        return location!=null;
+    }
+    
+     public static boolean estEnCours(Adherent cl,CD cd){
+        Location location=locationDao.trouverLocation(cl,cd);
+        return location!=null;
+    }
 
 }

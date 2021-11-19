@@ -26,16 +26,17 @@ public class Support {
         film.afficherInformations();
     }
 
-    /**
+     /**
      * methode qui permet de calculer la durée d'emprunt 
      * cette methode sera redefini pour QRCode car sa durée de location est 
      * fixe.
      * @return int représentant la durée en heure
      */
+
     public int calculerDuree() {
-        //TODO En attente de la gestion des date dans Location.
         return -1;
-    }
+    } 
+
 
     
     /** 
