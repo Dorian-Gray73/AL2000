@@ -31,6 +31,10 @@ public class Location {
 	}
     
 
+    
+    /** 
+     * @return int
+     */
     public int getIdLocation(){
         return idLocation;
     }
@@ -119,6 +123,10 @@ public class Location {
         return support;
     }
 
+    
+    /** 
+     * @return Client
+     */
     public Client getClient() {
 		return client;
 	}
@@ -190,15 +198,35 @@ public class Location {
 		return locationDao.chercherLocations(adherent);
 	}
 
-	public static Location trouverLocation(int codeLocation) {
+	
+    /** 
+     * Methode qui permet de trouver une location dans la base de donne 
+     * @param codeLocation
+     * @return Location
+     */
+    public static Location trouverLocation(int codeLocation) {
 		return locationDao.trouverLocation(codeLocation);
 	}
 
+    
+    /** 
+     * Methode qui nous indique si une location est en cours pour un client
+     * @param cl
+     * @param cd
+     * @return boolean
+     */
     public static boolean estEnCours(Client cl,CD cd){
         Location location=locationDao.trouverLocation(cl,cd);
         return location.getFin() == null;
     }
     
+     
+     /** 
+      * Methode qui nous indique si une location est en cours pour un client
+      * @param cl
+      * @param cd
+      * @return boolean
+      */
      public static boolean estEnCours(Adherent cl,CD cd){
         Location location=locationDao.trouverLocation(cl,cd);
         return location!=null;
