@@ -1,5 +1,7 @@
 package fc;
 
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,6 +39,7 @@ public class Film {
         acteurs = new ArrayList<String>();
     }
 
+
     /**
      * Fonction qui affiche les informations d'un film.
      */
@@ -48,6 +51,7 @@ public class Film {
         System.out.println("Le résumé est : " + resume);
     }
 
+    
     /** 
      * Fonction qui redefinit la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible

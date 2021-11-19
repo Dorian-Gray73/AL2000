@@ -17,7 +17,7 @@ public class Location {
     private double tarif;
     private Client client;
     private Support support;
-
+    private static LocationDao locationDao = new LocationDaoImp();
     
 
 
@@ -29,6 +29,11 @@ public class Location {
 		this.client = client;
 		this.support = support;
 	}
+    
+
+    public int getIdLocation(){
+        return idLocation;
+    }
 
 	/**
      * methode qui permet de définir le tarif
@@ -57,16 +62,10 @@ public class Location {
 	}
     
     /** 
-     * methode qui permet de générer une facture
-     * @return String
+     * methode qui permet de générer un fichier txt contenant la facture
+     * @return void mais un fichier txt ce créé dans votre repertoire
      */
-    public String genererFacture() {
-        String s = "";
-        s = "Facture générer pour : "+client.toString() + "\n" + "Il s'agit d'une location d'un "+ getSupport() + "\n" + 
-        "Cette location s'étend du " + getDebut() + "au " + getFin() + "\n" + "Le montant à payer est de " + getTarif();
-        return s;
-    }
-    /* public void genererFacture() {
+     public void genererFacture() {
         PrintWriter writer;
         try {
             writer = new PrintWriter("facture.txt", "UTF-8");
@@ -78,7 +77,7 @@ public class Location {
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-    } */
+    }
 
     /**
      * methode qui va calculer le prix de la location. La methode ne retournera jamais -1 dans des conditions normales.<br>
@@ -157,7 +156,6 @@ public class Location {
      * @return int
      */
     public int sauvegarder() {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.ajouterLocation(this);
 	}
 	
@@ -170,7 +168,6 @@ public class Location {
      * @return Location correspondant à la transaction recherché
      */
     public static Location trouverLocation(Client client, CD film) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.trouverLocation(client, film);
 	}
 
@@ -180,7 +177,6 @@ public class Location {
      * @return void
 	*/ 
      public void miseAJour() {
-		LocationDao locationDao = new LocationDaoImp();
 		locationDao.miseAJourLocation(idLocation, fin);
 	}
 	
@@ -191,13 +187,21 @@ public class Location {
      * @return List<Location> liste des locations effectues
      */
     public static List<Location> consulterHistorique(Adherent adherent) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.chercherLocations(adherent);
 	}
 
 	public static Location trouverLocation(int codeLocation) {
-		LocationDao locationDao = new LocationDaoImp();
 		return locationDao.trouverLocation(codeLocation);
 	}
+
+    public static boolean estEnCours(Client cl,CD cd){
+        Location location=locationDao.trouverLocation(cl,cd);
+        return location!=null;
+    }
+    
+     public static boolean estEnCours(Adherent cl,CD cd){
+        Location location=locationDao.trouverLocation(cl,cd);
+        return location!=null;
+    }
 
 }

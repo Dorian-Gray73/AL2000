@@ -1,6 +1,8 @@
 package fc.Dao;
 
-import java.sql.Connection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import fc.Adherent;
 import fc.CarteAbonnement;
@@ -8,19 +10,29 @@ import fc.CarteBancaire;
 import fc.Client;
 
 public class ClientDaoImp implements ClientDao {
-	Connection conn = null;
-	static final String CONN_URL = "jdbc:sqlite:BASE.db";
+	private List<Client> clients;
+	private List<Adherent> adherents;
+	
+	public ClientDaoImp() {
+		super();
+		this.clients = new ArrayList<Client>();
+		this.adherents = new ArrayList<Adherent>();
+	}
 
 	@Override
 	public Adherent rechercheAdherent(CarteAbonnement carteAbo) {
-		// TODO Auto-generated method stub
+		for(Adherent adherent : adherents) {
+			if(adherent.getTitulaire().equals(carteAbo) || adherent.getPossede().contains(carteAbo)) {
+				return adherent;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public int ajouterClient(Client client) {
-		// TODO Auto-generated method stub
-		return 0;
+		clients.add(client);
+		return clients.indexOf(client);
 	}
 
 	/**
@@ -28,13 +40,21 @@ public class ClientDaoImp implements ClientDao {
 	 */
 	@Override
 	public void miseAJourClient(Adherent adherent) {
-		// TODO Auto-generated method stub
-		
+		for(Client client : clients) {
+			if(client.getCarteBancaire().equals(adherent.getCarteBancaire())) {
+				clients.remove(client);
+			}
+		}
+		adherents.add(adherent);
 	}
 
 	@Override
 	public Client rechercheClient(CarteBancaire cb) {
-		// TODO Auto-generated method stub
+		for(Client client : clients) {
+			if(client.getCarteBancaire().equals(cb)) {
+				return client;
+			}
+		}
 		return null;
 	}
 

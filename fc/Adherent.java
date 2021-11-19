@@ -10,7 +10,7 @@ import java.util.List;
  * une carte d abonnement mere (si la carte en possede pas alors elle ce pointe elle meme) et enfin un tableau qui contient toute les cartes filles.
  * Un adherent possede les methodes emprunter, rendre, crediterCarte, consulterHistorique, consulterInformation, paiement, changerRestriction et souscrire
  */
-//TODO ajouter les adhérents a la base de donnés
+
 public class Adherent extends Client {
     private String nom;
     private String prenom;
@@ -70,10 +70,10 @@ public class Adherent extends Client {
         if (film.getFilm().verifieGenre(this.getTitulaire().getRestriction()))
         {
             System.out.println("film interdit !");
-            return super.emprunter(film);
+           return -1;
         }
+            return super.emprunter(film);
 
-        return -1;
     }
     
     @Override
@@ -81,6 +81,10 @@ public class Adherent extends Client {
     	return 4.0;
     }
 
+    public Boolean estEnCours(CD cd) {
+		return Location.estEnCours(this,cd);
+	}
+    
     /**
      * Fonction appelée pour rendre un CD
      *
@@ -89,8 +93,10 @@ public class Adherent extends Client {
      * @throws LocationException
      */
     public boolean rendre(CD film, Boolean endommage) {
-        //TODO a revoir
-        return super.rendre(film, endommage);
+        if(this.estEnCours(film))
+            return super.rendre(film, endommage);
+        else
+            return false;
     }
 
     /**
@@ -185,5 +191,11 @@ public class Adherent extends Client {
 	public CarteAbonnement getTitulaire() {
 		return titulaire;
 	}
+	
+	public ArrayList<CarteAbonnement> getPossede() {
+		return possede;
+	}
+	
+	
 
 }

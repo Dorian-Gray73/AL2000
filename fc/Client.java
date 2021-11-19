@@ -19,7 +19,7 @@ import fc.Dao.FilmDaoImp;
 public class Client {
 	private String adresseFacturation;
 	private CarteBancaire carteBancaire;
-	private FilmDaoImp BD = new FilmDaoImp();
+	private static FilmDaoImp BD = new FilmDaoImp();
 
 	/**
 	 * Constructeur de la classe client.
@@ -164,8 +164,12 @@ public class Client {
 	 *         film et le client ou non.
 	 */
 	public Boolean estEnCours(CD cd) {
-		//TODO a faire (regarder si la location existe dans la bd)
-		return false;
+		return Location.estEnCours(this,cd);
+	}
+
+
+	public boolean egale(Client c){
+		return c.carteBancaire.equals(this.carteBancaire);
 	}
 	
 	/**
@@ -193,14 +197,14 @@ public class Client {
 	/**
 	 * @return CarteBancaire
 	 */
-	private CarteBancaire getCarteBancaire() {
+	public CarteBancaire getCarteBancaire() {
 		return carteBancaire;
 	}
 
 	/**
 	 * @return String
 	 */
-	private String getAdresseFacturation() {
+	public String getAdresseFacturation() {
 		return adresseFacturation;
 	}
 	
