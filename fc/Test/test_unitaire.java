@@ -18,11 +18,15 @@ public class test_unitaire {
     }
     public static void main(String[] args) {
         System.out.println("\nTest sur les cartes abonnement ! \n");
-        System.out.println("Testé actuellement : création, débit, blocage, crédit et déblocage");
+        System.out.println("Testé actuellement : création, débit, blocage, crédit, déblocage,");
+        System.out.println("solde et estCarteMère");
+        System.out.println("Non testé actuellement : nbLocation et Restriction");
         CarteAbonnement mom = new CarteAbonnement();
         CarteAbonnement ca = new CarteAbonnement(mom);
         System.out.println(mom.toString());
+        System.out.println(mom.estCarteMere());
         System.out.println(ca.toString());
+        System.out.println(ca.estCarteMere());
         System.out.println(ca.debiterCarte(5.2));
         System.out.println(ca.debiterCarte(11.2));
         System.out.println(ca.getBlocage());
@@ -41,6 +45,7 @@ public class test_unitaire {
         System.out.println("Testé actuellement : création");
         Film film = new Film("Mourrir peut attentre", "Espionnage");
         film.afficherInformations();
+        System.out.println(film.toString());
         System.out.println(film);
         
         System.out.println("\nTest sur les Supports !\n");
@@ -63,6 +68,7 @@ public class test_unitaire {
         System.out.println("Testé actuellement : création");
         QRCode qrCode = new QRCode(film);
         System.out.println(qrCode);
+        System.out.println(qrCode.calculerDuree());
         qrCode.afficherInformations();
 
         System.out.println("\nTest sur les Clients ! \n");
