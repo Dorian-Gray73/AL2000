@@ -128,7 +128,9 @@ public class FilmDaoImp implements FilmDao {
 	 */
 	@Override
 	public String consulter(String titre) {
-		ArrayList<Film> list = this.chercher(titre);
+		HashMap<String, String> filtres = new HashMap<String, String>();
+		filtres.put("titre", titre);
+		ArrayList<Film> list = this.chercher(filtres);
 		Iterator<Film> it = list.iterator();
 		String res = "";
 		while (it.hasNext()) {
