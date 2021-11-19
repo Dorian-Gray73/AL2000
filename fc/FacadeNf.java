@@ -132,7 +132,7 @@ public class FacadeNf {
 		
 		int code = client.emprunter(film);
 		if (code != -1) {
-			if(cdDispo.get(film.getFilm().getTitre()).contains(film)) {
+			if(cdDispo.get(film.getFilm().getTitre()) != null && cdDispo.get(film.getFilm().getTitre()).contains(film)) {
 				cdDispo.get(film.getFilm().getTitre()).remove(film);
 			}
 		} else {
