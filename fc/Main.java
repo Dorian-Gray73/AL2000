@@ -60,9 +60,7 @@ public class Main {
                         break;
                 
                 case RECHERCHER:
-                    System.out.println("Veuillez rentrer le titre du Film que vous recherchez: ");
-                    sc.nextLine();
-                    String titre = sc.nextLine();
+                    String titre = texteValide("Veuillez rentrer le titre du Film que vous recherchez: ", sc);
                     HashMap<Film, List<CD>> resultat= out.rechercherFilm(titre);
                     for(Map.Entry<Film, List<CD>> map : resultat.entrySet()){
                         Film filmRes = map.getKey();
@@ -87,16 +85,14 @@ public class Main {
                     break;
                 
                 case CREDITER:
-                    System.out.println("Veuillez entrer le montant à créditer :");
-                    double montant = sc.nextDouble();
+
+                    double montant = doubleValide("Veuillez entrer le montant à créditer :", sc);
                     out.crediterCarte(montant);
                     break;
                 
                 case RENDRE:
-                    System.out.println("Veuillez rentrer votre code de location: ");
-                    int codeLocation = sc.nextInt();
-                    System.out.println("Veuillez rentrer la valeur 1 si le CD est endommagé, 0 sinon");
-                    int endommage = sc.nextInt();
+                    int codeLocation = intValide("Veuillez rentrer votre code de location: ", sc);
+                    int endommage = intValide("Veuillez rentrer la valeur 1 si le CD est endommagé, 0 sinon", sc);
                     CD cd = cdEmprunter; 
                     if (endommage == 1) {
                         try {
@@ -125,19 +121,18 @@ public class Main {
                     break;
 
                 case RESTRICTION:
-                    System.out.println("Si vous voulez supprimer les restrictions taper 1 ou n'importe quel autre chiffre pour en ajouter");
-                    int menu = sc.nextInt();
+                    System.out.println();
+                    int menu = intValide("Si vous voulez supprimer les restrictions taper 1 ou n'importe quel autre chiffre pour en ajouter", sc);
                     if (menu == 1) {
                         String [] restrVide = {};
                         ca.setRestriction(restrVide);
                     }
                     else{
-                        System.out.println("Veuillez indiquer le nombre de restriction à ajouter: ");
-                        int nbRestr = sc.nextInt();
-                        sc.nextLine();
+                        int nbRestr = intValide("Veuillez indiquer le nombre de restriction à ajouter: ", sc);
                         String [] restriction = new String[nbRestr];
-                        for (int i = 0; i < nbRestr; i++) {
-                            restriction[i] = sc.nextLine();
+                        for (int i = 0; i < nbRestr; i++) {  
+                            String restrictionStr = texteValide("Veuillez rentrer votre restriction", sc);
+                            restriction[i] = restrictionStr;
                             System.out.println(restriction[i]);
                         }
                         ca.setRestriction(restriction);
@@ -179,17 +174,15 @@ public class Main {
 
 
 
-    private static void empruntAdh(Scanner sc, FacadeNf out) {
-        System.out.println("Veuillez rentrer le titre du Film que vous recherchez: ");
-        sc.nextLine();
-        String titreLoc = sc.nextLine();
+    private static void empruntAdh(Scanner sc, FacadeNf out) {       
+        String titreLoc = texteValide("Veuillez rentrer le titre du Film que vous recherchez: ", sc);
 
         HashMap<Film, List<CD>> resultatLoc= out.rechercherFilm(titreLoc);
         Set<Film> filmChoisie = resultatLoc.keySet();
         Iterator<Film> it = filmChoisie.iterator();
         Film choixFilm = it.next();
-        System.out.println("Si vous voulez louer sous forme de QR Code taper 1");
-        int choixType = sc.nextInt();
+        
+        int choixType = intValide("Si vous voulez louer sous forme de QR Code taper 1", sc);
 
         if(choixType ==1){
             locationAdhQr(out, choixFilm);
@@ -231,21 +224,17 @@ public class Main {
 
     private static void empruntClient(Scanner sc, FacadeNf out) {
         CarteBancaire cbClient = infoCb(sc);
-        System.out.println("Veuillez rentrer votre addresse sur une seul ligne: ");
-        sc.nextLine();
-        String adr = sc.nextLine();
 
-        System.out.println("Veuillez rentrer le titre du Film que vous recherchez: ");
-        String titreLoc = sc.nextLine();
+        String adr = texteValide("Veuillez rentrer votre addresse sur une seul ligne: ", sc);
+        String titreLoc = texteValide("Veuillez rentrer le titre du Film que vous recherchez: ", sc);
         System.out.println(titreLoc);
 
         HashMap<Film, List<CD>> resultatLoc= out.rechercherFilm(titreLoc);
         Set<Film> filmChoisie = resultatLoc.keySet();
         Iterator<Film> it = filmChoisie.iterator();
         Film choixFilm = it.next();
-
-        System.out.println("Si vous voulez louer sous forme de QR Code taper 1");
-        int choixType = sc.nextInt();
+        
+        int choixType = intValide("Si vous voulez louer sous forme de QR Code taper 1", sc);
         
         if(choixType ==1){
             locationQr(out, cbClient, adr, choixFilm);
@@ -271,17 +260,17 @@ public class Main {
         }
     }
 
-    private int intvalide(String commentaire, Scanner sc) {
+    private static int intValide(String commentaire, Scanner sc) {
         int choix;
         boolean truc;
         System.out.println(commentaire);
         do{
             try {
-                choix = sc.nextInt();
+                choix = sc.nextInt(); sc.nextLine();
                 truc = false;
             } catch (Exception e) {
                 System.out.println("Veuillez entrer une valeur correct !\n" + commentaire);
-                sc.nextLine();
+                sc.nextLine(); sc.nextLine();
                 truc = true;
                 choix = 0;
             }
@@ -289,7 +278,25 @@ public class Main {
         return choix;
     }
 
-    private String texteValide(String commentaire, Scanner sc) {
+    private static double doubleValide(String commentaire, Scanner sc) {
+        double choix;
+        boolean truc;
+        System.out.println(commentaire);
+        do{
+            try {
+                choix = sc.nextDouble(); sc.nextLine();
+                truc = false;
+            } catch (Exception e) {
+                System.out.println("Veuillez entrer une valeur correct !\n" + commentaire);
+                sc.nextLine(); sc.nextLine();
+                truc = true;
+                choix = 0;
+            }
+        }while(truc);
+        return choix;
+    }
+
+    private static String texteValide(String commentaire, Scanner sc) {
         String texte;
         boolean truc;
         System.out.println(commentaire);
@@ -324,21 +331,13 @@ public class Main {
 
     private static CarteAbonnement infoAdherent(Scanner sc, FacadeNf out, CarteBancaire cb,Client client) {
         CarteAbonnement ca;
-        System.out.println("veuillez entrer votre adresse de facturation sur une seul ligne");
-        sc.next();
-        String adr = sc.nextLine();
-        System.out.println("veuillez donner votre nom");
-        String nom = sc.nextLine();
-        System.out.println("veuillez donner votre prénom");
-        String prenom = sc.nextLine();
-        System.out.println("veuillez entrer votre adresse email");
-        String email = sc.nextLine();
-        System.out.println("Veuillez entrer votre jour de naissance");
-        int j = sc.nextInt();
-        System.out.println("Veuillez entrer votre mois de naissance");
-        int m = sc.nextInt();
-        System.out.println("Veuillez entrer votre année de naissance");
-        int a = sc.nextInt();
+        String adr = texteValide("veuillez entrer votre adresse de facturation sur une seul ligne", sc);
+        String nom = texteValide("veuillez donner votre nom", sc);
+        String prenom = texteValide("veuillez donner votre prénom", sc);
+        String email = texteValide("veuillez entrer votre adresse email", sc);
+        int j = intValide("Veuillez entrer votre jour de naissance",sc);
+        int m = intValide("Veuillez entrer votre mois de naissance",sc);
+        int a = intValide("Veuillez entrer votre année de naissance", sc);
         LocalDate anniv = LocalDate.of(a, m, j);
         client = new Client(adr,cb);
         ca = out.souscrire(cb, adr, nom, prenom, anniv, email);
@@ -346,16 +345,12 @@ public class Main {
     }
 
     private static CarteBancaire infoCb(Scanner sc) {
-        System.out.println("veuillez renseigner votre numéro de carte");
-        int noCbInt = sc.nextInt();
+        int noCbInt = intValide("veuillez renseigner votre numéro de carte", sc);
         String noCb =  ""+noCbInt;
-        System.out.println("veuillez renseigner votre cryptogramme visuel");
-        int cryptoInt = sc.nextInt();
+        int cryptoInt = intValide("veuillez renseigner votre cryptogramme visuel", sc);
         String crypto = ""+cryptoInt;
-        System.out.println("veuillez renseigner votre mois d expiration");
-        int month = sc.nextInt();
-        System.out.println("veuillez renseigner votre année d expiration");
-        int year = sc.nextInt();
+        int month = intValide("veuillez renseigner votre mois d expiration", sc);
+        int year =intValide("veuillez renseigner votre année d expiration",sc);
         LocalDate date = LocalDate.of(year, month, 1);
         CarteBancaire cb = new CarteBancaire(noCb, crypto, date);
         return cb;
