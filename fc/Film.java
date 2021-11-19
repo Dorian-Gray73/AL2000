@@ -79,6 +79,11 @@ public class Film {
     }
 
 
+    
+    /** 
+     * @param filtres
+     * @return ArrayList<Film>
+     */
     public static ArrayList<Film> rechercherFilm(HashMap<String, String> filtres) {
         return BD.chercher(filtres);
     }
@@ -91,10 +96,18 @@ public class Film {
         return titre;
     }
 
-	public String getGenre() {
+	
+    /** 
+     * @return String
+     */
+    public String getGenre() {
 		return genre;
 	}
 
+    
+    /** 
+     * @param genre
+     */
     public void setGenre(String genre) {
         this.genre = genre;
     }
@@ -107,6 +120,10 @@ public class Film {
         return resume;
     }
 
+    
+    /** 
+     * @param resume
+     */
     public void setResume(String resume) {
         this.resume = resume;
     }
@@ -119,6 +136,12 @@ public class Film {
         return nomRealisateur + " " + prenomRealisateur;
     }
 
+    
+    /** 
+     * methode qui permet 
+     * @param nomRealisateur
+     * @param prenomRealisateur
+     */
     public void setRealisateur(String nomRealisateur, String prenomRealisateur) {
         this.nomRealisateur = nomRealisateur;
         this.prenomRealisateur = prenomRealisateur;
@@ -132,6 +155,11 @@ public class Film {
         return nomProducteur + " " + prenomProducteur;
     }
 
+    
+    /** 
+     * @param nomProducteur
+     * @param prenomProducteur
+     */
     public void setProducteur(String nomProducteur, String prenomProducteur) {
         this.nomProducteur = nomProducteur;
         this.prenomProducteur = prenomProducteur;
@@ -145,18 +173,37 @@ public class Film {
         return acteurs;
     }
 
+    
+    /** 
+     * @param acteur
+     */
     public void ajouterActeur(String acteur) {
         acteurs.add(acteur);
     }
 
-	public void ajouterActeur(String nomActeur, String prenomActeur) {
+	
+    /** 
+     * @param nomActeur
+     * @param prenomActeur
+     */
+    public void ajouterActeur(String nomActeur, String prenomActeur) {
         acteurs.add(nomActeur + " " + prenomActeur);
     }
 
+    
+    /** 
+     * @param restrictions
+     * @return boolean
+     */
     public boolean verifieGenre(ArrayList<String> restrictions) {
         return restrictions.contains(genre);
     }
 
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         Film film = (Film) o;
