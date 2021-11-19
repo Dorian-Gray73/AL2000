@@ -85,7 +85,7 @@ public class Location {
      * @return le prix de la location.
      * @throws LocationException Dans le cas ou l'on appel cette methode alors que la location n'est pas terminée.
      */
-    public double CalculerPrix() { 
+    public double calculerPrix() { 
         if (fin != null) {
         	long duree = (int) (debut.until(fin, ChronoUnit.DAYS));
             return tarif * (duree + 1);
