@@ -63,6 +63,7 @@ public class Client {
 			int code = location.sauvegarder();
 			if(code != -1 && paiement(prix)) {
 				//On ne paie que si la sauvegarde dans la base fonctionne
+				location.genererFacture();
 				return code;
 			}
 			return -1;
