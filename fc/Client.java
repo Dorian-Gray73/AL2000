@@ -3,6 +3,7 @@ package fc;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import fc.Dao.ClientDao;
 import fc.Dao.ClientDaoImp;
@@ -83,7 +84,6 @@ public class Client {
 	 * 
 	 * @param film      Le film qui est rendu
 	 * @param endommage Renvoie le booléen indiquant si le film est endommagé ou non
-	 * @throws LocationException
 	 */
 	public boolean rendre(CD film, Boolean endommage) {
 		/*
@@ -124,13 +124,14 @@ public class Client {
 	 * Méthode de recherche de films.<br>
 	 * Une requête sera notamment effectuée à la base de données en traitant les
 	 * filtres.
-	 * 
-	 * @param filtres Les filtres de la recherche passés en paramètre
+	 *
 	 * @return Renvoie la liste des films obtenue par la recherche
 	 */
 	public ArrayList<Film> rechercherFilm(String titre) {
 		// FilmDaoImp BD = new FilmDaoImp();
-		return titre != null ? BD.chercher(titre) : BD.chercher();
+		HashMap<String, String> filtres = new HashMap<String, String>();
+		filtres.put("titre", titre);
+		return BD.chercher(filtres);
 	}
 
 	/**
@@ -149,7 +150,6 @@ public class Client {
 
 	/**
 	 * Méthode de paiement d'une facture.<br>
-	 * @see CarteBancaire.debiterCarte
 	 * @param prix Le prix de la facture à payer
 	 * @return Renvoie un booléen indiquant si le paiement a réussi ou non
 	 */
@@ -159,8 +159,7 @@ public class Client {
 
 	/**
 	 * Méthode de recherche d'une location en cours sur le film.
-	 * 
-	 * @param film Le film pour lequel on recherche si une loaction est en cours.
+	 *
 	 * @return Renvoie un booléen indiquant si une location est en cours pour le
 	 *         film et le client ou non.
 	 */
