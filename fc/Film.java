@@ -70,8 +70,8 @@ public class Film {
               str.append(acteur + " ");
         }
         str.deleteCharAt(str.length() - 1);
-        str.append("\n");
-        str.append("'" +
+        
+        str.append("'" + "\n"+
                 ", resume = '" + resume + "'" +
                 "}");
 
