@@ -179,7 +179,6 @@ public class FacadeNf {
 	 * @throws ErreurRenduException
 	 */
 	public void rendre(int codeLocation, CD film, boolean endommage) throws ErreurRenduException {
-		//Il y a ici un problème de conception je pense car on récupère une Location mais on utilise estencours de client.
 		if(client == null) {
 			Location location = Location.trouverLocation(codeLocation);
 			client = location.getClient();
