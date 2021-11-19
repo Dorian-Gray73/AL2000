@@ -105,6 +105,7 @@ public class Client {
 		l.getSupport().setEndommage(endommage);
 		l.miseAJour();
 		
+		l.genererFacture();
 		
 		if(endommage) {
 			System.out.println("Vous serez remboursé après constatation par un technicien.");

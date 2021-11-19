@@ -196,7 +196,7 @@ public class Location {
 
     public static boolean estEnCours(Client cl,CD cd){
         Location location=locationDao.trouverLocation(cl,cd);
-        return location!=null;
+        return location.getFin() == null;
     }
     
      public static boolean estEnCours(Adherent cl,CD cd){

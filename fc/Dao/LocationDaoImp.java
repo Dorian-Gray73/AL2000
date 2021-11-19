@@ -29,7 +29,7 @@ public class LocationDaoImp implements LocationDao {
 	@Override
 	public int ajouterLocation(Location location) {
 		locations.add(location);
-		return 0;
+		return locations.indexOf(location);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class LocationDaoImp implements LocationDao {
 		Iterator<Location> it = locations.iterator();
 		while (it.hasNext()) {
 			Location tmp = it.next();
-			if (tmp.getClient().egale(client) && tmp.getSupport().getFilm().equals(film.getFilm()))
+			if (tmp.getClient().equals(client) && tmp.getSupport().equals(film))
 				return tmp;
 		}
 		return null;
@@ -58,7 +58,7 @@ public class LocationDaoImp implements LocationDao {
 		Iterator<Location> it = locations.iterator();
 		while (it.hasNext()) {
 			Location tmp = it.next();
-			if (tmp.getClient().egale(client) && tmp.getSupport().getFilm().equals(film.getFilm()))
+			if (tmp.getClient().equals(client) && tmp.getSupport().getFilm().equals(film.getFilm()))
 				return tmp;
 		}
 		return null;
@@ -70,7 +70,7 @@ public class LocationDaoImp implements LocationDao {
 		Iterator<Location> it = locations.iterator();
 		while (it.hasNext()) {
 			Location tmp = it.next();
-			if (tmp.getClient().egale(adherent))
+			if (tmp.getClient().equals(adherent))
 				res.add(tmp);
 		}
 

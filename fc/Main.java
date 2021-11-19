@@ -1,6 +1,7 @@
 package fc;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -28,7 +29,17 @@ public class Main {
 
 		CarteAbonnement ca = null;
 		Client client = null;
-		FacadeNf out = new FacadeNf();
+		
+		FacadeNf out = new FacadeNf(new HashMap<String, List<CD>>() {{
+			put("mourir peut attendre", new ArrayList<CD>(){{
+				add(new CD(Film.rechercherFilm(new HashMap<String, String>(){{
+					put("titre", "mourir peut attendre");
+				}}).get(0), false));
+				add(new CD(Film.rechercherFilm(new HashMap<String, String>(){{
+					put("titre", "mourir peut attendre");
+				}}).get(0), false));
+			}});
+		}});
 
 		do {
 			System.out.println("Les fonction portant la mention #adh sont réservé aux abonnés");
