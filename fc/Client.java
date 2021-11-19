@@ -19,7 +19,7 @@ import fc.Dao.FilmDaoImp;
 public class Client {
 	private String adresseFacturation;
 	private CarteBancaire carteBancaire;
-	private static FilmDaoImp BD = new FilmDaoImp();
+	private static ClientDao clientDao = ClientDaoImp.getInstance();;
 
 	/**
 	 * Constructeur de la classe client.
@@ -53,7 +53,6 @@ public class Client {
 	public int emprunter(Support film) {
 		LocalDateTime dateEmprunt = LocalDateTime.now();
 		Location location = new Location(dateEmprunt, tarif(), this, film);
-		
 		if (film.calculerDuree() != -1) { // Alors il s'agit d'un QRCode car au moment de l'emprunt une seule durée peut être définie
 			location.setFin(dateEmprunt.plusHours(film.calculerDuree()));
 			
@@ -128,10 +127,9 @@ public class Client {
 	 * @return Renvoie la liste des films obtenue par la recherche
 	 */
 	public ArrayList<Film> rechercherFilm(String titre) {
-		// FilmDaoImp BD = new FilmDaoImp();
 		HashMap<String, String> filtres = new HashMap<String, String>();
 		filtres.put("titre", titre);
-		return BD.chercher(filtres);
+		return Film.rechercherFilm(filtres);
 	}
 
 	/**
@@ -176,12 +174,10 @@ public class Client {
 	 * Connection BDD pour sauvegarder le client s'il n'existe pas déjà
 	 */
 	public void sauvegarder() {
-		ClientDao clientDao = new ClientDaoImp();
 		clientDao.ajouterClient(this);
 	}
 	
 	private void majClientAdherent(Adherent adherent) {
-		ClientDao clientDao = new ClientDaoImp();
 		clientDao.miseAJourClient(adherent);
 	}
 

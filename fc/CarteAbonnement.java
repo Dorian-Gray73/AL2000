@@ -25,7 +25,7 @@ public class CarteAbonnement {
      */
     public CarteAbonnement(CarteAbonnement mere) {
         this.solde = 10.0;
-        this.restriction = null;
+        this.restriction = new ArrayList<String>();
         this.bloque = false;
         this.nbLocation = 0;
         this.carteMere = mere;
