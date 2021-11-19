@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import fc.Dao.ClientDao;
 import fc.Dao.ClientDaoImp;
-import fc.Dao.FilmDaoImp;
 
 /**
  * Classe représentant un client anonyme.<br>
