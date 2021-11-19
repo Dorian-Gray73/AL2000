@@ -52,6 +52,12 @@ public class CarteBancaire {
             "}";
     }
 
+    
+    /** 
+     * Methode qui permet de comparer deux cartes bancaire
+     * @param carte
+     * @return boolean
+     */
     public boolean equals(CarteBancaire carte){
        return this.noCB == carte.cryptogramme && carte.cryptogramme == this.cryptogramme;
     }    
