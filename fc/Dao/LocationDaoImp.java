@@ -36,7 +36,7 @@ public class LocationDaoImp implements LocationDao {
 		Iterator<Location> it = locations.iterator();
 		while (it.hasNext()) {
 			Location tmp = it.next();
-			if (tmp.getClient().egale(client) && tmp.getSupport().getFilm().egale(film.getFilm()))
+			if (tmp.getClient().egale(client) && tmp.getSupport().getFilm().equals(film.getFilm()))
 				return tmp;
 		}
 		return null;
@@ -46,7 +46,7 @@ public class LocationDaoImp implements LocationDao {
 		Iterator<Location> it = locations.iterator();
 		while (it.hasNext()) {
 			Location tmp = it.next();
-			if (tmp.getClient().egale(client) && tmp.getSupport().getFilm().egale(film.getFilm()))
+			if (tmp.getClient().egale(client) && tmp.getSupport().getFilm().equals(film.getFilm()))
 				return tmp;
 		}
 		return null;
@@ -75,7 +75,5 @@ public class LocationDaoImp implements LocationDao {
 		}
 
 		return null;
-
 	}
-
 }
