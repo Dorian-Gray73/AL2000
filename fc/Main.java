@@ -23,22 +23,22 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int choix;
-       // boolean truc = true;
        
         CarteAbonnement ca = null;
         Client client = null;
         FacadeNf out = new FacadeNf();
 
         do {
+            System.out.println("Les fonction portant la mention * sont réservé aux abonnés");
             System.out.println("veuillez taper 0 pour quitter");
             System.out.println("veuillez taper 1 pour vous créer un compte");
-            System.out.println("veuillez taper 2 pour vous connecter");
+            System.out.println("veuillez taper 2 pour vous connecter * ");
             System.out.println("veuillez taper 3 pour rechercher un film");
             System.out.println("veuillez taper 4 pour emprunter un film");
-            System.out.println("veuillez taper 5 pour créditer votre carte d'abonnement");
+            System.out.println("veuillez taper 5 pour créditer votre carte d'abonnement * ");
             System.out.println("veuillez taper 6 pour rendre un film");
-            System.out.println("veuillez taper 7 pour consulter l'historique");
-            System.out.println("veuillez taper 8 pour ajouter des restrictions");
+            System.out.println("veuillez taper 7 pour consulter l'historique * ");
+            System.out.println("veuillez taper 8 pour ajouter des restrictions * ");
             choix = erreurMenu(sc);
             switch (choix) {
 
@@ -154,7 +154,7 @@ public class Main {
             }
 
             
-        } while (choix != 9);
+        } while (choix != 0);
         System.out.println("merci d'avoir utilisé l'AL2000");
         sc.close();
     }
@@ -271,7 +271,44 @@ public class Main {
         }
     }
 
+    private int intvalide(String commentaire, Scanner sc) {
+        int choix;
+        boolean truc;
+        System.out.println(commentaire);
+        do{
+            try {
+                choix = sc.nextInt();
+                truc = false;
+            } catch (Exception e) {
+                System.out.println("Veuillez entrer une valeur correct !\n" + commentaire);
+                sc.nextLine();
+                truc = true;
+                choix = 0;
+            }
+        }while(truc);
+        return choix;
+    }
 
+    private String texteValide(String commentaire, Scanner sc) {
+        String texte;
+        boolean truc;
+        System.out.println(commentaire);
+        do{
+            try {
+                texte = sc.nextLine();
+                truc = false;
+                if (texte == ""){
+                    truc = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Veuillez entrer une chaine de caractère non nulle !\n" + commentaire);
+                sc.nextLine();
+                truc = true;
+                texte = "";
+            }
+        }while(truc);
+        return texte;
+    }
 
     private static void locationQr(FacadeNf out, CarteBancaire cbClient, String adr, Film choixFilm) {
         QRCode qr = new QRCode(choixFilm);
