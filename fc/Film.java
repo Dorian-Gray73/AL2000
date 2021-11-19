@@ -64,13 +64,13 @@ public class Film {
                 " genre = '" + genre + "'" + "\n" +
                 ", producteur = '" + nomProducteur + " " + prenomProducteur + "'" + "\n" +
                 ", réalisateur = '" + nomRealisateur + " " + prenomRealisateur + "'" + "\n" +
-                ", acteursPrincipaux = '"+"\n");
+                ", acteursPrincipaux = '");
 
         for (String acteur : acteurs) {
               str.append(acteur + " ");
         }
-
         str.deleteCharAt(str.length() - 1);
+        str.append("\n");
         str.append("'" +
                 ", resume = '" + resume + "'" +
                 "}");
