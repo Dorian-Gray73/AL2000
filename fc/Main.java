@@ -119,7 +119,7 @@ public class Main {
 
 			case CONSULTER:
 				List<Location> histo = out.consulterHistorique();
-				if (histo.equals(null)) {
+				if (histo == null) {
 					System.out.println("vous n'avez encore rien emprunté :'( ");
 				} else {
 					for (int i = 0; i < histo.size(); i++) {
