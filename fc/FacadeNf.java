@@ -14,6 +14,7 @@ public class FacadeNf {
 	private HashMap<String, List<CD>> cdDispo;
 	private Client client;
 	private CarteAbonnement carteAbo;
+	private ClientDaoImp clientDaoInstance = ClientDaoImp.getInstance();
 	
 	public FacadeNf(){
 		cdDispo = new HashMap<>();
@@ -33,7 +34,7 @@ public class FacadeNf {
 	 * @throws AbonnementNonReconnusException
 	 */
 	public void connexion(CarteAbonnement carteAbo) throws AbonnementNonReconnusException {
-		client = new ClientDaoImp().rechercheAdherent(carteAbo);
+		client = clientDaoInstance.rechercheAdherent(carteAbo);
 		if(client == null) {
 			throw new AbonnementNonReconnusException("Votre carte d'abonnement n'a pas été reconnus, vous n'êtes pas connecté.");
 		}
@@ -87,7 +88,7 @@ public class FacadeNf {
 					.filter(film -> {
 						boolean isRestricted = false;
 						for(String restriction : carteAbo.getRestriction()) 
-							isRestricted = film.getGenre().contains(restriction);
+							isRestricted = film.getGenre().toLowerCase().equals(restriction.toLowerCase());
 						
 					return !isRestricted;
 					}).collect(Collectors.toList());
@@ -103,7 +104,7 @@ public class FacadeNf {
 	public HashMap<Film, List<CD>> rechercherFilm(String titre) {
 		HashMap<String, String> filtres = new HashMap<>();
 		filtres.put("titre", titre);
-		return combinerSupports(Film.rechercherFilm(filtres));
+		return combinerSupports(filtreRestrictions(Film.rechercherFilm(filtres)));
 	}
 
 
@@ -131,7 +132,7 @@ public class FacadeNf {
 		
 		int code = client.emprunter(film);
 		if (code != -1) {
-			if(cdDispo.get(film.getFilm().getTitre()).contains(film)) {
+			if(cdDispo.get(film.getFilm().getTitre()) != null && cdDispo.get(film.getFilm().getTitre()).contains(film)) {
 				cdDispo.get(film.getFilm().getTitre()).remove(film);
 			}
 		} else {
@@ -163,10 +164,10 @@ public class FacadeNf {
 	 */
 	private void clientConnected(CarteBancaire cb, String adresseFacturation) {
 		if(client == null) {
-			client = new ClientDaoImp().rechercheClient(cb);
+			client = clientDaoInstance.rechercheClient(cb);
 			if(client == null) {
 				client = new Client(adresseFacturation, cb);
-				new ClientDaoImp().ajouterClient(client);
+				clientDaoInstance.ajouterClient(client);
 			}
 		}
 	}
@@ -206,7 +207,6 @@ public class FacadeNf {
 		Adherent adherent = client.souscrire(nom, prenom, dateNaissance, courriel);
 		carteAbo = adherent.getTitulaire();
 		client = adherent;
-		new ClientDaoImp().miseAJourClient(adherent);
 		return carteAbo;
 	}
 
@@ -244,6 +244,10 @@ public class FacadeNf {
 			return tmp.consulterHistorique();
 		}
 		return null;
+	}
+	
+	public double getSolde() {
+		return carteAbo.getSolde();
 	}
 
 }

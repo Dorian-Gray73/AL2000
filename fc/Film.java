@@ -60,18 +60,18 @@ public class Film {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("{" +
-                " titre = '" + titre + "'" +
-                " genre = '" + genre + "'" +
-                ", producteur = '" + nomProducteur + " " + prenomProducteur + "'" +
-                ", réalisateur = '" + nomRealisateur + " " + prenomRealisateur + "'" +
+                " titre = '" + titre + "'" + "\n" +
+                " genre = '" + genre + "'" + "\n" +
+                ", producteur = '" + nomProducteur + " " + prenomProducteur + "'" + "\n" +
+                ", réalisateur = '" + nomRealisateur + " " + prenomRealisateur + "'" + "\n" +
                 ", acteursPrincipaux = '");
 
         for (String acteur : acteurs) {
               str.append(acteur + " ");
         }
-
         str.deleteCharAt(str.length() - 1);
-        str.append("'" +
+        
+        str.append("'" + "\n"+
                 ", resume = '" + resume + "'" +
                 "}");
 

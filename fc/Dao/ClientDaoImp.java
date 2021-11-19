@@ -10,13 +10,21 @@ import fc.CarteBancaire;
 import fc.Client;
 
 public class ClientDaoImp implements ClientDao {
+	private static ClientDaoImp clientDaoInstance = null;
 	private List<Client> clients;
 	private List<Adherent> adherents;
 	
-	public ClientDaoImp() {
+	private ClientDaoImp() {
 		super();
 		this.clients = new ArrayList<Client>();
 		this.adherents = new ArrayList<Adherent>();
+	}
+	
+	public static ClientDaoImp getInstance() {
+		if(clientDaoInstance == null) {
+			clientDaoInstance = new ClientDaoImp();
+		}
+		return clientDaoInstance;
 	}
 
 	@Override
@@ -31,6 +39,7 @@ public class ClientDaoImp implements ClientDao {
 
 	@Override
 	public int ajouterClient(Client client) {
+		System.out.println("Ajout client"+ client);
 		clients.add(client);
 		return clients.indexOf(client);
 	}
@@ -40,7 +49,9 @@ public class ClientDaoImp implements ClientDao {
 	 */
 	@Override
 	public void miseAJourClient(Adherent adherent) {
+		System.out.println("Adhérent à ajouter"+adherent);
 		for(Client client : clients) {
+			System.out.println("client " + client);
 			if(client.getCarteBancaire().equals(adherent.getCarteBancaire())) {
 				clients.remove(client);
 			}

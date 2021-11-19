@@ -12,8 +12,20 @@ import fc.Client;
 import fc.Location;
 
 public class LocationDaoImp implements LocationDao {
-	List<Location> locations = new ArrayList<Location>();
+	private static LocationDaoImp locationDaoInstance = null;
+	private List<Location> locations;
 
+	private LocationDaoImp() {
+		this.locations = new ArrayList<Location>();
+	}
+	
+	public  static LocationDaoImp getInstance() {
+		if(locationDaoInstance == null) {
+			locationDaoInstance = new LocationDaoImp();
+		}
+		return locationDaoInstance;
+	}
+	
 	@Override
 	public int ajouterLocation(Location location) {
 		locations.add(location);

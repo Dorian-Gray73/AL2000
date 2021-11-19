@@ -25,7 +25,7 @@ public class CarteAbonnement {
      */
     public CarteAbonnement(CarteAbonnement mere) {
         this.solde = 10.0;
-        this.restriction = null;
+        this.restriction = new ArrayList<String>();
         this.bloque = false;
         this.nbLocation = 0;
         this.carteMere = mere;
@@ -148,7 +148,7 @@ public class CarteAbonnement {
      * Fonction qui retourne le solde de la carte
      * @return double solde de la carte
      */
-    private double getSolde() {
+    public double getSolde() {
         return solde;
     }
     
