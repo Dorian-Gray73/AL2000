@@ -83,8 +83,9 @@ public class Main {
 				if (ca != null) {
 					empruntAdh(sc, out);
 				} else {
-					empruntClient(sc, out);
+                    empruntClient(sc, out);
 				}
+                System.out.println("Votre location à été bien générer");
 				break;
 
 			case CREDITER:
