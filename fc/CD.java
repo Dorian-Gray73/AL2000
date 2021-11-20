@@ -25,7 +25,6 @@ public class CD extends Support {
     /**
      * Methode qui permet de changer l'etat du disque.
      * 
-     * @return void
      * @param endommage nouvel etat du cd
      */
     public void setEndommage(boolean endommage) {
@@ -44,8 +43,8 @@ public class CD extends Support {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
-     * @return String
+     * @see Object pour voir la definition de toString()
+     * @return String representant notre objet
      */
     @Override
     public String toString() {

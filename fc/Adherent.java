@@ -21,8 +21,8 @@ public class Adherent extends Client {
 
     /**
      * Constructeur de la classe Adherent dans le cas ou il y a pas de carte d'abonnement mere
-     * @param client 
-     * @see Client
+     * @param client dont hérite l'adhérent.
+     * @see Client voir le constructeur de Client
      * @param nom chaine de caractere representant le nom de famille de l adherent
      * @param prenom chaine de caractere representant le prenom de l adherent
      * @param dateNaiss represente la date de naissance de l adherent
@@ -35,8 +35,8 @@ public class Adherent extends Client {
 
     /**
      * Constructeur de la classe Adherent dans le cas ou il y a une carte d'abonnement mere
-     * @param client 
-     * @see Client
+     * @param client dont hérite l'adhérent.
+     * @see Client voir le constructeur de Client
      * @param nom chaine de caractere representant le nom de famille de l adherent
      * @param prenom chaine de caractere representant le prenom de l adherent
      * @param dateNaiss represente la date de naissance de l adherent
@@ -58,7 +58,7 @@ public class Adherent extends Client {
      * Fonction qui sera appeler si l'on veut emprunter un film
      * 
      * @param film est le film a emprunter
-     * @return Boolean vrai si l'opération s'est faite sinon faux
+     * @return int -1 si l'opération a échoué, le code de la location sinon.
      */
     public int emprunter(Support film) {
         if (this.getTitulaire().getBlocage()){
@@ -77,7 +77,7 @@ public class Adherent extends Client {
     
     /** 
      * methode qui defini le tarif de base par jour d un adherent
-     * @return double
+     * @return double correspondant au tarif de l adherent
      */
     @Override
     protected double tarif() {
@@ -87,9 +87,9 @@ public class Adherent extends Client {
     
     /** 
      * Methode qui permet savoir si l adherent a une location en cour
-     * @see Location
-     * @param cd
-     * @return Boolean
+     * @see Location voir la methode estEnCours
+     * @param cd correspondant au cd dont on veut savoir si il est louer
+     * @return Boolean qui sera true si le cd est deja louer
      */
     public Boolean estEnCours(CD cd) {
 		return Location.estEnCours(this,cd);
@@ -100,6 +100,7 @@ public class Adherent extends Client {
      *
      * @param film est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
+     * @return boolean qui confirme le rendu du CD.
      */
     public boolean rendre(CD film, Boolean endommage) {
         if(this.estEnCours(film))
@@ -113,7 +114,6 @@ public class Adherent extends Client {
      * 
      * @param carte carte à créditer
      * @param somme est la somme à rajouter au solde de la carte en param
-     * @return void
      */
     public void crediterCarte(CarteAbonnement carte, double somme) {
         carte.crediterCarte(somme);
@@ -121,7 +121,7 @@ public class Adherent extends Client {
 
     /**
      * methode qui permet de consulter l'historque d un adherent 
-     * @return histo Une chaine de caractère qui représente l'ensemble des location faite par l'adhérent
+     * @return une liste de location qui représente l'ensemble des location faite par l'adhérent
      */
     public List<Location> consulterHistorique() {
         return Location.consulterHistorique(this);
@@ -139,8 +139,8 @@ public class Adherent extends Client {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
-     * @return String
+     * @see Object pour voir la definition de toString
+     * @return String representant notre adherent
      */
     @Override
     public String toString() {
@@ -158,7 +158,7 @@ public class Adherent extends Client {
      * méthode qui débite un prix de la carte de l'adhérent
      * 
      * @param prix représente le prix d'une location
-     * @see CarteAbonnement
+     * @see CarteAbonnement voir getTitulaire() et debiterCarte(double)
      * @return reussite le boolean sera true si la transaction c'est bien passé 
      */
     public Boolean paiement(double prix) {
@@ -171,7 +171,6 @@ public class Adherent extends Client {
      * 
      * @param carte est la carte dont on va changer les restrictions
      * @param restrictions sont les nouvelles restrictions
-     * @return void
      */
     public void changerRestrictions(CarteAbonnement carte, String[] restrictions) {
         carte.setRestriction(restrictions);
@@ -199,8 +198,8 @@ public class Adherent extends Client {
 
 	
     /** 
-     * Methode qui retourne le titulaire d'une carte d abonnement
-     * @return CarteAbonnement
+     * Methode qui retourne la carte principale (ou carte mère) d'un adhérent
+     * @return CarteAbonnement la carte mère de l'adhérent
      */
     public CarteAbonnement getTitulaire() {
 		return titulaire;
@@ -209,7 +208,7 @@ public class Adherent extends Client {
 	
     /** 
      * Methode qui retourne la liste des cartes possedes par un adhérent
-     * @return ArrayList<CarteAbonnement>
+     * @return ArrayList<CarteAbonnement> representant l ensemble des cartes possedes
      */
     public ArrayList<CarteAbonnement> getPossede() {
 		return possede;

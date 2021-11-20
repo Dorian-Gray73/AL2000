@@ -87,7 +87,6 @@ public class Client {
 	 * 
 	 * @param film      Le film qui est rendu
 	 * @param endommage Renvoie le booléen indiquant si le film est endommagé ou non
-	 * @return boolean
 	 */
 	public boolean rendre(CD film, Boolean endommage) {
 		/*
@@ -130,7 +129,7 @@ public class Client {
 	 * Méthode de recherche de films.<br>
 	 * Une requête sera notamment effectuée à la base de données en traitant les
 	 * filtres.
-	 * @param titre : titre du film recherché
+	 *
 	 * @return Renvoie la liste des films obtenue par la recherche
 	 */
 	public ArrayList<Film> rechercherFilm(String titre) {
@@ -167,7 +166,7 @@ public class Client {
 
 	/**
 	 * Méthode de recherche d'une location en cours sur le film.
-	 * @param cd : le cd pour le quel on veut vérifier si il est encours de  location
+	 *
 	 * @return Renvoie un booléen indiquant si une location est en cours pour le
 	 *         film et le client ou non.
 	 */
@@ -180,7 +179,7 @@ public class Client {
 	/** 
 	 * methode qui va comparer deux clients au travers de leur carte bancaire
 	 * @see CarteBancaire
-	 * @param c : client
+	 * @param c
 	 * @return boolean
 	 */
 	public boolean egale(Client c){
