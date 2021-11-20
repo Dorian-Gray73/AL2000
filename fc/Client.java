@@ -143,7 +143,10 @@ public class Client {
 	 * Un nouvel adhérent sera créé avec son nom, prénom, date de naissance, adresse
 	 * de facturation, carte bancaire.<br>
 	 * Une carte d'abonnement sera aussi créée pour le nouvel adhérent créé.
-	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param dateNaissance
+	 * @param courriel
 	 * @return Renvoie le nouvel adhérent créé
 	 */
 	public Adherent souscrire(String nom, String prenom, LocalDate dateNaissance, String courriel) {
