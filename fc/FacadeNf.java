@@ -153,21 +153,6 @@ public class FacadeNf {
 
 	}
 
-	/**
-	 * Un client enprumte un film sous un format QRCode.
-	 * @param cb représentant la carte bancaire du client
-	 * @param adresseFacturation représentant l'adresse du client
-	 * @param film  Le film emprunté sur un support de type QRCode
-	 * @deprecated depuis la version 2
-	 * @throws ErreurEmpruntException ;
-	 */
-	public void emprunt(QRCode film,CarteBancaire cb,String adresseFacturation) throws ErreurEmpruntException {
-		clientConnected(cb, adresseFacturation);
-		if (client.emprunter(film) == -1) {
-			throw new ErreurEmpruntException("Votre emprunt a échoué vous ne serez pas débité.");
-		}
-
-	}
 
 	/**
 	 * Il faut vérifier que le client n'est pas null.
