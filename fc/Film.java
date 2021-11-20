@@ -98,6 +98,7 @@ public class Film {
 
 	
     /** 
+     * methode qui permet de retourner le genre d un film
      * @return String
      */
     public String getGenre() {
@@ -106,6 +107,7 @@ public class Film {
 
     
     /** 
+     * methode qui permet de definir un gere d un film
      * @param genre
      */
     public void setGenre(String genre) {
@@ -122,6 +124,7 @@ public class Film {
 
     
     /** 
+     * Methode qui permet de definir le resume d un film
      * @param resume
      */
     public void setResume(String resume) {
@@ -138,7 +141,7 @@ public class Film {
 
     
     /** 
-     * methode qui permet 
+     * methode qui permet de définir le realisateur d un film
      * @param nomRealisateur
      * @param prenomRealisateur
      */
@@ -157,6 +160,7 @@ public class Film {
 
     
     /** 
+     * Methode qui permet de definir un producteur
      * @param nomProducteur
      * @param prenomProducteur
      */
@@ -175,6 +179,7 @@ public class Film {
 
     
     /** 
+     * Methode qui permet de rajouter un acteur à un film
      * @param acteur
      */
     public void ajouterActeur(String acteur) {
@@ -183,6 +188,7 @@ public class Film {
 
 	
     /** 
+     * Methode qui permet de rajouter un acteur à un film
      * @param nomActeur
      * @param prenomActeur
      */
@@ -192,6 +198,7 @@ public class Film {
 
     
     /** 
+     * Methode qui permet le filtrage par genre de film
      * @param restrictions
      * @return boolean
      */
@@ -201,6 +208,7 @@ public class Film {
 
     
     /** 
+     * Methode qui permet de comparer deux film
      * @param o
      * @return boolean
      */
