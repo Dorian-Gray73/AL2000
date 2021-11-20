@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-
+/**
+ *  FilmDaoImp l'implémentation de l'interface FilmDao sur une base de donnée local
+	 */
 public class FilmDaoImp implements FilmDao {
 	Connection conn = null;
 	static final String CONN_URL = "jdbc:sqlite:BASE.db";
@@ -17,8 +19,8 @@ public class FilmDaoImp implements FilmDao {
 
 	
 	/** 
-	 * @param filtres
-	 * @return ArrayList<Film>
+	 * @param filtres filtre de recherche
+	 * @return ArrayList liste de film
 	 */
 	@Override
 	public ArrayList<Film> chercher(HashMap<String, String> filtres) {
@@ -111,7 +113,7 @@ public class FilmDaoImp implements FilmDao {
 
 	
 	/** 
-	 * @param args[]
+	 * @param args non utilisé
 	 */
 	public static void main(String args[]) {
 		FilmDaoImp a = new FilmDaoImp();
@@ -149,7 +151,7 @@ public class FilmDaoImp implements FilmDao {
 
 	
 	/** 
-	 * @param id
+	 * @param id idacteur
 	 * @return ArrayList<String>
 	 */
 	private ArrayList<String> recupererActeurs(int id) {

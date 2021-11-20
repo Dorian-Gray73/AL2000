@@ -10,7 +10,9 @@ import fc.Adherent;
 import fc.CD;
 import fc.Client;
 import fc.Location;
-
+/**
+ *  LocationDaoImp la classe qui implemente l'inteface LocationDao et qui gère la persitance de donnée des locations.
+	 */
 public class LocationDaoImp implements LocationDao {
 	private static LocationDaoImp locationDaoInstance = null;
 	private List<Location> locations;
@@ -32,7 +34,7 @@ public class LocationDaoImp implements LocationDao {
 	
 	
 	/** 
-	 * @param location
+	 * @param location la location a ajouter
 	 * @return int
 	 */
 	@Override
@@ -43,8 +45,8 @@ public class LocationDaoImp implements LocationDao {
 
 	
 	/** 
-	 * @param idLocation
-	 * @param fin
+	 * @param idLocation l'id de la location a MAJ
+	 * @param fin Date de la fin de la location
 	 * @return boolean
 	 */
 	@Override
@@ -60,9 +62,9 @@ public class LocationDaoImp implements LocationDao {
 
 	
 	/** 
-	 * @param client
-	 * @param film
-	 * @return Location
+	 * @param client  le client dont on veut trouver la location
+	 * @param film le film qu'on cherche
+	 * @return la location du film en paramètre pour le client en paramètre.
 	 */
 	@Override
 	public Location trouverLocation(Client client, CD film) {
@@ -75,11 +77,11 @@ public class LocationDaoImp implements LocationDao {
 		return null;
 	}
 
-	
-	/** 
-	 * @param client
-	 * @param film
-	 * @return Location
+
+	/**
+	 * @param client  le client dont on veut trouver la location
+	 * @param film le film qu'on cherche
+	 * @return la location du film en paramètre pour le client en paramètre.
 	 */
 	public Location trouverLocation(Adherent client, CD film) {
 		Iterator<Location> it = locations.iterator();
@@ -93,8 +95,8 @@ public class LocationDaoImp implements LocationDao {
 
 	
 	/** 
-	 * @param adherent
-	 * @return List<Location>
+	 * @param adherent  l'adhérent dont on veut trouver la location
+	 * @return List liste de location de l'adhérent
 	 */
 	@Override
 	public List<Location> chercherLocations(Adherent adherent) {
@@ -111,7 +113,7 @@ public class LocationDaoImp implements LocationDao {
 
 	
 	/** 
-	 * @param codeLocation
+	 * @param codeLocation code de la location
 	 * @return Location
 	 */
 	@Override

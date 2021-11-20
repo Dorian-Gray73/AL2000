@@ -8,7 +8,9 @@ import fc.Adherent;
 import fc.CarteAbonnement;
 import fc.CarteBancaire;
 import fc.Client;
-
+/**
+ * l'implementation de l'inteface ClientDao qui gère de la persistance des données client / adherent
+	 */
 public class ClientDaoImp implements ClientDao {
 	private static ClientDaoImp clientDaoInstance = null;
 	private List<Client> clients;
@@ -22,7 +24,7 @@ public class ClientDaoImp implements ClientDao {
 	
 	
 	/** 
-	 * @return ClientDaoImp
+	 * @return ClientDaoImp ;
 	 */
 	public static ClientDaoImp getInstance() {
 		if(clientDaoInstance == null) {
@@ -33,8 +35,8 @@ public class ClientDaoImp implements ClientDao {
 
 	
 	/** 
-	 * @param carteAbo
-	 * @return Adherent
+	 * @param carteAbo la carte abonnement dont on cherche l'adhérent
+	 * @return Adherent : l'adhérent pour qui appartient la carte carteAbo
 	 */
 	@Override
 	public Adherent rechercheAdherent(CarteAbonnement carteAbo) {
@@ -48,7 +50,7 @@ public class ClientDaoImp implements ClientDao {
 
 	
 	/** 
-	 * @param client
+	 * @param client le client qu'on veut ajouter.
 	 * @return int
 	 */
 	@Override
@@ -60,6 +62,7 @@ public class ClientDaoImp implements ClientDao {
 
 	/**
 	 * La mise à jour d'un client n'est appelé qu'au moment de la souscription et devient donc un Adhérent.
+	 * @param adherent supression de l'instance client qui est devenu l'adhérent adherent
 	 */
 	@Override
 	public void miseAJourClient(Adherent adherent) {
@@ -75,17 +78,19 @@ public class ClientDaoImp implements ClientDao {
 
 	
 	/** 
-	 * @param cb
-	 * @return Client
+	 * @param cb carte bancaire du client recherché
+	 * @return Client le client a qui partient la carte
 	 */
 	@Override
 	public Client rechercheClient(CarteBancaire cb) {
-		for(Client client : clients) {
-			if(client.getCarteBancaire().equals(cb)) {
-				return client;
+		Client result = null;
+		for (Client client : clients) {
+			if (client.getCarteBancaire().equals(cb)) {
+				result = client;
+				break;
 			}
 		}
-		return null;
+		return result;
 	}
 
 }
