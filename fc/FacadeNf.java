@@ -180,6 +180,8 @@ public class FacadeNf {
 	public void rendre(int codeLocation, CD film, boolean endommage) throws ErreurRenduException {
 		if(client == null) {
 			Location location = Location.trouverLocation(codeLocation);
+			if (location == null)
+				throw new ErreurRenduException("Cette location n'existe pas .");
 			client = location.getClient();
 		}
 		
