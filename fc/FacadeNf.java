@@ -211,7 +211,7 @@ public class FacadeNf {
 
 	
 	/** 
-	 * @see Adhérent.créditerCarte
+	 * @see Adherent
 	 * @param montant
 	 */
 	public void crediterCarte(Double montant) {

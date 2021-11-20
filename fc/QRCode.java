@@ -21,7 +21,7 @@ public class QRCode extends Support {
     /**
      * @Override Methode herité de la classe support. Permet de calculer la durée
      *           d'activité d'un QR code.<br>
-     * @see Support.calculDuree
+     * @see Support
      * @return int en heure représentant jusqu'a quand est valable un QR code 
      */
 
@@ -32,7 +32,7 @@ public class QRCode extends Support {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object.toString
+     * @see Object
      * @return String
      */
     @Override

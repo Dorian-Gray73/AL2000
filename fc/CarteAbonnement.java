@@ -104,7 +104,7 @@ public class CarteAbonnement {
     /**
      * Fonction qui permet de bloquer / debloquer une carte. 
      * Cela s'effectue en changeant la valeur du boolean bloque
-     * @param boolean nouvelle etat de la carte
+     * @param bloque nouvelle etat de la carte
      */
     private void setBlocage(Boolean bloque) {
         this.bloque = bloque;
@@ -162,7 +162,7 @@ public class CarteAbonnement {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object.toString
+     * @see Object
      * @return String
      */
     @Override
