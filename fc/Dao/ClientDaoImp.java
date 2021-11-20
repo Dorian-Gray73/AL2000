@@ -20,6 +20,10 @@ public class ClientDaoImp implements ClientDao {
 		this.adherents = new ArrayList<Adherent>();
 	}
 	
+	
+	/** 
+	 * @return ClientDaoImp
+	 */
 	public static ClientDaoImp getInstance() {
 		if(clientDaoInstance == null) {
 			clientDaoInstance = new ClientDaoImp();
@@ -27,6 +31,11 @@ public class ClientDaoImp implements ClientDao {
 		return clientDaoInstance;
 	}
 
+	
+	/** 
+	 * @param carteAbo
+	 * @return Adherent
+	 */
 	@Override
 	public Adherent rechercheAdherent(CarteAbonnement carteAbo) {
 		for(Adherent adherent : adherents) {
@@ -37,6 +46,11 @@ public class ClientDaoImp implements ClientDao {
 		return null;
 	}
 
+	
+	/** 
+	 * @param client
+	 * @return int
+	 */
 	@Override
 	public int ajouterClient(Client client) {
 		System.out.println("Ajout client"+ client);
@@ -59,6 +73,11 @@ public class ClientDaoImp implements ClientDao {
 		adherents.add(adherent);
 	}
 
+	
+	/** 
+	 * @param cb
+	 * @return Client
+	 */
 	@Override
 	public Client rechercheClient(CarteBancaire cb) {
 		for(Client client : clients) {

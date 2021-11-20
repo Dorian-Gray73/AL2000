@@ -15,6 +15,11 @@ public class FilmDaoImp implements FilmDao {
 	static final String CONN_URL = "jdbc:sqlite:BASE.db";
 
 
+	
+	/** 
+	 * @param filtres
+	 * @return ArrayList<Film>
+	 */
 	@Override
 	public ArrayList<Film> chercher(HashMap<String, String> filtres) {
 		try {
@@ -104,6 +109,10 @@ public class FilmDaoImp implements FilmDao {
 		return null;
 	}
 
+	
+	/** 
+	 * @param args[]
+	 */
 	public static void main(String args[]) {
 		FilmDaoImp a = new FilmDaoImp();
 		HashMap<String, String> map = new HashMap<>();
@@ -138,6 +147,11 @@ public class FilmDaoImp implements FilmDao {
 		return res;
 	}
 
+	
+	/** 
+	 * @param id
+	 * @return ArrayList<String>
+	 */
 	private ArrayList<String> recupererActeurs(int id) {
 		try {
 			conn = DriverManager.getConnection(CONN_URL);
