@@ -207,7 +207,7 @@ public class Client {
 	/** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
+     * @see Object pour voir la methode toString()
      * @return String presentant tout les champs du client
      */
 	@Override
