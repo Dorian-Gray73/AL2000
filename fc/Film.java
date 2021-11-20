@@ -76,11 +76,9 @@ public class Film {
 
         return str.toString();
     }
-
-
     
     /** 
-     * 
+     * Méthode pour rechercher un film
      * @param filtres qu'on applique à la recherche de film
      * @return ArrayList<Film> des films correspondant à la recherche.
      */
