@@ -18,7 +18,6 @@ public class FilmDaoImp implements FilmDao {
 	@Override
 	public ArrayList<Film> chercher(HashMap<String, String> filtres) {
 		try {
-			ArrayList<Film> f = new ArrayList<>();
 			conn = DriverManager.getConnection(CONN_URL);
 			conn.setAutoCommit(false);
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
