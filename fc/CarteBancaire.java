@@ -30,7 +30,6 @@ public class CarteBancaire {
      * Méthode qui changera le solde d'une carte de crédit.
      * Comme cette méthode est du coté de la banque alors nous supposons que ce sera valider a chaque fois.
      * @param solde Montant qui sera débiter de la carte bancaire.
-     * @return void
      */
     public boolean debiterCarte(double solde) {  
     	return true;
@@ -40,8 +39,8 @@ public class CarteBancaire {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
-     * @return String
+     * @see Object pour voir la definition de toString()
+     * @return String representant notre objet 
      */
     @Override
     public String toString() {
@@ -55,15 +54,15 @@ public class CarteBancaire {
     
     /** 
      * Methode qui permet de comparer deux cartes bancaire
-     * @param carte
-     * @return boolean
+     * @param carte correspondant a la carte bancaire a compare
+     * @return boolean qui sera true si les deux cartes sont les memes
      */
     public boolean equals(CarteBancaire carte){
        return this.noCB == carte.cryptogramme && carte.cryptogramme == this.cryptogramme;
     }    
     /** 
-     * Fonction qui retourne la date d'expiration de la carte bancaire/
-     * @return Date
+     * Fonction qui retourne la date d'expiration de la carte bancaire.
+     * @return Date qui est la date d'expiration de la carte bancaire.
      */
     private LocalDate getDateExpiration() {
         return dateExpiration;
