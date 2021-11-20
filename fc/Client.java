@@ -47,7 +47,7 @@ public class Client {
 	 * 
 	 * @param film Le film que le client souhaite emprunter et pour lequel une
 	 *             éventuelle nouvelle location sera créée.
-	 * @return int correspondant au code de la location ou -1 si la location a échouée.
+	 * @return le code de la location ou -1 si la location a échouée.
 	 */
 	public int emprunter(Support film) {
 		LocalDateTime dateEmprunt = LocalDateTime.now();
@@ -73,8 +73,7 @@ public class Client {
 
 	
 	/** 
-	 * methode qui permet definir le tarif de base d un client 
-	 * @return double correspondant au tarif d un client 
+	 * @return double
 	 */
 	protected double tarif() {
 		return 5.0;
@@ -88,7 +87,6 @@ public class Client {
 	 * 
 	 * @param film      Le film qui est rendu
 	 * @param endommage Renvoie le booléen indiquant si le film est endommagé ou non
-	 * @return boolean qui sera true si le cd est bien rendu
 	 */
 	public boolean rendre(CD film, Boolean endommage) {
 		/*
@@ -120,8 +118,8 @@ public class Client {
 
 	/**
 	 * Methode qui permet de savoir si le client a une location en cour
-	 * @param film que l'on veut verifier qu'on a en location
-	 * @return Location : instance de la location en cours
+	 * @param film
+	 * @return Location
 	 */
 	private Location getLocationEnCours(CD film) {
 		return Location.trouverLocation(this, film);
@@ -132,7 +130,7 @@ public class Client {
 	 * Une requête sera notamment effectuée à la base de données en traitant les
 	 * filtres.
 	 *
-	 * @return ArrayList<Film> correspondant a la liste des films obtenue par la recherche
+	 * @return Renvoie la liste des films obtenue par la recherche
 	 */
 	public ArrayList<Film> rechercherFilm(String titre) {
 		HashMap<String, String> filtres = new HashMap<String, String>();
@@ -160,7 +158,7 @@ public class Client {
 	/**
 	 * Méthode de paiement d'une facture.<br>
 	 * @param prix Le prix de la facture à payer
-	 * @return Boolean indiquant si le paiement a réussi ou non
+	 * @return Renvoie un booléen indiquant si le paiement a réussi ou non
 	 */
 	public Boolean paiement(double prix) {
 		return carteBancaire.debiterCarte(prix);
@@ -168,9 +166,9 @@ public class Client {
 
 	/**
 	 * Méthode de recherche d'une location en cours sur le film.
-	 * @param cd Le CD dont on veut vérifier si la location est en cours.
-	 * @return Boolean indiquant si une location est en cours pour le film et le client ou non.
-	 *         
+	 *
+	 * @return Renvoie un booléen indiquant si une location est en cours pour le
+	 *         film et le client ou non.
 	 */
 	public Boolean estEnCours(CD cd) {
 		return Location.estEnCours(this,cd);
@@ -180,9 +178,9 @@ public class Client {
 	
 	/** 
 	 * methode qui va comparer deux clients au travers de leur carte bancaire
-	 * @see CarteBancaire voir la methode equals
-	 * @param c correspondant au client que l'on veut comparer a this
-	 * @return boolean qui sera true si les clients sont identique
+	 * @see CarteBancaire
+	 * @param c
+	 * @return boolean
 	 */
 	public boolean egale(Client c){
 		return c.carteBancaire.equals(this.carteBancaire);
@@ -198,7 +196,7 @@ public class Client {
 	
 	/** 
 	 * Methode qui va ajouter un adherent a la bdd
-	 * @param adherent qui sera ajouté a la base de donnée
+	 * @param adherent
 	 */
 	private void majClientAdherent(Adherent adherent) {
 		clientDao.miseAJourClient(adherent);
@@ -208,7 +206,7 @@ public class Client {
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
      * @see Object pour voir la methode toString()
-     * @return String presentant tout les champs du client
+     * @return String
      */
 	@Override
 	public String toString() {
@@ -218,7 +216,7 @@ public class Client {
 
 	/**
 	 * Methode qui retourne la carte 
-	 * @return la carte bancaire du client
+	 * @return CarteBancaire
 	 */
 	public CarteBancaire getCarteBancaire() {
 		return carteBancaire;
@@ -226,7 +224,7 @@ public class Client {
 
 	/**
 	 * Methode qui retourne l adresse de facturation
-	 * @return String correspondant a l adresse de facturation
+	 * @return String
 	 */
 	public String getAdresseFacturation() {
 		return adresseFacturation;
