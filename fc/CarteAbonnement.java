@@ -95,7 +95,7 @@ public class CarteAbonnement {
 
     /**
      * Retourne les restrictions appliqué sur la carte 
-     * @return ArrayList<String>
+     * @return ArrayList<String> correspondant a la liste des restrictions
      */
     public ArrayList<String> getRestriction() {
         return restriction;
@@ -129,7 +129,6 @@ public class CarteAbonnement {
     /**
      * Fonction qui définit le nombre de location
      * @param nbLocation nouveau nombre de location
-     * @return void
      */
     public void setnbLocation(int nbLocation) {
         this.nbLocation = nbLocation;
@@ -162,8 +161,8 @@ public class CarteAbonnement {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
-     * @return String
+     * @see Object pour voir la definition de toString()
+     * @return String correspondant a l'objet
      */
     @Override
     public String toString() {
