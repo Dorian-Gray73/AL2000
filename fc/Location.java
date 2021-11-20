@@ -9,7 +9,11 @@ import java.util.List;
 
 import fc.Dao.LocationDao;
 import fc.Dao.LocationDaoImp;
-
+/**
+ * Classe representant une location <br>
+ * une location est represente par un numero de location, une date de debut, une date de fin, un tarif, 
+ * le client correspondant, le support de la location, et le dao permettant d effecteuer la connexion a la base de donnee pour emprunter.<br>
+ */
 public class Location {
 	private int idLocation;
     private LocalDateTime debut;
@@ -20,7 +24,13 @@ public class Location {
     private static LocationDao locationDao = LocationDaoImp.getInstance();
     
 
-
+    /**
+     * Constructeur de la methode Location
+     * @param debut de la location
+     * @param tarif de la location
+     * @param client de la location
+     * @param support de la location
+     */
 	public Location(LocalDateTime debut, double tarif, Client client, Support support) {
 		super();
 		this.debut = debut;
@@ -33,7 +43,8 @@ public class Location {
 
     
     /** 
-     * @return int
+     * Methode permettant de retourner l identifiant de la location
+     * @return int correspondant a l identifiant de la location
      */
     public int getIdLocation(){
         return idLocation;
@@ -100,8 +111,8 @@ public class Location {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
-     * @return String
+     * @see Object pour voir la definition de la methode toString()
+     * @return String correspondant a une representation de notre objet sous forme de chaine
      */
     @Override
     public String toString() {
@@ -116,7 +127,7 @@ public class Location {
     
     /** 
      * methode qui permet de retourner le support 
-     * @return Support
+     * @return Support de la location
      */
     public Support getSupport() {
         return support;
@@ -124,7 +135,8 @@ public class Location {
 
     
     /** 
-     * @return Client
+     * methode qui retourne le client ayant effectué la location
+     * @return Client qui a effectue la location
      */
     public Client getClient() {
 		return client;
@@ -141,7 +153,7 @@ public class Location {
     
     /** 
      * methode qui permet de retourner la date de fin de la location
-     * @return DateTime
+     * @return DateTime soit la fin de la location
      */
     private LocalDateTime getFin() {
         return fin;
@@ -150,7 +162,7 @@ public class Location {
     
     /** 
      * methode qui permet de retourner la date de début de la location
-     * @return DaateTime
+     * @return DaateTime soit le début de la location.
      */
     private LocalDateTime getDebut() {
         return debut;
@@ -159,8 +171,8 @@ public class Location {
 	
     /** 
      * Methode qui permet de sauvegarder les locations de l'adhérents
-     * @see LocationDao
-     * @return int
+     * @see LocationDao voir la documentation de LocationDao
+     * @return int  retourne l index de la location
      */
     public int sauvegarder() {
 		return locationDao.ajouterLocation(this);
@@ -169,8 +181,8 @@ public class Location {
 	
     /** 
      * methode qui permet de trouver les locations d'un client
-     * @see LocationDao
-     * @param client adhérent ayant realsier une location
+     * @see LocationDao voir la documentation de LocationDao
+     * @param client client ayant realsier une location
      * @param film film loué par le client
      * @return Location correspondant à la transaction recherché
      */
@@ -180,8 +192,7 @@ public class Location {
 
     /**
      * methode qui sert a mettre a jour une location d un client
-     *@see LocationDao
-     * @return void
+     * @see LocationDao voir la documentation de LocationDao
 	*/ 
      public void miseAJour() {
 		locationDao.miseAJourLocation(idLocation, fin);
@@ -200,8 +211,8 @@ public class Location {
 	
     /** 
      * Methode qui permet de trouver une location dans la base de donne 
-     * @param codeLocation
-     * @return Location
+     * @param codeLocation de la location
+     * @return Location si elle a été trouvé.
      */
     public static Location trouverLocation(int codeLocation) {
 		return locationDao.trouverLocation(codeLocation);
@@ -210,10 +221,10 @@ public class Location {
     
     /** 
      * Methode qui nous indique si une location est en cours pour un client
-     * @param cl
-     * @param cd
-     * @return boolean
-     */
+      * @param cl client donc on veut voir si il a une location
+      * @param cd cd dont on veut vérifier la présence dans les location en cours du client.
+      * @return boolean indiquant si la location de ce CD est en cours pour ce client.
+      */
     public static boolean estEnCours(Client cl,CD cd){
         Location location=locationDao.trouverLocation(cl,cd);
         return location.getFin() == null;
@@ -222,9 +233,9 @@ public class Location {
      
      /** 
       * Methode qui nous indique si une location est en cours pour un client
-      * @param cl
-      * @param cd
-      * @return boolean
+      * @param cl adhérent donc on veut voir si il a une location
+      * @param cd cd dont on veut vérifier la présence dans les location en cours de l'adhérent.
+      * @return boolean indiquant si la location de ce CD est en cours pour cet adhérent.
       */
      public static boolean estEnCours(Adherent cl,CD cd){
         Location location=locationDao.trouverLocation(cl,cd);
