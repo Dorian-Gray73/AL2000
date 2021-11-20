@@ -4,7 +4,6 @@ package fc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import fc.Dao.FilmDaoImp;
 
 /**
@@ -55,7 +54,7 @@ public class Film {
     /** 
      * Fonction qui redefinit la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible
-     * @return String
+     * @return String presentant tout les champs du film
      */
     @Override
     public String toString() {
@@ -81,16 +80,17 @@ public class Film {
 
     
     /** 
-     * @param filtres
-     * @return ArrayList<Film>
+     * 
+     * @param filtres qu'on applique à la recherche de film
+     * @return ArrayList<Film> des films correspondant à la recherche.
      */
     public static ArrayList<Film> rechercherFilm(HashMap<String, String> filtres) {
         return BD.chercher(filtres);
     }
 
     /**
-     * methode qui permet de recuperer le titre du film
-     * @return String
+     * Methode qui permet de recuperer le titre du film
+     * @return String le titre du film
      */
     public String getTitre() {
         return titre;
@@ -98,8 +98,8 @@ public class Film {
 
 	
     /** 
-     * methode qui permet de retourner le genre d un film
-     * @return String
+     * Methode qui permet de retourner le genre d un film
+     * @return String le genre du film
      */
     public String getGenre() {
 		return genre;
@@ -107,16 +107,16 @@ public class Film {
 
     
     /** 
-     * methode qui permet de definir un gere d un film
-     * @param genre
+     * Methode qui permet de definir un gere d un film
+     * @param genre qui met à jour le genre du film
      */
     public void setGenre(String genre) {
         this.genre = genre;
     }
 
     /**
-     * methode qui permet de recuperer le resume du film
-     * @return String
+     * Methode qui permet de recuperer le resume du film
+     * @return String le résumé du film
      */
     public String getResume() {
         return resume;
@@ -125,7 +125,7 @@ public class Film {
     
     /** 
      * Methode qui permet de definir le resume d un film
-     * @param resume
+     * @param resume pour mettre à jour le genre du film
      */
     public void setResume(String resume) {
         this.resume = resume;
@@ -133,7 +133,7 @@ public class Film {
 
     /**
      * methode qui permet de recuperer le producteur du film
-     * @return String
+     * @return String correspondant au nom et prenom du realisateur
      */
     public String getRealisateur() {
         return nomRealisateur + " " + prenomRealisateur;
@@ -142,8 +142,8 @@ public class Film {
     
     /** 
      * methode qui permet de définir le realisateur d un film
-     * @param nomRealisateur
-     * @param prenomRealisateur
+     * @param nomRealisateur nom du realisateur a ajouté
+     * @param prenomRealisateur prenom du realisateur
      */
     public void setRealisateur(String nomRealisateur, String prenomRealisateur) {
         this.nomRealisateur = nomRealisateur;
@@ -152,7 +152,7 @@ public class Film {
 
     /**
      * methode qui permet de recuperer le producteur du film
-     * @return String
+     * @return String correspondant au nom et prenom du producteur
      */
     public String getProducteur() {
         return nomProducteur + " " + prenomProducteur;
@@ -161,8 +161,8 @@ public class Film {
     
     /** 
      * Methode qui permet de definir un producteur
-     * @param nomProducteur
-     * @param prenomProducteur
+     * @param nomProducteur nom du producteur
+     * @param prenomProducteur prenom du producteur 
      */
     public void setProducteur(String nomProducteur, String prenomProducteur) {
         this.nomProducteur = nomProducteur;
@@ -171,7 +171,7 @@ public class Film {
 
     /**
      * methode qui permet de recuperer les acteurs principaux du film
-     * @return String
+     * @return ArrayList<String> liste des acteurs d un film
      */
     public ArrayList<String> getActeurs() {
         return acteurs;
@@ -180,7 +180,7 @@ public class Film {
     
     /** 
      * Methode qui permet de rajouter un acteur à un film
-     * @param acteur
+     * @param acteur chaine de caractere correspondant a l acteur a ajoute
      */
     public void ajouterActeur(String acteur) {
         acteurs.add(acteur);
@@ -189,8 +189,8 @@ public class Film {
 	
     /** 
      * Methode qui permet de rajouter un acteur à un film
-     * @param nomActeur
-     * @param prenomActeur
+     * @param nomActeur nom de l acteur
+     * @param prenomActeur prenom de l acteur
      */
     public void ajouterActeur(String nomActeur, String prenomActeur) {
         acteurs.add(nomActeur + " " + prenomActeur);
@@ -199,8 +199,8 @@ public class Film {
     
     /** 
      * Methode qui permet le filtrage par genre de film
-     * @param restrictions
-     * @return boolean
+     * @param restrictions liste des restrictions de l adherent
+     * @return boolean true si le genre est le meme (cas l ou on ne doit pas proposer la location de ce film a cet adherent)
      */
     public boolean verifieGenre(ArrayList<String> restrictions) {
         return restrictions.contains(genre);
@@ -209,8 +209,8 @@ public class Film {
     
     /** 
      * Methode qui permet de comparer deux film
-     * @param o
-     * @return boolean
+     * @param o object a tester pour voir s il correspond a un film
+     * @return boolean true si l objet est le meme false sinon
      */
     @Override
     public boolean equals(Object o) {
