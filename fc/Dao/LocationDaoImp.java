@@ -19,6 +19,10 @@ public class LocationDaoImp implements LocationDao {
 		this.locations = new ArrayList<Location>();
 	}
 	
+	
+	/** 
+	 * @return LocationDaoImp
+	 */
 	public  static LocationDaoImp getInstance() {
 		if(locationDaoInstance == null) {
 			locationDaoInstance = new LocationDaoImp();
@@ -26,12 +30,23 @@ public class LocationDaoImp implements LocationDao {
 		return locationDaoInstance;
 	}
 	
+	
+	/** 
+	 * @param location
+	 * @return int
+	 */
 	@Override
 	public int ajouterLocation(Location location) {
 		locations.add(location);
 		return locations.indexOf(location);
 	}
 
+	
+	/** 
+	 * @param idLocation
+	 * @param fin
+	 * @return boolean
+	 */
 	@Override
 	public boolean miseAJourLocation(int idLocation, LocalDateTime fin) {
 		Iterator<Location> it = locations.iterator();
@@ -43,6 +58,12 @@ public class LocationDaoImp implements LocationDao {
 		return false;
 	}
 
+	
+	/** 
+	 * @param client
+	 * @param film
+	 * @return Location
+	 */
 	@Override
 	public Location trouverLocation(Client client, CD film) {
 		Iterator<Location> it = locations.iterator();
@@ -54,6 +75,12 @@ public class LocationDaoImp implements LocationDao {
 		return null;
 	}
 
+	
+	/** 
+	 * @param client
+	 * @param film
+	 * @return Location
+	 */
 	public Location trouverLocation(Adherent client, CD film) {
 		Iterator<Location> it = locations.iterator();
 		while (it.hasNext()) {
@@ -64,6 +91,11 @@ public class LocationDaoImp implements LocationDao {
 		return null;
 	}
 
+	
+	/** 
+	 * @param adherent
+	 * @return List<Location>
+	 */
 	@Override
 	public List<Location> chercherLocations(Adherent adherent) {
 		List<Location> res = new ArrayList<>();
@@ -77,6 +109,11 @@ public class LocationDaoImp implements LocationDao {
 		return res.isEmpty() ? null : res;
 	}
 
+	
+	/** 
+	 * @param codeLocation
+	 * @return Location
+	 */
 	@Override
 	public Location trouverLocation(int codeLocation) {
 		Iterator<Location> it = locations.iterator();
