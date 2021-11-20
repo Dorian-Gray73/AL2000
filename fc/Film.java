@@ -214,6 +214,18 @@ public class Film {
      */
     @Override
     public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null) {
+            return false;
+        }
+
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+
         Film film = (Film) o;
         return titre.equals(film.titre) && genre.equals(film.genre);
     }
