@@ -100,7 +100,6 @@ public class Adherent extends Client {
      *
      * @param film est le film a rendre
      * @param endommage vrai si le CD est emdommagé sinon faux
-     * @throws LocationException
      */
     public boolean rendre(CD film, Boolean endommage) {
         if(this.estEnCours(film))
@@ -140,7 +139,7 @@ public class Adherent extends Client {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object.toString
+     * @see Object
      * @return String
      */
     @Override
@@ -158,8 +157,8 @@ public class Adherent extends Client {
     /**
      * méthode qui débite un prix de la carte de l'adhérent
      * 
-     * @param Prix représente le prix d'une location
-     * @see CarteAbonnement.debiterCarte
+     * @param prix représente le prix d'une location
+     * @see CarteAbonnement
      * @return reussite le boolean sera true si la transaction c'est bien passé 
      */
     public Boolean paiement(double prix) {

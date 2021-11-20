@@ -87,7 +87,6 @@ public class Location {
      * methode qui va calculer le prix de la location. La methode ne retournera jamais -1 dans des conditions normales.<br>
      * Le -1 indique que le calcul du prix c est mal dérouler.
      * @return le prix de la location.
-     * @throws LocationException Dans le cas ou l'on appel cette methode alors que la location n'est pas terminée.
      */
     public double calculerPrix() { 
         if (fin != null) {
@@ -101,7 +100,7 @@ public class Location {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object.toString
+     * @see Object
      * @return String
      */
     @Override
@@ -160,7 +159,7 @@ public class Location {
 	
     /** 
      * Methode qui permet de sauvegarder les locations de l'adhérents
-     * @see LocationDao.ajouterLocation
+     * @see LocationDao
      * @return int
      */
     public int sauvegarder() {
@@ -170,7 +169,7 @@ public class Location {
 	
     /** 
      * methode qui permet de trouver les locations d'un client
-     * @see LocationDao.trouverLocation
+     * @see LocationDao
      * @param client adhérent ayant realsier une location
      * @param film film loué par le client
      * @return Location correspondant à la transaction recherché
@@ -181,7 +180,7 @@ public class Location {
 
     /**
      * methode qui sert a mettre a jour une location d un client
-     *@see LocationDao.miseAJourLocation
+     *@see LocationDao
      * @return void
 	*/ 
      public void miseAJour() {

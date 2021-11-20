@@ -19,7 +19,7 @@ public class Support {
 
     /**
      * Fonction qui permet d'afficher les informations d'un film
-     * @see Film.afficherInformations
+     * @see Film
      * @return void
      */
     public void afficherInformations() {
@@ -42,7 +42,7 @@ public class Support {
     /** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object.toString
+     * @see Object
      * @return String
      */
     @Override
@@ -64,7 +64,7 @@ public class Support {
     
     /** 
      * Fonction qui sera redefini dans la classe CD
-     * @see CD.setEndommage
+     * @see CD
      * @param dommage parametre qui représente l'état du support
      */
     public void setEndommage(boolean dommage){
