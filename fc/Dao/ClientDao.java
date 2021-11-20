@@ -4,7 +4,9 @@ import fc.Adherent;
 import fc.CarteAbonnement;
 import fc.CarteBancaire;
 import fc.Client;
-
+/**
+ * interface de gestion de la persistance des clients / adhérents
+ */
 public interface ClientDao {
 	/**
 	 * @param cb carte bancaire du client recherché
@@ -18,7 +20,7 @@ public interface ClientDao {
 	public Adherent rechercheAdherent(CarteAbonnement carteAbo);
 	/**
 	 * @param client le client qu'on veut ajouter.
-	 * @return int
+	 * @return int retourne l'index du client ajouté dans la liste des clients
 	 */
 	public int ajouterClient(Client client);
 	/**

@@ -30,6 +30,7 @@ public class CarteBancaire {
      * Méthode qui changera le solde d'une carte de crédit.
      * Comme cette méthode est du coté de la banque alors nous supposons que ce sera valider a chaque fois.
      * @param solde Montant qui sera débiter de la carte bancaire.
+     * @return toujours true parce qu'on suppose de la paiement se fera dans tout les cas.
      */
     public boolean debiterCarte(double solde) {  
     	return true;

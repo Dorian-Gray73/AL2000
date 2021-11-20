@@ -112,7 +112,8 @@ public class FilmDaoImp implements FilmDao {
 	}
 
 	
-	/** 
+	/**
+	 * méthode de tests lors du developement
 	 * @param args non utilisé
 	 */
 	public static void main(String args[]) {

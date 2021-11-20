@@ -95,7 +95,7 @@ public class CarteAbonnement {
 
     /**
      * Retourne les restrictions appliqué sur la carte 
-     * @return ArrayList<String> correspondant a la liste des restrictions
+     * @return ArrayList correspondant a la liste des restrictions
      */
     public ArrayList<String> getRestriction() {
         return restriction;

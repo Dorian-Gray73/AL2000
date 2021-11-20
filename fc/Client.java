@@ -87,6 +87,7 @@ public class Client {
 	 * 
 	 * @param film      Le film qui est rendu
 	 * @param endommage Renvoie le booléen indiquant si le film est endommagé ou non
+	 * @return boolean, true si l'opération s'est bien passé sinon false
 	 */
 	public boolean rendre(CD film, Boolean endommage) {
 		/*
@@ -129,7 +130,7 @@ public class Client {
 	 * Méthode de recherche de films.<br>
 	 * Une requête sera notamment effectuée à la base de données en traitant les
 	 * filtres.
-	 *
+	 * @param titre titre du film recherché
 	 * @return Renvoie la liste des films obtenue par la recherche
 	 */
 	public ArrayList<Film> rechercherFilm(String titre) {
@@ -166,7 +167,7 @@ public class Client {
 
 	/**
 	 * Méthode de recherche d'une location en cours sur le film.
-	 *
+	 * @param  cd  le cd pour le quel on veut vérifier si il est en cours de location
 	 * @return Renvoie un booléen indiquant si une location est en cours pour le
 	 *         film et le client ou non.
 	 */
@@ -178,9 +179,9 @@ public class Client {
 	
 	/** 
 	 * methode qui va comparer deux clients au travers de leur carte bancaire
-	 * @see CarteBancaire
-	 * @param c
-	 * @return boolean
+	 * @see CarteBancaire voir la méthode equals.
+	 * @param c le client.
+	 * @return boolean true si la comparaison est positive, false sinon.
 	 */
 	public boolean egale(Client c){
 		return c.carteBancaire.equals(this.carteBancaire);
@@ -196,7 +197,7 @@ public class Client {
 	
 	/** 
 	 * Methode qui va ajouter un adherent a la bdd
-	 * @param adherent
+	 * @param adherent l'adhérent qu'on rajoute à la BD et on supprime le client qu'il était.
 	 */
 	private void majClientAdherent(Adherent adherent) {
 		clientDao.miseAJourClient(adherent);
@@ -206,7 +207,7 @@ public class Client {
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
      * @see Object pour voir la methode toString()
-     * @return String
+     * @return String String représentant l'objet
      */
 	@Override
 	public String toString() {
@@ -216,7 +217,7 @@ public class Client {
 
 	/**
 	 * Methode qui retourne la carte 
-	 * @return CarteBancaire
+	 * @return CarteBancaire retourne la carte bancaire du client
 	 */
 	public CarteBancaire getCarteBancaire() {
 		return carteBancaire;
@@ -224,7 +225,7 @@ public class Client {
 
 	/**
 	 * Methode qui retourne l adresse de facturation
-	 * @return String
+	 * @return String représentant l'adresse de facturation
 	 */
 	public String getAdresseFacturation() {
 		return adresseFacturation;

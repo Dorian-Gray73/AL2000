@@ -80,7 +80,7 @@ public class Film {
     /** 
      * Méthode pour rechercher un film
      * @param filtres qu'on applique à la recherche de film
-     * @return ArrayList<Film> des films correspondant à la recherche.
+     * @return ArrayList des films correspondant à la recherche.
      */
     public static ArrayList<Film> rechercherFilm(HashMap<String, String> filtres) {
         return BD.chercher(filtres);
@@ -169,7 +169,7 @@ public class Film {
 
     /**
      * methode qui permet de recuperer les acteurs principaux du film
-     * @return ArrayList<String> liste des acteurs d un film
+     * @return ArrayList liste des acteurs d un film
      */
     public ArrayList<String> getActeurs() {
         return acteurs;

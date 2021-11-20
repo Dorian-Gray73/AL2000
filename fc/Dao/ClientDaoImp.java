@@ -51,7 +51,7 @@ public class ClientDaoImp implements ClientDao {
 	
 	/** 
 	 * @param client le client qu'on veut ajouter.
-	 * @return int
+	 * @return int retourne l'index du client ajouté dans la liste des clients
 	 */
 	@Override
 	public int ajouterClient(Client client) {

@@ -77,8 +77,7 @@ public class Location {
 	}
     
     /** 
-     * methode qui permet de générer un fichier txt contenant la facture
-     * @return void mais un fichier txt ce créé dans votre repertoire
+     * methode qui permet de générer un fichier txt contenant la facture dans votre repertoire
      */
      public void genererFacture() {
         PrintWriter writer;
@@ -202,7 +201,7 @@ public class Location {
     /** 
      * Methode qui permettra a un adherent de consulter son historique
      * @param adherent adherent voulant consulter son historique
-     * @return List<Location> liste des locations effectues
+     * @return List liste des locations effectues
      */
     public static List<Location> consulterHistorique(Adherent adherent) {
 		return locationDao.chercherLocations(adherent);

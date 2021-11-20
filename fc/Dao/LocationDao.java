@@ -7,7 +7,9 @@ import fc.Adherent;
 import fc.CD;
 import fc.Client;
 import fc.Location;
-
+/**
+	 * l'interface de gestion de la persistance des locations
+	 */
 public interface LocationDao {
 	/**
 	 * @param location la location a ajouter

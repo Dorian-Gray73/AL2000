@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fc.Film;
-
+/**
+     * interface de gestion de la persistance des films.
+     */
 public interface FilmDao {
     /**
      * @param filtres filtre de recherche

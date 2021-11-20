@@ -37,7 +37,7 @@ public class FacadeNf {
 	/** 
 	 * Methode permettant a un client de ce connecter pour devenir un adherent au yeux du systeme
 	 * @param carteAbo correspondant a la carte de notre adherent
-	 *
+	 * @throws AbonnementNonReconnusException ;
 	 */
 	public void connexion(CarteAbonnement carteAbo) throws AbonnementNonReconnusException {
 		client = clientDaoInstance.rechercheAdherent(carteAbo);
@@ -55,7 +55,7 @@ public class FacadeNf {
 	 * une clé à laquelle nous avons associé la liste des CD disponible ou null si aucun CD n'est disponible.
 	 * Ainsi il est facile de savoir à tous moment si nous pouvons proposer la location d'un CD à l'utilisateur ou non.
 	 * @param films l'ensemble des films disponible à la location.
-	 * @return HashMap<Film, List<CD>> correspondant a l association du film et de ses cd correspondant
+	 * @return HashMap correspondant a l association du film et de ses cd correspondant
 	 */
 	private HashMap<Film, List<CD>> combinerSupports(List<Film> films) {
 		HashMap<Film, List<CD>> supports = new HashMap<>();
@@ -74,7 +74,7 @@ public class FacadeNf {
 	 * disponibles quel que soit le format, les filtres avec les restrictions fournies par la carte puis combine les en prenant en compte le
 	 * format pour toujours connaitre le nombre de CD disponible pour chaque film.
 	 * 
-	 * @return Une HashMap<Film, List<CD>> qui combine le film servant de clé auquel est associé une
+	 * @return Une HashMap qui combine le film servant de clé auquel est associé une
 	 *         liste de CD ou null si le film n'est disponible que sous format
 	 *         QRCode.
 	 */
@@ -86,7 +86,7 @@ public class FacadeNf {
 	 * Si un adhérent est connecté, on vérifie sur sa carte s'il y a des restrictions sur l'affichage des films
 	 * et on filtre la liste en conséquence.
 	 * @param films qui est une liste de film a filtrer
-	 * @return Une liste de film filtré ou la liste original si aucun adhérent n'est connecté.
+	 * @return List Une liste de film filtré ou la liste original si aucun adhérent n'est connecté.
 	 */
 	private List<Film> filtreRestrictions(ArrayList<Film> films) {
 		if(carteAbo != null) {
@@ -105,7 +105,7 @@ public class FacadeNf {
 
 	/** 
 	 * @param titre du film que l'on recherche
-	 * @return HashMap<Film, List<CD>> Une HashMap<Film, List<CD>> qui combine le film servant de clé auquel est associé une
+	 * @return HashMap Une HashMap qui combine le film servant de clé auquel est associé une
 	 *         liste de CD ou null si le film n'est disponible que sous format
 	 *         QRCode.
 	 */
@@ -121,6 +121,7 @@ public class FacadeNf {
 	 * Un client enprumte un film, s'il s'agit d'un CD il est retiré de la liste des cd disponible.
 	 * @param film Le film emprunté sur un support de type CD
 	 * @return Le code lié à la location(ici ce sera l'id de la location dans la base) qui sert pour un simple client pour pouvoir rendre correctement son cd
+	 * @throws ErreurEmpruntException ;
 	 */
 	public int emprunt(Support film) throws ErreurEmpruntException {
 		return emprunt(null, null, film);
@@ -129,8 +130,11 @@ public class FacadeNf {
 	/**
 	 * Vérification qu'un client est bien connecté s'il ne s'agit pas d'un adhérent
 	 * Un client enprumte un film, s'il s'agit d'un CD il est retiré de la liste des cd disponible.
+	 * @param cb représentant la carte bancaire du client
+	 * @param adresseFacturation représentant l'adresse du client
 	 * @param film Le film emprunté sur un support de type CD
-	 * @return Le code lié à la location(ici ce sera l'id de la location dans la base) qui sert pour un simple client pour pouvoir rendre correctement son cd
+	 * @return int Le code lié à la location(ici ce sera l'id de la location dans la base) qui sert pour un simple client pour pouvoir rendre correctement son cd
+	 * @throws ErreurEmpruntException ;
 	 */
 	public int emprunt(CarteBancaire cb, String adresseFacturation, Support film) throws ErreurEmpruntException {
 		if(carteAbo == null) 
@@ -151,8 +155,11 @@ public class FacadeNf {
 
 	/**
 	 * Un client enprumte un film sous un format QRCode.
+	 * @param cb représentant la carte bancaire du client
+	 * @param adresseFacturation représentant l'adresse du client
 	 * @param film  Le film emprunté sur un support de type QRCode
 	 * @deprecated depuis la version 2
+	 * @throws ErreurEmpruntException ;
 	 */
 	public void emprunt(QRCode film,CarteBancaire cb,String adresseFacturation) throws ErreurEmpruntException {
 		clientConnected(cb, adresseFacturation);
@@ -183,6 +190,7 @@ public class FacadeNf {
 	 * @param codeLocation du film que le client
 	 * @param film que le client ou l adherent rend
 	 * @param endommage true si le cd est endommage, false sinon
+	 * @throws ErreurRenduException ;
 	 */
 	public void rendre(int codeLocation, CD film, boolean endommage) throws ErreurRenduException {
 		if(client == null) {
@@ -255,7 +263,7 @@ public class FacadeNf {
 	
 	/**
 	 * Accède à l'historique d'un adhérent
-	 * @return List<location> qui représente l'historique de l'adhérent.
+	 * @return List qui représente l'historique de l'adhérent.
 	 */
 	public List<Location> consulterHistorique() {
 		if(carteAbo != null) {

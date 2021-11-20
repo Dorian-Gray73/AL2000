@@ -208,7 +208,7 @@ public class Adherent extends Client {
 	
     /** 
      * Methode qui retourne la liste des cartes possedes par un adhérent
-     * @return ArrayList<CarteAbonnement> representant l ensemble des cartes possedes
+     * @return ArrayList representant l ensemble des cartes possedes
      */
     public ArrayList<CarteAbonnement> getPossede() {
 		return possede;
