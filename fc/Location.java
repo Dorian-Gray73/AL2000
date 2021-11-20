@@ -61,7 +61,7 @@ public class Location {
      * methode qui permet de définir l'id de location
      * @param idLocation nouvelle identifiant de location
      */
-    public void setIdLocation(int publicidLocation) {
+    public void setIdLocation(int idLocation) {
 		this.idLocation = idLocation;
 	}
     
