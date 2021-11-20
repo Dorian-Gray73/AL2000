@@ -143,11 +143,11 @@ public class Client {
 	 * Un nouvel adhérent sera créé avec son nom, prénom, date de naissance, adresse
 	 * de facturation, carte bancaire.<br>
 	 * Une carte d'abonnement sera aussi créée pour le nouvel adhérent créé.
-	 * @param nom
-	 * @param prenom
-	 * @param dateNaissance
-	 * @param courriel
-	 * @return Renvoie le nouvel adhérent créé
+	 * @param nom du nouvel adherent
+	 * @param prenom du nouvel adherent
+	 * @param dateNaissance du nouvel adherent
+	 * @param courriel du nouvel adherent
+	 * @return Adherent le nouvel adhérent créé
 	 */
 	public Adherent souscrire(String nom, String prenom, LocalDate dateNaissance, String courriel) {
 		Adherent tmp = new Adherent(this, nom, prenom, dateNaissance, courriel);
@@ -205,7 +205,7 @@ public class Client {
 	/** 
      * Fonction qui redefini la fonction tostring.<br>
      * Permet d'avoir un affichage plus comprehensible 
-     * @see Object
+     * @see Object pour voir la methode toString()
      * @return String
      */
 	@Override
