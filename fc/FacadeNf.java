@@ -192,10 +192,8 @@ public class FacadeNf {
 		}
 	}
 
-	
-	
-	
-	/** 
+
+	/**
 	 * Un client peut souscrire à un abonnement.
 	 * @param cb la carte bancaire du client
 	 * @param adresseFacturation l'adresse de facturation du client
