@@ -51,6 +51,9 @@ public class BtmMenu extends JPanel {
 		creationDeCompteButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				panelAff.removeAll();
+				panelAff.add(new Souscription());
+				panelAff.revalidate();
 			}
 		});
 	}
