@@ -23,12 +23,13 @@ public class Historique extends JPanel {
 		locationsList = new JList<Location>();
 		
 		DefaultListModel<Location> location = new DefaultListModel<Location>();
-		//location.addElement(new Location(LocalDateTime.now(), 4.0, null, null));
+		location.addElement(new Location(LocalDateTime.now(), 4.0, null, null));
 		listToModel(out, location);
 		locationsList.setModel(location);
 		
 		
 		locationInfo = new JTextPane();
+		locationInfo.setEditable(false);
 		
 		new ListInteraction(locationsList, locationInfo);
 		
