@@ -27,8 +27,8 @@ public class Souscription extends JPanel{
     private JTextField mailField;
     private FacadeNf out=new FacadeNf();
 
-    public Souscription(String title) {
-        super(title);
+    public Souscription() {
+        super();
         this.setContentPane(panel1);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
