@@ -9,12 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
-public class souscription extends JFrame{
-    private JPanel panel1;
-    private JButton recherche;
-    private JTextField textField1;
-    private JComboBox comboBox1;
-    private JPanel Panel;
+public class souscription extends JPanle{
     private JTextField veuillezRemplirLesChampsTextField;
     private JTextField namefield;
     private JTextField moisField;

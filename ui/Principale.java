@@ -5,53 +5,46 @@ import fc.FacadeNf;
 import fc.Film;
 
 import javax.swing.*;
+import java.awt.Adjustable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-public class Principale extends JFrame{
-    private JPanel panel1;
-    private JButton créationDeCompteButton;
-    private JButton connexionButton;
-    private JComboBox comboBox1;
-    private JButton rechercher;
-    private JTextField rechercheTxt;
-    private JButton rendreButton;
-    private JPanel panel2;
-    private JPanel panel3;
+public class Principale extends JPanel{
+    private JScrollBar scrollBar;
+
     private FacadeNf out = new FacadeNf();
-    Principale(String title){
-        super(title);
+    Principale(){
+        scrollBar = new JScrollBar(Adjustable.HORIZONTAL);
+        add(scrollBar);
+        HashMap<Film, List<CD>> list_film = out.rechercherFilm();
+        Set<Film> films = list_film.keySet();
+        for (Film film : films) {
+            JPanel presentation = new JPanel();
+            JTextField titre = new JTextField("Titre : " + film.getTitre());
+            presentation.add(titre);
+            JTextField acteurs = new JTextField("Acteur principale : " + film.getActeurs().get(0));
+            presentation.add(acteurs);
+            JTextField producteur = new JTextField("Producteur : " + film.getProducteur());
+            presentation.add(producteur);
+            JTextField realisateur = new JTextField("Réalisateur : " + film.getRealisateur());
+            presentation.add(realisateur);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(panel1);
-        this.pack();
-        rechercher.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               String filmRech=rechercheTxt.getText();
-                HashMap<Film, List<CD>> resultat = out.rechercherFilm(filmRech);
-                recherche r=new recherche("recherche");
-                r.setVisible(true);
-            }
-        });
-        créationDeCompteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            JButton QRCode = new JButton("Code à lecture rapide");
+            JButton blueray = new JButton("Blueray");
 
+            List<CD> support = list_film.get(film);
+            if (support.size() == 0){
+                blueray.setEnabled(false);
             }
-        });
-        connexionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+            presentation.add(QRCode);
+            presentation.add(blueray);
+        }
     }
 
     public static void main(String[] args){
-        JFrame frame=new Principale("AL2000");
+        //JFrame frame=new Principale("AL2000");
+        JPanel frame=new Principale();
         frame.setVisible(true);
     }
 }
