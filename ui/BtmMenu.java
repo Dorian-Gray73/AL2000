@@ -47,11 +47,9 @@ public class BtmMenu extends JPanel {
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            //TODO Connexion
-            btmPanel.add(new JButton("histo"));
-            btmPanel.revalidate();
             //changement affichage central
-            panelAff.add(new Connexion(this));
+            panelAff.add(new Connexion(btmPanel));
+            panelAff.revalidate();
         }
     }
 
