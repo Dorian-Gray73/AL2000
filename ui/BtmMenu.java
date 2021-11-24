@@ -9,6 +9,7 @@ public class BtmMenu extends JPanel {
     private JButton connexionButton;
     private JButton rendreButton;
     private JButton empruntButton;
+    private JButton creationDeCompteButton;
 
     public BtmMenu(JPanel panelAff) {
         super();
@@ -18,12 +19,20 @@ public class BtmMenu extends JPanel {
         connexionButton = new JButton("Connexion");
         rendreButton = new JButton("Rendre");
         empruntButton = new JButton("Emprunter");
+        creationDeCompteButton = new JButton("Créer");
 
         add(rendreButton);
         add(empruntButton);
         add(connexionButton);
 
          connexionButton.addActionListener(new ConnexionAction(this,panelAff));
+
+         creationDeCompteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });   
     }
     
     private class ConnexionAction implements ActionListener {
