@@ -21,7 +21,7 @@ public class Main extends JFrame{
     public Main(String title){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        super.setMinimumSize(new Dimension(400,400));
+        super.setMinimumSize(new Dimension(400,400));
         panelPrincipal = new JPanel();
         
         /*
