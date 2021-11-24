@@ -28,6 +28,15 @@ public class BtmMenu extends JPanel {
 
 		//Bouton conditionnel à la connexion
 		histoBtn = new JButton("historique");
+		histoBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelAff.removeAll();
+				panelAff.add(new Historique(out));
+				panelAff.revalidate();
+			}
+		});
+		
 		filtreBtn = new JButton("Ajouter Filtre");
 		
 		add(rendreButton);
@@ -54,6 +63,10 @@ public class BtmMenu extends JPanel {
 		return filtreBtn;
 	}
 	
+	public JButton getConnexionButton() {
+		return connexionButton;
+	}
+	
 	private class ConnexionAction implements ActionListener {
 		private JPanel btmPanel;
 		private JPanel panelAff;
@@ -69,6 +82,7 @@ public class BtmMenu extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// changement affichage central
+			panelAff.removeAll();
 			panelAff.add(new Connexion(panelAff, (BtmMenu) btmPanel, out));
 			panelAff.revalidate();
 		}

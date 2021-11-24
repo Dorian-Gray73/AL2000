@@ -42,7 +42,9 @@ public class Connexion extends JPanel {
 					JOptionPane.showMessageDialog(null, " : Vous êtes connecté.", "Connecté",
 							JOptionPane.INFORMATION_MESSAGE);
 
-					btmMenu.add(new JLabel(nomField.getText() + "vous êtes connecté."), 0);
+					btmMenu.add(new JLabel(nomField.getText() + " : vous êtes connecté."), 0);
+					btmMenu.getConnexionButton().setEnabled(false);
+					
 					panelAff.removeAll();
 					panelAff.add(new Principale(panelAff));
 

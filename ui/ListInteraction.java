@@ -15,6 +15,8 @@ public class ListInteraction implements ListSelectionListener {
 		super();
 		this.locationsList = locationsList;
 		this.locationInfo = locationInfo;
+		
+		this.locationsList.addListSelectionListener(this);
 	}
 
 	@Override
