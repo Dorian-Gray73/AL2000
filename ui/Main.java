@@ -9,20 +9,33 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 
 public class Main extends JFrame{
     private JPanel panelPrincipal;
-   
     private JPanel panelAff;
+    private FacadeNf out;
 
     public Main(String title){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setMinimumSize(new Dimension(400,400));
         panelPrincipal = new JPanel();
+        
+        //Init façade avec 2 CD pour Mourir peut attendre
+        out = new FacadeNf(new HashMap<String, List<CD>>() {{
+			put("mourir peut attendre", new ArrayList<CD>(){{
+				add(new CD(Film.rechercherFilm(new HashMap<String, String>(){{
+					put("titre", "mourir peut attendre");
+				}}).get(0), false));
+				add(new CD(Film.rechercherFilm(new HashMap<String, String>(){{
+					put("titre", "mourir peut attendre");
+				}}).get(0), false));
+			}});
+		}});;
         
         /*
         Film film = new Film("titre", "genre");
@@ -32,13 +45,12 @@ public class Main extends JFrame{
         film.ajouterActeur("acteur");
         */
     
-        panelAff = new JPanel(); // Ici
-        panelAff.setLayout(new BorderLayout());
+        //        panelAff.setLayout(new BorderLayout());
         this.setContentPane(panelPrincipal);
         panelPrincipal.setLayout(new BorderLayout());
+        panelAff = new Principale(panelPrincipal);
         panelPrincipal.add(new TopMenu(panelAff),BorderLayout.NORTH);
-        panelPrincipal.add(panelAff,BorderLayout.CENTER);
-        panelPrincipal.add(new BtmMenu(panelAff),BorderLayout.SOUTH);
+        panelPrincipal.add(new BtmMenu(panelAff, out),BorderLayout.SOUTH);
         this.pack();
               
     }

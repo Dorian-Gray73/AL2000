@@ -47,6 +47,17 @@ public class ClientDaoImp implements ClientDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public Client rechercheAdherent(String nom, String prenom) {
+		adherents.add(new Adherent(new Client("", new CarteBancaire("", "", null)), nom, prenom, null, ""));
+		for(Adherent adherent : adherents) {
+			if(adherent.getNom().equalsIgnoreCase(nom) && adherent.getPrenom().equalsIgnoreCase(prenom)) {
+				return adherent;
+			}
+		}
+		return null;
+	}
 
 	
 	/** 

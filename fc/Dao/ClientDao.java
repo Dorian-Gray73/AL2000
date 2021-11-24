@@ -18,6 +18,8 @@ public interface ClientDao {
 	 * @return Adherent : l'adhérent pour qui appartient la carte carteAbo
 	 */
 	public Adherent rechercheAdherent(CarteAbonnement carteAbo);
+	
+	public Client rechercheAdherent(String nom, String prenom);
 	/**
 	 * @param client le client qu'on veut ajouter.
 	 * @return int retourne l'index du client ajouté dans la liste des clients
