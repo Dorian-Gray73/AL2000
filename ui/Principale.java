@@ -7,6 +7,7 @@ import fc.Film;
 import javax.swing.*;
 import java.awt.Adjustable;
 import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.util.*;
 
 public class Principale extends JPanel{
@@ -14,20 +15,23 @@ public class Principale extends JPanel{
 
     private FacadeNf out = new FacadeNf();
 
-    public Principale(){
-        super();
-        JPanel ecran = new JPanel();
+    public Principale(JPanel parent){
         HashMap<Film, List<CD>> list_film = out.rechercherFilm();
         Set<Film> films = list_film.keySet();
         for (Film film : films) {
-            JPanel presentation = new JPanel(new BoxLayout(this, BoxLayout.LINE_AXIS));//TODO boxLayout prend des param a verif
+            JPanel presentation = new JPanel();//TODO boxLayout prend des param a verif
+            presentation.setLayout(new BoxLayout(presentation, BoxLayout.PAGE_AXIS));
             JTextField titre = new JTextField("Titre : " + film.getTitre());
+            titre.setEditable(false);
             presentation.add(titre);
             JTextField acteurs = new JTextField("Acteur principale : " + film.getActeurs().get(0));
+            acteurs.setEditable(false);
             presentation.add(acteurs);
             JTextField producteur = new JTextField("Producteur : " + film.getProducteur());
+            producteur.setEditable(false);
             presentation.add(producteur);
             JTextField realisateur = new JTextField("Réalisateur : " + film.getRealisateur());
+            realisateur.setEditable(false);
             presentation.add(realisateur);
 
             JButton QRCode = new JButton("Code à lecture rapide");
@@ -39,17 +43,12 @@ public class Principale extends JPanel{
             }
             presentation.add(QRCode);
             presentation.add(blueray);
-            ecran.add(presentation);
+            add(presentation);
         }
-        scrollBar = new JScrollPane(ecran);
-        add(scrollBar);
+        JScrollPane scrollBar = new JScrollPane(this);
+        scrollBar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        parent.add(scrollBar, BorderLayout.CENTER);
+
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new Principale().setVisible(true);
-            }
-        });
-    }
 }
