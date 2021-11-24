@@ -46,6 +46,14 @@ public class FacadeNf {
 		}
 		this.carteAbo = carteAbo;
 	}
+	
+	public void connexion(String nom, String prenom) throws AbonnementNonReconnusException {
+		client = clientDaoInstance.rechercheAdherent(nom, prenom);
+		if(client == null) {
+			throw new AbonnementNonReconnusException("Vos nom et prénoms n'ont pas été reconnus, vous n'êtes pas connecté.");
+		}
+		this.carteAbo = ((Adherent)client).getTitulaire();
+	}
 
 	
 	/** 
