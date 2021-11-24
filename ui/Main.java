@@ -45,12 +45,11 @@ public class Main extends JFrame{
         film.ajouterActeur("acteur");
         */
     
-        panelAff = new JPanel(); // Ici
-        panelAff.setLayout(new BorderLayout());
+        //        panelAff.setLayout(new BorderLayout());
         this.setContentPane(panelPrincipal);
         panelPrincipal.setLayout(new BorderLayout());
+        panelAff = new Principale(panelPrincipal);
         panelPrincipal.add(new TopMenu(panelAff),BorderLayout.NORTH);
-        panelPrincipal.add(panelAff,BorderLayout.CENTER);
         panelPrincipal.add(new BtmMenu(panelAff, out),BorderLayout.SOUTH);
         this.pack();
               
