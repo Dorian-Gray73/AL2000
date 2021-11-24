@@ -13,10 +13,20 @@ import java.util.Iterator;
  *  FilmDaoImp l'implémentation de l'interface FilmDao sur une base de donnée local
 	 */
 public class FilmDaoImp implements FilmDao {
-	Connection conn = null;
+	private Connection conn = null;
 	static final String CONN_URL = "jdbc:sqlite:BASE.db";
+	private static FilmDaoImp instance = null;
 
+	private FilmDaoImp() {
+		conn = null;
+	}
 
+	public static FilmDaoImp getInstance() {
+		if (instance == null) {
+			instance = new FilmDaoImp();
+		}
+		return instance;
+	}
 	
 	/** 
 	 * @param filtres filtre de recherche

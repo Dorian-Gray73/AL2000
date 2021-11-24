@@ -35,14 +35,16 @@ public class TopMenu extends JPanel {
         rechercher.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               String filmRech=rechercheTxt.getText();
-                HashMap<Film, List<CD>> resultat = out.rechercherFilm(filmRech);
-                recherche r=new recherche("recherche");
-                r.setVisible(true);
+            
             }
         });
     }
     
+
+
+
+
+
     private class RechAction implements ActionListener {
         private JPanel TopPanel;
         private JPanel panelAff;
@@ -54,11 +56,24 @@ public class TopMenu extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("test1");
-            TopPanel.add(new JButton("histo"));
-            TopPanel.revalidate();
-            //changement affichage central
-            panelAff.add(new JLabel("Test"));
+            JTextArea zonArea = new JTextArea();
+            zonArea.setEditable(false);
+            String filmRech=rechercheTxt.getText();
+            HashMap<Film, List<CD>> resultat = out.rechercherFilm(filmRech);
+            for (Map.Entry<Film, java.util.List<CD>> map : resultat.entrySet()) {
+                Film filmRes = map.getKey();
+                String res = filmRes.toString();
+                java.util.List<CD> biblio = map.getValue();
+                if (biblio == null) {
+                    res = (res + " \n Il n'y a pas de dvd disponible pour ce film");
+                    zonArea.setText(res);
+                } else {
+                    res = res + "il y a " + map.getValue() + " cd disponible";
+                    res = ("\n" + res);
+                    zonArea.setText(res);
+                }
+            }
+            panelAff.add(zonArea,BorderLayout.CENTER);
             panelAff.revalidate();
         }
     }

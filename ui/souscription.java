@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
-public class souscription extends JPanle{
+public class Souscription extends JPanel{
     private JTextField veuillezRemplirLesChampsTextField;
     private JTextField namefield;
     private JTextField moisField;
@@ -27,7 +27,7 @@ public class souscription extends JPanle{
     private JTextField mailField;
     private FacadeNf out=new FacadeNf();
 
-    public souscription(String title) {
+    public Souscription(String title) {
         super(title);
         this.setContentPane(panel1);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +63,7 @@ public class souscription extends JPanle{
 
 
     public  static void main(String args[]){
-         JFrame frame=new souscription("souscription");
+         JFrame frame=new Souscription("souscription");
          frame.setVisible(true);
      }
 

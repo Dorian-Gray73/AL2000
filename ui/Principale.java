@@ -6,21 +6,21 @@ import fc.Film;
 
 import javax.swing.*;
 import java.awt.Adjustable;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import java.util.*;
 
 public class Principale extends JPanel{
-    private JScrollBar scrollBar;
+    private JScrollPane scrollBar;
 
     private FacadeNf out = new FacadeNf();
-    Principale(){
-        scrollBar = new JScrollBar(Adjustable.HORIZONTAL);
-        add(scrollBar);
+
+    public Principale(){
+        super();
+        JPanel ecran = new JPanel();
         HashMap<Film, List<CD>> list_film = out.rechercherFilm();
         Set<Film> films = list_film.keySet();
         for (Film film : films) {
-            JPanel presentation = new JPanel();
+            JPanel presentation = new JPanel(new BoxLayout(this, BoxLayout.LINE_AXIS));//TODO boxLayout prend des param a verif
             JTextField titre = new JTextField("Titre : " + film.getTitre());
             presentation.add(titre);
             JTextField acteurs = new JTextField("Acteur principale : " + film.getActeurs().get(0));
@@ -34,17 +34,22 @@ public class Principale extends JPanel{
             JButton blueray = new JButton("Blueray");
 
             List<CD> support = list_film.get(film);
-            if (support.size() == 0){
+            if (support == null){
                 blueray.setEnabled(false);
             }
             presentation.add(QRCode);
             presentation.add(blueray);
+            ecran.add(presentation);
         }
+        scrollBar = new JScrollPane(ecran);
+        add(scrollBar);
     }
 
-    public static void main(String[] args){
-        //JFrame frame=new Principale("AL2000");
-        JPanel frame=new Principale();
-        frame.setVisible(true);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Principale().setVisible(true);
+            }
+        });
     }
 }

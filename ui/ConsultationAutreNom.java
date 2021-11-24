@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import javax.swing.*;
 
-public class Consultation extends JPanel {
+public class ConsultationAutreNom extends JPanel {
     private JLabel titreLabel;
     private JLabel genreLabel;
     private JLabel realisateurLabel;
@@ -13,7 +13,8 @@ public class Consultation extends JPanel {
     private JTextArea acteursTextArea;
     private JTextArea resumeTextArea;
 
-    public Consultation(Film film) {
+    public ConsultationAutreNom(Film film) {
+        super();
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setAlignmentX(LEFT_ALIGNMENT);
         

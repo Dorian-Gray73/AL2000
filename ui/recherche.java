@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import  java.util.List;
 
-public class recherche extends JFrame {
+public class Recherche extends JFrame {
     private JPanel panel1;
     private JPanel recherche;
     private JPanel affichageResultat;
@@ -21,7 +21,7 @@ public class recherche extends JFrame {
     private JTextPane textPane;
     private FacadeNf out = new FacadeNf();
     String cherche;
-    public recherche(String title) {
+    public Recherche(String title) {
         super(title);
         //this.recherche=recherche;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,7 +50,7 @@ public class recherche extends JFrame {
 
     }
     public static void main(String[] args){
-        JFrame recherche=new recherche("recherche");
+        JFrame recherche=new Recherche("recherche");
         recherche.setVisible(true);
     }
 

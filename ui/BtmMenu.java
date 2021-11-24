@@ -24,8 +24,11 @@ public class BtmMenu extends JPanel {
         add(rendreButton);
         add(empruntButton);
         add(connexionButton);
+        add(creationDeCompteButton);
 
-         connexionButton.addActionListener(new ConnexionAction(this,panelAff));
+        rendreButton.addActionListener(new RendreAction(this, panelAff) );
+        connexionButton.addActionListener(new ConnexionAction(this,panelAff));
+        empruntButton.addActionListener(new EmprunterAction(this, panelAff));
 
          creationDeCompteButton.addActionListener(new ActionListener() {
             @Override
@@ -34,7 +37,6 @@ public class BtmMenu extends JPanel {
             }
         });   
     }
-    
     private class ConnexionAction implements ActionListener {
         private JPanel btmPanel;
         private JPanel panelAff;
@@ -43,15 +45,60 @@ public class BtmMenu extends JPanel {
             this.btmPanel = panel;
             this.panelAff = panelAff;
         }
-
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("test");
+            //TODO Connexion
             btmPanel.add(new JButton("histo"));
             btmPanel.revalidate();
             //changement affichage central
-            panelAff.add(new JLabel("Test"));
-            panelAff.revalidate();
+            panelAff.add(new Connexion(this));
+        }
+    }
+
+    private class RendreAction implements ActionListener {
+        private JPanel btmPanel;
+        private JPanel panelAff;
+        public RendreAction(JPanel panel, JPanel panelAff) {
+            super();
+            this.btmPanel = panel;
+            this.panelAff = panelAff;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Rendre
+            
+        }
+        
+    }
+
+    private class EmprunterAction implements ActionListener {
+        private JPanel btmPanel;
+        private JPanel panelAff;
+        public EmprunterAction(JPanel panel,JPanel panelAff){
+            super();
+            btmPanel = panel;
+            this.panelAff = panelAff;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Emprunt
+            
+        }
+    }
+
+    private class CreerAction implements ActionListener {
+        private JPanel btmPanel;
+        private JPanel panelAff;
+        public CreerAction(JPanel panel,JPanel panelAff){
+            super();
+            btmPanel = panel;
+            this.panelAff = panelAff;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO creation d un compte
+            // Lance la fenetre souscrire
+            
         }
     }
 }

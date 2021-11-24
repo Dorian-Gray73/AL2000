@@ -1,3 +1,4 @@
+
 package ui;
 import fc.CD;
 import fc.FacadeNf;
@@ -23,21 +24,23 @@ public class Main extends JFrame{
         super.setMinimumSize(new Dimension(400,400));
         panelPrincipal = new JPanel();
         
-       
-        panelAff = new JPanel();
+        /*
+        Film film = new Film("titre", "genre");
+        film.setResume("resume");
+        film.setProducteur("nomProducteur", "prenomProducteur");
+        film.setRealisateur("nomRealisateur", "prenomRealisateur");
+        film.ajouterActeur("acteur");
+        */
+    
+        panelAff = new JPanel(); // Ici
+        panelAff.setLayout(new BorderLayout());
         this.setContentPane(panelPrincipal);
         panelPrincipal.setLayout(new BorderLayout());
         panelPrincipal.add(new TopMenu(panelAff),BorderLayout.NORTH);
         panelPrincipal.add(panelAff,BorderLayout.CENTER);
         panelPrincipal.add(new BtmMenu(panelAff),BorderLayout.SOUTH);
-       
-        
-        
-
         this.pack();
-       
-
-        
+              
     }
 
     public static void main(String[] args) {

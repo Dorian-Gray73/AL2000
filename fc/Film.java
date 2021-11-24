@@ -20,7 +20,7 @@ public class Film {
     private String nomProducteur;
     private String prenomProducteur;
     private ArrayList<String> acteurs;
-    private static FilmDaoImp BD = new FilmDaoImp();
+    private static FilmDaoImp BD = FilmDaoImp.getInstance();
 
     /**
      * Constructeur de la classe film
