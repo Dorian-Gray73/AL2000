@@ -44,7 +44,7 @@ public class Connexion extends JPanel {
 
 					btmMenu.add(new JLabel(nomField.getText() + "vous êtes connecté."), 0);
 					panelAff.removeAll();
-					panelAff.add(new Principale());
+					panelAff.add(new Principale(panelAff));
 
 				} catch (AbonnementNonReconnusException e1) {
 					JOptionPane.showMessageDialog(null, "Vous n'avez pas été connecté", "Utilisateur inconnu",
