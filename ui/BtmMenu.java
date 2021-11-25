@@ -54,6 +54,7 @@ public class BtmMenu extends JPanel {
 				panelAff.removeAll();
 				panelAff.add(new Souscription());
 				panelAff.revalidate();
+				panelAff.repaint();
 			}
 		});
 	}
@@ -86,8 +87,10 @@ public class BtmMenu extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// changement affichage central
 			panelAff.removeAll();
+			
 			panelAff.add(new Connexion(panelAff, (BtmMenu) btmPanel, out));
 			panelAff.revalidate();
+			panelAff.repaint();
 		}
 	}
 
@@ -104,6 +107,9 @@ public class BtmMenu extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Rendre
+			JPanel rendrePanel = new JPanel();
+			JTextField LocField = new JTextField();
+			JCheckBox endBox = new JCheckBox();
 
 		}
 

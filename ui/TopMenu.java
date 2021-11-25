@@ -56,6 +56,7 @@ public class TopMenu extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+
             JTextArea zonArea = new JTextArea();
             zonArea.setEditable(false);
             String filmRech=rechercheTxt.getText();
@@ -73,8 +74,12 @@ public class TopMenu extends JPanel {
                     zonArea.setText(res);
                 }
             }
-            panelAff.add(zonArea,BorderLayout.CENTER);
+                    panelAff.removeAll();
+					panelAff.revalidate();
+                    panelAff.repaint();
+                panelAff.add(zonArea,BorderLayout.CENTER);
             panelAff.revalidate();
+            //panelAff.repaint();
         }
     }
 }

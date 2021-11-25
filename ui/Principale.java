@@ -12,10 +12,12 @@ import java.util.*;
 
 public class Principale extends JPanel{
     private JScrollPane scrollBar;
+    //private JPanel parent;
 
     private FacadeNf out = new FacadeNf();
 
     public Principale(JPanel parent){
+        //this.parent = parent;
         HashMap<Film, List<CD>> list_film = out.rechercherFilm();
         Set<Film> films = list_film.keySet();
         for (Film film : films) {
@@ -50,5 +52,16 @@ public class Principale extends JPanel{
         parent.add(scrollBar, BorderLayout.CENTER);
 
     }
+
+    /* @Override
+    public void removeAll(){
+        super.removeAll();
+        if (parent != null && scrollBar != null){
+            parent.remove(scrollBar);
+            parent.add(this);
+            add(new JTextField("Petit test pour voir ce qu'il en est."));
+            System.out.println("Ouais je mets des test de partout");
+        }
+    } */
 
 }

@@ -18,11 +18,12 @@ public class Main extends JFrame{
     private JPanel panelPrincipal;
     private JPanel panelAff;
     private FacadeNf out;
-
+    //private Toolkit outil = getToolkit();
     public Main(String title){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        super.setMinimumSize(new Dimension(400,400));
+        // super.setMinimumSize(outil.getScreenSize());
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         panelPrincipal = new JPanel();
         
         //Init façade avec 2 CD pour Mourir peut attendre
