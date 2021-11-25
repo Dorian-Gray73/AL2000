@@ -31,9 +31,7 @@ public class Souscription extends JPanel {
 	
 	private JButton valideButton;
 	
-	private FacadeNf out = new FacadeNf();
-
-	public Souscription() {
+	public Souscription(JPanel panelAff, FacadeNf out) {
 		super();
 		setLayout(new BorderLayout());
 		JPanel centragePanel = new JPanel(new FlowLayout());
@@ -102,8 +100,14 @@ public class Souscription extends JPanel {
 				LocalDate dateCb = LocalDate.of(year, month, 1);
 				CarteBancaire cb = new CarteBancaire(numCb, crypto, dateCb);
 				out.souscrire(cb, adr, nom, prenom, dateAnniv, mail);
-				JOptionPane.showMessageDialog(null, "Votre compte à été créé avec succès.", "Compte crée",
+				JOptionPane.showMessageDialog(null, "Votre compte à été créé avec succès.\nNom : "+nom+"\nPrénom : "+prenom, "Compte crée",
 							JOptionPane.INFORMATION_MESSAGE);
+				
+				panelAff.removeAll();
+				panelAff.add(new Principale(panelAff, out));
+				panelAff.revalidate();
+				panelAff.repaint();
+				
 			}
 		});
 	}

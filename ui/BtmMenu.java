@@ -73,7 +73,7 @@ public class BtmMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelAff.removeAll();
-				panelAff.add(new Souscription());
+				panelAff.add(new Souscription(panelAff, out));
 				panelAff.revalidate();
 				panelAff.repaint();
 			}
