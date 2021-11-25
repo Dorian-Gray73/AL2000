@@ -48,7 +48,7 @@ public class Historique extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelAff.removeAll();
-				panelAff.add(new Principale(panelAff));
+				panelAff.add(new Principale(panelAff,out));
 				panelAff.revalidate();
 				panelAff.repaint();
 			}

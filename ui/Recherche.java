@@ -21,6 +21,7 @@ public class Recherche extends JFrame {
     private JTextPane textPane;
     private FacadeNf out = new FacadeNf();
     String cherche;
+
     public Recherche(String title) {
         super(title);
         //this.recherche=recherche;
@@ -31,7 +32,11 @@ public class Recherche extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String filmRech = rechercheTxt.getText();
-                HashMap<Film, List<CD>> resultat = out.rechercherFilm(filmRech);
+                
+                HashMap<String, String> filtres = new HashMap<>();
+                filtres.put("titre", filmRech);
+                
+                HashMap<Film, List<CD>> resultat = out.rechercherFilm(filtres);
                 for (Map.Entry<Film, java.util.List<CD>> map : resultat.entrySet()) {
                     Film filmRes = map.getKey();
                     String res = filmRes.toString();

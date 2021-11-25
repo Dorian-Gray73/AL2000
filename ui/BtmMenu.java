@@ -3,7 +3,10 @@ package ui;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import fc.CD;
+import fc.ErreurRenduException;
 import fc.FacadeNf;
+import fc.Film;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,19 +15,19 @@ import java.awt.event.ActionListener;
 public class BtmMenu extends JPanel {
 	private JButton connexionButton;
 	private JButton rendreButton;
-	private JButton empruntButton;
+	
 	private JButton creationDeCompteButton;
 	private JButton histoBtn;
 	private JButton filtreBtn;
+	private FacadeNf out;
 
 	public BtmMenu(JPanel panelAff, FacadeNf out) {
 		super();
 
 		setLayout(new FlowLayout());
-
+		this.out = out;
 		connexionButton = new JButton("Connexion");
 		rendreButton = new JButton("Rendre");
-		empruntButton = new JButton("Emprunter");
 		creationDeCompteButton = new JButton("Créer");
 
 		//Bouton conditionnel à la connexion
@@ -42,13 +45,13 @@ public class BtmMenu extends JPanel {
 		filtreBtn = new JButton("Ajouter Filtre");
 		
 		add(rendreButton);
-		add(empruntButton);
+		
 		add(connexionButton);
 		add(creationDeCompteButton);
 
 		rendreButton.addActionListener(new RendreAction(this, panelAff));
 		connexionButton.addActionListener(new ConnexionAction(this, panelAff, out));
-		empruntButton.addActionListener(new EmprunterAction(this, panelAff));
+		
 
 		creationDeCompteButton.addActionListener(new ActionListener() {
 			@Override
@@ -114,7 +117,10 @@ public class BtmMenu extends JPanel {
 			JTextField locField = new JTextField();
 			JLabel dmgLabel = new JLabel();
 			JLabel numLabel = new JLabel();
+			JButton valButton = new JButton("Validation");
 			JCheckBox dmgdBox = new JCheckBox();
+			
+			
 
 			dmgLabel.setText("Cocher si le cd a ete endommage");
 			numLabel.setText("Entrer votre numero de location");
@@ -128,9 +134,40 @@ public class BtmMenu extends JPanel {
 			panelAff.removeAll();
 			panelAff.add(numPanel,BorderLayout.WEST);
 			panelAff.add(dmgPanel,BorderLayout.EAST);
-			
+			panelAff.add(valButton,BorderLayout.SOUTH);
+
 			panelAff.revalidate();
 			panelAff.repaint();
+
+			valButton.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e){
+					try {
+						String numStr = locField.getText();
+						int num = Integer.parseInt(numStr);
+						boolean damage = dmgdBox.isSelected();
+
+						Film aRendre = new Film("logan lucky", "comedie");
+						//loc logan lucky num 110
+						CD film = new CD(aRendre, false);
+						out.rendre(num, film, damage); 
+
+						JOptionPane.showMessageDialog(null, " Votre rendu a ete effectué", "Rendu",
+							JOptionPane.INFORMATION_MESSAGE);
+					} 
+					catch(ErreurRenduException e2){
+						JOptionPane.showMessageDialog(null, "Le rendu a échoué", "Il n'y a pas de location a ce numero",
+							JOptionPane.ERROR_MESSAGE);
+					e2.printStackTrace();
+					}
+					catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, "Le rendu a échoué", "Il y a un soucis au niveau de vos insertion",
+							JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+					}
+				}
+			});
+
 
 		}
 

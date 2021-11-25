@@ -14,10 +14,16 @@ public class Principale extends JPanel{
     private JScrollPane scrollBar;
     //private JPanel parent;
 
-    private FacadeNf out = new FacadeNf();
+    private  FacadeNf out;
 
-    public Principale(JPanel parent){
+    public Principale(JPanel parent) {
+        this(parent, (FacadeNf)null);
+    }
+
+	public Principale(JPanel parent, FacadeNf out){
         //this.parent = parent;
+        if (out != null)
+            this.out = out;
         HashMap<Film, List<CD>> list_film = out.rechercherFilm();
         Set<Film> films = list_film.keySet();
         for (Film film : films) {

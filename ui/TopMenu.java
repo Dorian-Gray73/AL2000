@@ -57,29 +57,48 @@ public class TopMenu extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            JTextArea zonArea = new JTextArea();
-            zonArea.setEditable(false);
-            String filmRech=rechercheTxt.getText();
-            HashMap<Film, List<CD>> resultat = out.rechercherFilm(filmRech);
-            for (Map.Entry<Film, java.util.List<CD>> map : resultat.entrySet()) {
-                Film filmRes = map.getKey();
-                String res = filmRes.toString();
-                java.util.List<CD> biblio = map.getValue();
-                if (biblio == null) {
+            String filmRech = rechercheTxt.getText();
+            
+            HashMap<String, String> filtres = new HashMap<>();
+            filtres.put(comboBox1.getSelectedItem().toString(), filmRech);
+
+            HashMap<Film, List<CD>> resultat = out.rechercherFilm(filtres);
+            Set<Film> films = resultat.keySet();
+            JPanel sousPanel = new JPanel(new GridLayout(films.size() * 2, 1));
+            for (Film film : films){
+                JTextArea zonArea = new JTextArea();
+                zonArea.setEditable(false);
+                String res = film.toString();
+                List<CD> support = resultat.get(film);
+                if (support == null) {
                     res = (res + " \n Il n'y a pas de dvd disponible pour ce film");
                     zonArea.setText(res);
                 } else {
-                    res = res + "il y a " + map.getValue() + " cd disponible";
+                    res = res + "il y a " + support + " cd disponible";
                     res = ("\n" + res);
                     zonArea.setText(res);
                 }
+                sousPanel.add(zonArea);
+                sousPanel.add(new JSeparator(SwingConstants.HORIZONTAL));
             }
-                    panelAff.removeAll();
-					panelAff.revalidate();
-                    panelAff.repaint();
-                panelAff.add(zonArea,BorderLayout.CENTER);
+            // for (Map.Entry<Film, java.util.List<CD>> map : resultat.entrySet()) {
+            //     Film filmRes = map.getKey();
+            //     String res = filmRes.toString();
+            //     java.util.List<CD> biblio = map.getValue();
+            //     if (biblio == null) {
+            //         res = (res + " \n Il n'y a pas de dvd disponible pour ce film");
+            //         zonArea.setText(res);
+            //     } else {
+            //         res = res + "il y a " + map.getValue() + " cd disponible";
+            //         res = ("\n" + res);
+            //         zonArea.setText(res);
+            //     }
+            // }
+            
+            panelAff.removeAll();        
+            panelAff.add(sousPanel, BorderLayout.CENTER);
             panelAff.revalidate();
-            //panelAff.repaint();
+            panelAff.repaint();
         }
     }
 }

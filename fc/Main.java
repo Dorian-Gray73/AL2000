@@ -76,7 +76,9 @@ public class Main {
 
 			case RECHERCHER:
 				String titre = texteValide("Veuillez rentrer le titre du Film que vous recherchez: ", sc);
-				HashMap<Film, List<CD>> resultat = out.rechercherFilm(titre);
+				HashMap<String, String> filtres = new HashMap<>();
+				filtres.put("titre", titre);
+				HashMap<Film, List<CD>> resultat = out.rechercherFilm(filtres);
 				for (Map.Entry<Film, List<CD>> map : resultat.entrySet()) {
 					Film filmRes = map.getKey();
 					System.out.println("Voici les films disponibles: " + filmRes.toString());
@@ -195,7 +197,9 @@ public class Main {
 		String titreLoc = texteValide("Veuillez rentrer le titre du Film que vous recherchez: ", sc);
 		System.out.println("titre recup : " + titreLoc);
 
-		HashMap<Film, List<CD>> resultatLoc = out.rechercherFilm(titreLoc);
+		HashMap<String, String> filtres = new HashMap<>();
+		filtres.put("titre", titreLoc);
+		HashMap<Film, List<CD>> resultatLoc = out.rechercherFilm(filtres);
 		Set<Film> filmChoisie = resultatLoc.keySet();
 		Iterator<Film> it = filmChoisie.iterator();
 		Film choixFilm = it.next();
@@ -244,7 +248,9 @@ public class Main {
 		String adr = texteValide("Veuillez rentrer votre addresse sur une seul ligne: ", sc);
 		String titreLoc = texteValide("Veuillez rentrer le titre du Film que vous recherchez: ", sc);
 
-		HashMap<Film, List<CD>> resultatLoc = out.rechercherFilm(titreLoc);
+		HashMap<String, String> filtres = new HashMap<>();
+		filtres.put("titre", titreLoc);
+		HashMap<Film, List<CD>> resultatLoc = out.rechercherFilm(filtres);
 		Set<Film> filmChoisie = resultatLoc.keySet();
 		Iterator<Film> it = filmChoisie.iterator();
 		Film choixFilm = it.next();

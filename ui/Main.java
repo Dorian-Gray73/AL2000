@@ -49,7 +49,7 @@ public class Main extends JFrame{
         //        panelAff.setLayout(new BorderLayout());
         this.setContentPane(panelPrincipal);
         panelPrincipal.setLayout(new BorderLayout());
-        panelAff = new Principale(panelPrincipal);
+        panelAff = new Principale(panelPrincipal,out);
         panelPrincipal.add(new TopMenu(panelAff),BorderLayout.NORTH);
         panelPrincipal.add(new BtmMenu(panelAff, out),BorderLayout.SOUTH);
         this.pack();

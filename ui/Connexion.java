@@ -47,7 +47,7 @@ public class Connexion extends JPanel {
 					
 					panelAff.removeAll();
 					panelAff.revalidate();
-					panelAff.add(new Principale(panelAff));
+					panelAff.add(new Principale(panelAff,out));
 
 				} catch (AbonnementNonReconnusException e1) {
 					JOptionPane.showMessageDialog(null, "La connexion a échoué", "Utilisateur inconnu",

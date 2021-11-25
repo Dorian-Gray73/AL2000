@@ -117,9 +117,7 @@ public class FacadeNf {
 	 *         liste de CD ou null si le film n'est disponible que sous format
 	 *         QRCode.
 	 */
-	public HashMap<Film, List<CD>> rechercherFilm(String titre) {
-		HashMap<String, String> filtres = new HashMap<>();
-		filtres.put("titre", titre);
+	public HashMap<Film, List<CD>> rechercherFilm(HashMap<String, String> filtres) {
 		return combinerSupports(filtreRestrictions(Film.rechercherFilm(filtres)));
 	}
 
