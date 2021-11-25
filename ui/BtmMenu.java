@@ -32,7 +32,7 @@ public class BtmMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelAff.removeAll();
-				panelAff.add(new Historique(out));
+				panelAff.add(new Historique(panelAff, out));
 				panelAff.revalidate();
 			}
 		});

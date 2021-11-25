@@ -1,9 +1,12 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -20,7 +23,7 @@ public class Historique extends JPanel {
 	private JList<Location> locationsList;
 	private JTextPane locationInfo;
 	
-	public Historique(FacadeNf out) {
+	public Historique(JPanel panelAff, FacadeNf out) {
 		super();
 		setLayout(new BorderLayout(10, 5));
 		
@@ -34,13 +37,27 @@ public class Historique extends JPanel {
 		locationsList.setCellRenderer(new HistoCellRenderer());
 
 		locationInfo = new JTextPane();
+		locationInfo.setText("Aperçu de la location sélectionnée.");
 		locationInfo.setEditable(false);
 		
 		new ListInteraction(locationsList, locationInfo);
 		
-		add(new JLabel("Test"), BorderLayout.WEST);
+		JButton retourButton = new JButton("Retour");
+		retourButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelAff.removeAll();
+				panelAff.add(new Principale(panelAff));
+				panelAff.revalidate();
+				panelAff.repaint();
+			}
+		});
+		
+		add(new JLabel("Voici vos location vous pouvez en sélectionner une."), BorderLayout.NORTH);
 		add(locationsList, BorderLayout.WEST);
 		add(locationInfo, BorderLayout.EAST);
+		add(retourButton, BorderLayout.SOUTH);
 		
 	}
 
