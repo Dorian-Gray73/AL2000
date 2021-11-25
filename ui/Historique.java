@@ -31,7 +31,7 @@ public class Historique extends JPanel {
 		location.addElement(new Location(LocalDateTime.now().plusHours(10), 4.0, null, new QRCode(new Film("logan", "action"))));
 		listToModel(out, location);
 		locationsList.setModel(location);
-		//locationsList.setCellRenderer(new HistoCellRenderer());
+		locationsList.setCellRenderer(new HistoCellRenderer());
 
 		locationInfo = new JTextPane();
 		locationInfo.setEditable(false);
