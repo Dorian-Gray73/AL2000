@@ -55,6 +55,19 @@ public class TopMenu extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
+            JButton retourButton = new JButton("Retour");
+		retourButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelAff.removeAll();
+				panelAff.add(new Principale(panelAff,out));
+				panelAff.revalidate();
+				panelAff.repaint();
+			}
+		});
+
             String filmRech = rechercheTxt.getText();
             
             HashMap<String, String> filtres = new HashMap<>();
@@ -95,6 +108,7 @@ public class TopMenu extends JPanel {
             
             panelAff.removeAll();        
             panelAff.add(sousPanel, BorderLayout.CENTER);
+            panelAff.add(retourButton,BorderLayout.SOUTH);
             panelAff.revalidate();
             panelAff.repaint();
         }
