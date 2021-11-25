@@ -44,10 +44,12 @@ public class Souscription extends JPanel {
 		personnalPanel = new JPanel(new StackLayout());
 		othersPanel = new JPanel(new StackLayout());
 		cbPanel = new JPanel(new StackLayout());
+		JPanel buttonPanel = new JPanel(new StackLayout());
 		
 		fieldsPanel.add(personnalPanel);
 		fieldsPanel.add(othersPanel);
 		fieldsPanel.add(cbPanel);
+		fieldsPanel.add(buttonPanel);
 		
 		personnalPanel.add(new JLabel("Votre nom :"));
 		personnalPanel.add(nameField = new JTextField());
@@ -74,8 +76,9 @@ public class Souscription extends JPanel {
 		cbPanel.add(new JLabel("Cryptogramme :"));
 		cbPanel.add(CryptoCBField = new JTextField());
 		
+		valideButton = new JButton("Créer");
+		buttonPanel.add(valideButton);
 
-		valideButton = new JButton();
 		valideButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -98,7 +101,9 @@ public class Souscription extends JPanel {
 				int year = Integer.parseInt(yearStr);
 				LocalDate dateCb = LocalDate.of(year, month, 1);
 				CarteBancaire cb = new CarteBancaire(numCb, crypto, dateCb);
-				System.out.println(out.souscrire(cb, adr, nom, prenom, dateAnniv, mail));
+				out.souscrire(cb, adr, nom, prenom, dateAnniv, mail);
+				JOptionPane.showMessageDialog(null, "Votre compte à été créé avec succès.", "Compte crée",
+							JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 	}

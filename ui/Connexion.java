@@ -31,6 +31,20 @@ public class Connexion extends JPanel {
 		add(prenomField = new JTextField());
 		add(filtresBtn = new JButton("log in"));
 
+		JButton retourButton = new JButton("Retour");
+		retourButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelAff.removeAll();
+				panelAff.add(new Principale(panelAff,out));
+				panelAff.revalidate();
+				panelAff.repaint();
+			}
+		});
+
+		add(retourButton);
+
 		filtresBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -39,11 +53,14 @@ public class Connexion extends JPanel {
 					btmMenu.add(btmMenu.getHistoBtn());
 					btmMenu.add(btmMenu.getFiltreBtn());
 					btmMenu.revalidate();
-					JOptionPane.showMessageDialog(null, " : Vous êtes connecté.", "Connecté",
+					JOptionPane.showMessageDialog(null, "Vous êtes connecté.", "Connecté",
 							JOptionPane.INFORMATION_MESSAGE);
 
-					btmMenu.add(new JLabel(nomField.getText() + " : vous êtes connecté."), 0);
+					btmMenu.add(new JLabel(nomField.getText() + " " + prenomField.getText() + " : vous êtes connecté."), 0);
+					
 					btmMenu.getConnexionButton().setEnabled(false);
+					btmMenu.getDeconnexionButton().setEnabled(true);
+					btmMenu.revalidate();
 					
 					panelAff.removeAll();
 					panelAff.revalidate();

@@ -15,6 +15,7 @@ public class FacadeNf {
 	private Client client;
 	private CarteAbonnement carteAbo;
 	private ClientDaoImp clientDaoInstance = ClientDaoImp.getInstance();
+	private CD cdEnCours;
 	/**
 	 * constructeur vide
 	 */
@@ -271,6 +272,14 @@ public class FacadeNf {
 	 */
 	public double getSolde() {
 		return carteAbo.getSolde();
+	}
+
+	public CD getCDEnCours() {
+		return cdEnCours;
+	}
+
+	public void setCDEnCours(Support cdEnCours) {
+		this.cdEnCours = (CD)cdEnCours;
 	}
 
 }

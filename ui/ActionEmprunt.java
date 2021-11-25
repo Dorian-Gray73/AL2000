@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractAction;
 import fc.ErreurEmpruntException;
 import fc.FacadeNf;
@@ -19,7 +20,10 @@ public class ActionEmprunt extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			f.emprunt(s);
+			int code = f.emprunt(s);
+			f.setCDEnCours(s);
+			JOptionPane.showMessageDialog(null, "Le numéro de votre emprunt est : " + code, "Retenu",
+					JOptionPane.INFORMATION_MESSAGE);
 		} catch (ErreurEmpruntException e1) {
 			e1.printStackTrace();
 		}

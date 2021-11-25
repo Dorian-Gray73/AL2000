@@ -1,4 +1,5 @@
 /* downloader.ui.StackLayout
+ * Code emprunté sur le TPP downloader de TLI
  * (c) blanch@imag.fr 2021–                                                */
 
 package ui;
@@ -8,10 +9,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
-
-
-import java.util.Set;
-import java.util.LinkedHashSet;
 
 import static java.lang.Math.max;
 

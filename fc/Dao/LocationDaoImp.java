@@ -1,6 +1,7 @@
 package fc.Dao;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +9,9 @@ import java.util.List;
 
 import fc.Adherent;
 import fc.CD;
+import fc.CarteBancaire;
 import fc.Client;
+import fc.Film;
 import fc.Location;
 /**
  *  LocationDaoImp la classe qui implemente l'inteface LocationDao et qui gère la persitance de donnée des locations.
@@ -19,13 +22,18 @@ public class LocationDaoImp implements LocationDao {
 
 	private LocationDaoImp() {
 		this.locations = new ArrayList<Location>();
+		//testLocation = new Location(LocalDateTime.now(), 4.0, new Client("adresseFacturation", new CarteBancaire("", "", LocalDate.now())), new CD(new Film("Mourir peut attendre", "espion"), false));
+		//locations.add(110, testLocation);
 	}
-	
+
+	/*public Location getFalseLocation() {
+		return testLocation;
+	}*/
 	
 	/** 
 	 * @return LocationDaoImp
 	 */
-	public  static LocationDaoImp getInstance() {
+	public static LocationDaoImp getInstance() {
 		if(locationDaoInstance == null) {
 			locationDaoInstance = new LocationDaoImp();
 		}

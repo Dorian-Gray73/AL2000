@@ -16,7 +16,7 @@ public class Principale extends JPanel{
     private JScrollPane scrollBar;
     //private JPanel parent;
 
-    private  FacadeNf out;
+    private FacadeNf out;
 
     public Principale(JPanel parent) {
         this(parent, (FacadeNf)null);
@@ -48,7 +48,7 @@ public class Principale extends JPanel{
             JButton blueray = new JButton("Blueray");
 
             List<CD> support = list_film.get(film);
-            if (support == null){
+            if (support == null || support.size() == 0){
                 blueray.setEnabled(false);
             } else {
                 blueray.addActionListener(new ActionEmprunt(support.get(0), out));

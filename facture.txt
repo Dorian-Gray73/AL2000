@@ -1,0 +1,11 @@
+Facture générer pour : {nom = 'Toto'
+ prenom = 'Titi'
+ dateNaiss = 'null'
+ courrielAdr = 'mail1'
+ titulaire = '{ solde = '10.0', restriction = '[]', cartemère = 'null', bloque = 'false', nbLocation = '0'}'
+ possede = '[{ solde = '10.0', restriction = '[]', cartemère = 'null', bloque = 'false', nbLocation = '0'}]'
+}
+
+Il s'agit d'une location d'un { endommage = 'false'}
+Cette location s'étend du 2021-11-25T22:47:52.155401100au 2021-11-25T22:47:59.303763500
+Le montant à payer est de 4.0
