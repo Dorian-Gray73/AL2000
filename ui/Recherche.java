@@ -30,7 +30,7 @@ public class Recherche extends JFrame {
         ButtonRecherche.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                  String filmRech =rechercheTxt.getText();
+                String filmRech = rechercheTxt.getText();
                 HashMap<Film, List<CD>> resultat = out.rechercherFilm(filmRech);
                 for (Map.Entry<Film, java.util.List<CD>> map : resultat.entrySet()) {
                     Film filmRes = map.getKey();

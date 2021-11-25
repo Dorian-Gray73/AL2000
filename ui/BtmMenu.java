@@ -1,6 +1,7 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import fc.FacadeNf;
 
@@ -34,6 +35,7 @@ public class BtmMenu extends JPanel {
 				panelAff.removeAll();
 				panelAff.add(new Historique(out));
 				panelAff.revalidate();
+				panelAff.repaint();
 			}
 		});
 		
@@ -107,9 +109,28 @@ public class BtmMenu extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Rendre
-			JPanel rendrePanel = new JPanel();
-			JTextField LocField = new JTextField();
-			JCheckBox endBox = new JCheckBox();
+			JPanel dmgPanel = new JPanel(new GridLayout(2,1));
+			JPanel numPanel = new JPanel(new GridLayout(2,1));
+			JTextField locField = new JTextField();
+			JLabel dmgLabel = new JLabel();
+			JLabel numLabel = new JLabel();
+			JCheckBox dmgdBox = new JCheckBox();
+
+			dmgLabel.setText("Cocher si le cd a ete endommage");
+			numLabel.setText("Entrer votre numero de location");
+
+			dmgPanel.add(dmgLabel);
+			dmgPanel.add(dmgdBox);
+
+			numPanel.add(numLabel);
+			numPanel.add(locField);
+
+			panelAff.removeAll();
+			panelAff.add(numPanel,BorderLayout.WEST);
+			panelAff.add(dmgPanel,BorderLayout.EAST);
+			
+			panelAff.revalidate();
+			panelAff.repaint();
 
 		}
 
