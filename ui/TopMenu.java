@@ -30,7 +30,7 @@ public class TopMenu extends JPanel {
         add(rechercheTxt,BorderLayout.CENTER);
         add(rechercher,BorderLayout.WEST);
 
-        rechercher.addActionListener(new RechAction(this,panelAff));
+        rechercher.addActionListener(new RechAction(panelAff));
         
         rechercher.addActionListener(new ActionListener() {
             @Override
@@ -46,11 +46,9 @@ public class TopMenu extends JPanel {
 
 
     private class RechAction implements ActionListener {
-        private JPanel TopPanel;
         private JPanel panelAff;
-        public RechAction(JPanel panel, JPanel panelAff) {
+        public RechAction(JPanel panelAff) {
             super();
-            this.TopPanel = panel;
             this.panelAff = panelAff;
         }
 

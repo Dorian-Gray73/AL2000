@@ -3,14 +3,16 @@ package ui;
 import fc.CD;
 import fc.FacadeNf;
 import fc.Film;
+import fc.QRCode;
 
 import javax.swing.*;
-import java.awt.Adjustable;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.util.*;
 
 public class Principale extends JPanel{
+
+    // Si jamais on essaie de retirer la scrollbar de partout
+    // on aura besoin de ces paramètres.
     private JScrollPane scrollBar;
     //private JPanel parent;
 
@@ -27,7 +29,7 @@ public class Principale extends JPanel{
         HashMap<Film, List<CD>> list_film = out.rechercherFilm();
         Set<Film> films = list_film.keySet();
         for (Film film : films) {
-            JPanel presentation = new JPanel();//TODO boxLayout prend des param a verif
+            JPanel presentation = new JPanel();
             presentation.setLayout(new BoxLayout(presentation, BoxLayout.PAGE_AXIS));
             JTextField titre = new JTextField("Titre : " + film.getTitre());
             titre.setEditable(false);
@@ -42,18 +44,21 @@ public class Principale extends JPanel{
             realisateur.setEditable(false);
             presentation.add(realisateur);
 
-            JButton QRCode = new JButton("Code à lecture rapide");
+            JButton qrcode = new JButton("Code à lecture rapide");
             JButton blueray = new JButton("Blueray");
 
             List<CD> support = list_film.get(film);
             if (support == null){
                 blueray.setEnabled(false);
+            } else {
+                blueray.addActionListener(new ActionEmprunt(support.get(0), out));
             }
-            presentation.add(QRCode);
+            qrcode.addActionListener(new ActionEmprunt(new QRCode(film), out));
+            presentation.add(qrcode);
             presentation.add(blueray);
             add(presentation);
         }
-        JScrollPane scrollBar = new JScrollPane(this);
+        scrollBar = new JScrollPane(this);
         scrollBar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         parent.add(scrollBar, BorderLayout.CENTER);
 

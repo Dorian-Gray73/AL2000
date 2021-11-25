@@ -1,7 +1,6 @@
 package ui;
 
 import fc.CarteBancaire;
-import fc.Client;
 import fc.FacadeNf;
 import javax.swing.*;
 

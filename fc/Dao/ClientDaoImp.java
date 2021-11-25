@@ -1,6 +1,7 @@
 package fc.Dao;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class ClientDaoImp implements ClientDao {
 		super();
 		this.clients = new ArrayList<Client>();
 		this.adherents = new ArrayList<Adherent>();
+
+		adherents.add(new Adherent(new Client("addr1", new CarteBancaire("1", "2", LocalDate.now())), "Toto", "Titi", null, "mail1"));
+		adherents.add(new Adherent(new Client("addr2", new CarteBancaire("3", "4", LocalDate.now())), "Toto", "Tata", null, "mail2"));
 	}
 	
 	
@@ -50,7 +54,7 @@ public class ClientDaoImp implements ClientDao {
 	
 	@Override
 	public Client rechercheAdherent(String nom, String prenom) {
-		adherents.add(new Adherent(new Client("", new CarteBancaire("", "", null)), nom, prenom, null, ""));
+		//adherents.add(new Adherent(new Client("", new CarteBancaire("", "", null)), nom, prenom, null, ""));
 		for(Adherent adherent : adherents) {
 			if(adherent.getNom().equalsIgnoreCase(nom) && adherent.getPrenom().equalsIgnoreCase(prenom)) {
 				return adherent;
