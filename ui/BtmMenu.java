@@ -49,7 +49,7 @@ public class BtmMenu extends JPanel {
 		});
 		
 		filtreBtn = new JButton("Ajouter Filtre");
-		
+		filtreBtn.setEnabled(false);
 		add(rendreButton);
 		
 		add(connexionButton);
@@ -66,6 +66,8 @@ public class BtmMenu extends JPanel {
 				remove(0);
 				connexionButton.setEnabled(true);
 				deconnexionButton.setEnabled(false);
+				revalidate();
+				repaint();
 			}
 		});
 
